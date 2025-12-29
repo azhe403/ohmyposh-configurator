@@ -1,0 +1,51 @@
+[
+  {
+    "type": "brewfather",
+    "name": "Brewfather",
+    "description": "Displays Brewfather batch status",
+    "icon": "Beer",
+    "defaultTemplate": " {{ .StatusIcon }} {{ .Recipe.Name }} "
+  },
+  {
+    "type": "carbonintensity",
+    "name": "Carbon Intensity",
+    "description": "Displays carbon intensity data",
+    "icon": "GitBranch",
+    "defaultTemplate": " {{ .Actual.Index }} "
+  },
+  {
+    "type": "http",
+    "name": "HTTP",
+    "description": "Makes HTTP requests and displays response",
+    "icon": "\ud83d\udd17",
+    "defaultTemplate": " {{ .Body }} "
+  },
+  {
+    "type": "ipify",
+    "name": "IP Address",
+    "description": "Displays external IP address",
+    "icon": "Globe",
+    "defaultTemplate": " {{ .IP }} "
+  },
+  {
+    "type": "wakatime",
+    "name": "WakaTime",
+    "description": "Displays WakaTime coding time",
+    "icon": "Timer",
+    "defaultTemplate": " {{ secondsRound .CumulativeTotal.Seconds }} "
+  },
+  {
+    "type": "owm",
+    "name": "Weather",
+    "description": "Displays weather from OpenWeatherMap",
+    "icon": "\ud83c\udf24\ufe0f",
+    "defaultTemplate": " {{ .Weather }} {{ .Temperature }}{{ .UnitIcon }} "
+  },
+  {
+    "type": "winreg",
+    "name": "Windows Registry",
+    "description": "Reads Windows registry values",
+    "icon": "\ud83e\ude9f",
+    "defaultTemplate": " {{ .Value }} "
+  }
+]

@@ -1,0 +1,86 @@
+[
+  {
+    "type": "aws",
+    "name": "AWS",
+    "description": "Displays AWS profile and region",
+    "icon": "Cloud",
+    "defaultTemplate": " {{ .Profile }}{{ if .Region }}@{{ .Region }}{{ end }} "
+  },
+  {
+    "type": "az",
+    "name": "Azure",
+    "description": "Displays Azure CLI subscription",
+    "icon": "Diamond",
+    "defaultTemplate": " {{ .Name }} "
+  },
+  {
+    "type": "azd",
+    "name": "Azure Developer CLI",
+    "description": "Displays Azure Developer CLI context",
+    "icon": "Diamond",
+    "defaultTemplate": " {{ .Name }} "
+  },
+  {
+    "type": "azfunc",
+    "name": "Azure Functions",
+    "description": "Displays Azure Functions CLI version",
+    "icon": "Zap",
+    "defaultTemplate": " {{ .Full }} "
+  },
+  {
+    "type": "cf",
+    "name": "Cloud Foundry",
+    "description": "Displays Cloud Foundry CLI version",
+    "icon": "Cloud",
+    "defaultTemplate": " {{ .Full }} "
+  },
+  {
+    "type": "cftarget",
+    "name": "Cloud Foundry Target",
+    "description": "Displays Cloud Foundry target info",
+    "icon": "Target",
+    "defaultTemplate": " {{ .Org }}/{{ .Space }} "
+  },
+  {
+    "type": "gcp",
+    "name": "Google Cloud",
+    "description": "Displays GCP project and account",
+    "icon": "\ud83c\udf29\ufe0f",
+    "defaultTemplate": " {{ .Project }} "
+  },
+  {
+    "type": "kubectl",
+    "name": "Kubernetes",
+    "description": "Displays Kubernetes context",
+    "icon": "Settings",
+    "defaultTemplate": " {{ .Context }}{{ if .Namespace }}::{{ .Namespace }}{{ end }} "
+  },
+  {
+    "type": "pulumi",
+    "name": "Pulumi",
+    "description": "Displays Pulumi stack information",
+    "icon": "\ud83c\udf9b\ufe0f",
+    "defaultTemplate": " {{ .Stack }} "
+  },
+  {
+    "type": "cds",
+    "name": "SAP CDS",
+    "description": "Displays SAP CDS version",
+    "icon": "Package",
+    "defaultTemplate": " {{ .Full }} "
+  },
+  {
+    "type": "sitecore",
+    "name": "Sitecore",
+    "description": "Displays Sitecore environment",
+    "icon": "Globe",
+    "defaultTemplate": " {{ .Name }} "
+  },
+  {
+    "type": "terraform",
+    "name": "Terraform",
+    "description": "Displays Terraform workspace",
+    "icon": "\ud83c\udfd7\ufe0f",
+    "defaultTemplate": " {{ .WorkspaceName }} "
+  }
+]

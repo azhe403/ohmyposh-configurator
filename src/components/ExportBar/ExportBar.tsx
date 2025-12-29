@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react';
-import { Download, Copy, Check, FileJson, FileCode, Eye, EyeOff, Upload, Share2 } from 'lucide-react';
+import { Download, Copy, Check, FileJson, FileCode, Eye, EyeOff, Upload } from 'lucide-react';
 import { useConfigStore } from '../../store/configStore';
 import { exportConfig, downloadConfig, copyToClipboard } from '../../utils/configExporter';
 import { importConfig } from '../../utils/configImporter';

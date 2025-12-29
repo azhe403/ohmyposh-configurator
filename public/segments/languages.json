@@ -1,0 +1,184 @@
+[
+  {
+    "type": "dotnet",
+    "name": ".NET",
+    "description": "Displays .NET SDK version",
+    "icon": "Circle",
+    "defaultTemplate": " {{ .Full }} "
+  },
+  {
+    "type": "clojure",
+    "name": "Clojure",
+    "description": "Displays Clojure version",
+    "icon": "Sparkles",
+    "defaultTemplate": " {{ .Full }} "
+  },
+  {
+    "type": "crystal",
+    "name": "Crystal",
+    "description": "Displays Crystal version",
+    "icon": "Hexagon",
+    "defaultTemplate": " {{ .Full }} "
+  },
+  {
+    "type": "dart",
+    "name": "Dart",
+    "description": "Displays Dart version",
+    "icon": "Target",
+    "defaultTemplate": " {{ .Full }} "
+  },
+  {
+    "type": "elixir",
+    "name": "Elixir",
+    "description": "Displays Elixir version",
+    "icon": "Droplet",
+    "defaultTemplate": " {{ .Full }} "
+  },
+  {
+    "type": "fortran",
+    "name": "Fortran",
+    "description": "Displays Fortran version",
+    "icon": "Hash",
+    "defaultTemplate": " {{ .Full }} "
+  },
+  {
+    "type": "go",
+    "name": "Go",
+    "description": "Displays Go version",
+    "icon": "Package",
+    "defaultTemplate": " {{ .Full }} "
+  },
+  {
+    "type": "haskell",
+    "name": "Haskell",
+    "description": "Displays Haskell (GHC) version",
+    "icon": "Lambda",
+    "defaultTemplate": " {{ .Full }} "
+  },
+  {
+    "type": "java",
+    "name": "Java",
+    "description": "Displays Java version",
+    "icon": "Coffee",
+    "defaultTemplate": " {{ .Full }} "
+  },
+  {
+    "type": "julia",
+    "name": "Julia",
+    "description": "Displays Julia version",
+    "icon": "Circle",
+    "defaultTemplate": " {{ .Full }} "
+  },
+  {
+    "type": "kotlin",
+    "name": "Kotlin",
+    "description": "Displays Kotlin version",
+    "icon": "Circle",
+    "defaultTemplate": " {{ .Full }} "
+  },
+  {
+    "type": "lua",
+    "name": "Lua",
+    "description": "Displays Lua version",
+    "icon": "Moon",
+    "defaultTemplate": " {{ .Full }} "
+  },
+  {
+    "type": "mojo",
+    "name": "Mojo",
+    "description": "Displays Mojo version",
+    "icon": "Flame",
+    "defaultTemplate": " {{ .Full }} "
+  },
+  {
+    "type": "nim",
+    "name": "Nim",
+    "description": "Displays Nim version",
+    "icon": "Crown",
+    "defaultTemplate": " {{ .Full }} "
+  },
+  {
+    "type": "node",
+    "name": "Node.js",
+    "description": "Displays Node.js version",
+    "icon": "Circle",
+    "defaultTemplate": " {{ .Full }} "
+  },
+  {
+    "type": "ocaml",
+    "name": "OCaml",
+    "description": "Displays OCaml version",
+    "icon": "Package",
+    "defaultTemplate": " {{ .Full }} "
+  },
+  {
+    "type": "perl",
+    "name": "Perl",
+    "description": "Displays Perl version",
+    "icon": "Package",
+    "defaultTemplate": " {{ .Full }} "
+  },
+  {
+    "type": "php",
+    "name": "PHP",
+    "description": "Displays PHP version",
+    "icon": "\ud83d\udc18",
+    "defaultTemplate": " {{ .Full }} "
+  },
+  {
+    "type": "python",
+    "name": "Python",
+    "description": "Displays Python version and virtual env",
+    "icon": "Snake",
+    "defaultTemplate": " {{ if .Venv }}{{ .Venv }} {{ end }}{{ .Full }} "
+  },
+  {
+    "type": "r",
+    "name": "R",
+    "description": "Displays R version",
+    "icon": "\ud83d\udcc8",
+    "defaultTemplate": " {{ .Full }} "
+  },
+  {
+    "type": "ruby",
+    "name": "Ruby",
+    "description": "Displays Ruby version",
+    "icon": "Gem",
+    "defaultTemplate": " {{ .Full }} "
+  },
+  {
+    "type": "rust",
+    "name": "Rust",
+    "description": "Displays Rust version",
+    "icon": "Package",
+    "defaultTemplate": " {{ .Full }} "
+  },
+  {
+    "type": "swift",
+    "name": "Swift",
+    "description": "Displays Swift version",
+    "icon": "\ud83d\udc26",
+    "defaultTemplate": " {{ .Full }} "
+  },
+  {
+    "type": "v",
+    "name": "V",
+    "description": "Displays V version",
+    "icon": "Diamond",
+    "defaultTemplate": " {{ .Full }} "
+  },
+  {
+    "type": "vala",
+    "name": "Vala",
+    "description": "Displays Vala version",
+    "icon": "Diamond",
+    "defaultTemplate": " {{ .Full }} "
+  },
+  {
+    "type": "zig",
+    "name": "Zig",
+    "description": "Displays Zig version",
+    "icon": "Zap",
+    "defaultTemplate": " {{ .Full }} "
+  }
+]

@@ -137,6 +137,41 @@ eval "$(oh-my-posh init zsh --config ~/your-theme.json)"
 - **💾 State Management**: Zustand with persistence
 - **🎯 Icons**: Lucide React (500+ icons)
 - **📝 Config Parsing**: js-yaml, @iarna/toml
+- **📦 Segment Loading**: Dynamic JSON-based lazy loading
+
+## 🏗️ Project Structure
+
+```
+├── public/
+│   ├── configs/          # Sample and community configurations
+│   └── segments/         # Segment metadata organized by category
+│       ├── system.json   # System-related segments
+│       ├── scm.json      # Version control segments
+│       ├── languages.json # Programming language segments
+│       ├── cloud.json    # Cloud provider segments
+│       ├── cli.json      # CLI tool segments
+│       ├── web.json      # Web-related segments
+│       ├── music.json    # Music player segments
+│       ├── health.json   # Health tracker segments
+│       └── README.md     # Documentation for adding segments
+├── src/
+│   ├── components/       # React components
+│   ├── data/            # Configuration data
+│   ├── store/           # Zustand state management
+│   ├── types/           # TypeScript type definitions
+│   └── utils/           # Utility functions including segmentLoader
+└── scripts/             # Build and validation scripts
+```
+
+### Adding New Segments
+
+Segments are now stored in separate JSON files by category in `public/segments/`. This makes it easy to add or modify segments without touching the codebase:
+
+1. Open the appropriate category file (e.g., `public/segments/languages.json`)
+2. Add your segment with type, name, description, icon, and defaultTemplate
+3. Segments are loaded dynamically on demand for better performance
+
+See [public/segments/README.md](public/segments/README.md) for detailed instructions.
 
 ## 🔍 SEO & Sharing
 

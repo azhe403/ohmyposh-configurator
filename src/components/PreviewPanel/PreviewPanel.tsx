@@ -1,6 +1,6 @@
 import { Sun, Moon } from 'lucide-react';
 import { useConfigStore } from '../../store/configStore';
-import { getSegmentMetadata } from '../../data/segments';
+import { getSegmentMetadata } from '../../utils/segmentLoader';
 import type { Block, Segment } from '../../types/ohmyposh';
 import { DynamicIcon } from '../DynamicIcon';
 
@@ -44,7 +44,7 @@ interface SegmentPreviewProps {
   prevBackground?: string;
 }
 
-function SegmentPreview({ segment, isFirst, isLast, prevBackground }: SegmentPreviewProps) {
+function SegmentPreview({ segment, isLast }: SegmentPreviewProps) {
   const text = getPreviewText(segment);
   const metadata = getSegmentMetadata(segment.type);
   const bg = segment.background || '#61AFEF';

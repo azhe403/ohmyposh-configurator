@@ -1,6 +1,7 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { Search, ChevronDown, ChevronRight, GripVertical } from 'lucide-react';
-import { segmentMetadata, segmentCategories, getSegmentsByCategory } from '../../data/segments';
+import { segmentCategories } from '../../data/segments';
+import { loadSegmentCategory, getSegmentCategories } from '../../utils/segmentLoader';
 import type { SegmentMetadata, Segment } from '../../types/ohmyposh';
 import { useConfigStore, generateId } from '../../store/configStore';
 import { DynamicIcon } from '../DynamicIcon';
@@ -77,19 +78,52 @@ function CategorySection({ category, segments, onAdd, defaultExpanded = false }:
 
 export function SegmentPicker() {
   const [searchQuery, setSearchQuery] = useState('');
+  const [allSegments, setAllSegments] = useState<SegmentMetadata[]>([]);
+  const [segmentsByCategory, setSegmentsByCategory] = useState<Record<string, SegmentMetadata[]>>({});
+  const [isLoading, setIsLoading] = useState(true);
   const config = useConfigStore((state) => state.config);
   const addSegment = useConfigStore((state) => state.addSegment);
+
+  // Load segments on mount
+  useEffect(() => {
+    async function loadSegments() {
+      setIsLoading(true);
+      try {
+        const categories = getSegmentCategories();
+        const loadedSegmentsByCategory: Record<string, SegmentMetadata[]> = {};
+        const allLoadedSegments: SegmentMetadata[] = [];
+
+        // Load all categories in parallel
+        await Promise.all(
+          categories.map(async (category) => {
+            const segments = await loadSegmentCategory(category);
+            loadedSegmentsByCategory[category] = segments;
+            allLoadedSegments.push(...segments);
+          })
+        );
+
+        setSegmentsByCategory(loadedSegmentsByCategory);
+        setAllSegments(allLoadedSegments);
+      } catch (error) {
+        console.error('Error loading segments:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+
+    loadSegments();
+  }, []);
 
   const filteredSegments = useMemo(() => {
     if (!searchQuery.trim()) return null;
     const query = searchQuery.toLowerCase();
-    return segmentMetadata.filter(
+    return allSegments.filter(
       (s) =>
         s.name.toLowerCase().includes(query) ||
         s.type.toLowerCase().includes(query) ||
         s.description.toLowerCase().includes(query)
     );
-  }, [searchQuery]);
+  }, [searchQuery, allSegments]);
 
   const handleAddSegment = (metadata: SegmentMetadata) => {
     // Find the first block to add to, or create one if none exist
@@ -127,7 +161,11 @@ export function SegmentPicker() {
       </div>
 
       <div className="flex-1 overflow-y-auto p-2">
-        {filteredSegments ? (
+        {isLoading ? (
+          <div className="flex items-center justify-center h-32">
+            <p className="text-sm text-gray-500">Loading segments...</p>
+          </div>
+        ) : filteredSegments ? (
           // Show search results
           <div>
             <p className="text-xs text-gray-500 px-2 mb-2">
@@ -143,7 +181,7 @@ export function SegmentPicker() {
             <CategorySection
               key={category.id}
               category={category}
-              segments={getSegmentsByCategory(category.id)}
+              segments={segmentsByCategory[category.id] || []}
               onAdd={handleAddSegment}
               defaultExpanded={category.id === 'system' || category.id === 'scm'}
             />

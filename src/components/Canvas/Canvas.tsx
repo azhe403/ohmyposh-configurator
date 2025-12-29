@@ -16,7 +16,7 @@ import {
 } from '@dnd-kit/sortable';
 import { Plus, Trash2, Settings } from 'lucide-react';
 import { useConfigStore, generateId } from '../../store/configStore';
-import { getSegmentMetadata } from '../../data/segments';
+import { getSegmentMetadata } from '../../utils/segmentLoader';
 import type { Block as BlockType, Segment } from '../../types/ohmyposh';
 import { SortableSegmentCard, SegmentCard } from './SegmentCard';
 

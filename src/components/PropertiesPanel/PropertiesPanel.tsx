@@ -1,6 +1,6 @@
 import { Settings, Palette, Code, Sliders } from 'lucide-react';
 import { useConfigStore, getSelectedSegment, findBlockForSegment } from '../../store/configStore';
-import { getSegmentMetadata } from '../../data/segments';
+import { getSegmentMetadata } from '../../utils/segmentLoader';
 import type { Segment, SegmentStyle, Block, BlockType, BlockAlignment } from '../../types/ohmyposh';
 
 const segmentStyles: { value: SegmentStyle; label: string }[] = [

@@ -2,7 +2,7 @@ import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import { X, GripVertical } from 'lucide-react';
 import type { Segment } from '../../types/ohmyposh';
-import { getSegmentMetadata } from '../../data/segments';
+import { getSegmentMetadata } from '../../utils/segmentLoader';
 import { DynamicIcon } from '../DynamicIcon';
 
 interface SegmentCardProps {

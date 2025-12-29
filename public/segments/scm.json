@@ -1,0 +1,58 @@
+[
+  {
+    "type": "fossil",
+    "name": "Fossil",
+    "description": "Displays Fossil repository information",
+    "icon": "Bone",
+    "defaultTemplate": " {{ .Branch }} "
+  },
+  {
+    "type": "git",
+    "name": "Git",
+    "description": "Displays Git repository information",
+    "icon": "GitMerge",
+    "defaultTemplate": " {{ .HEAD }}{{ if .BranchStatus }} {{ .BranchStatus }}{{ end }} "
+  },
+  {
+    "type": "gitversion",
+    "name": "GitVersion",
+    "description": "Displays GitVersion semantic version",
+    "icon": "Tag",
+    "defaultTemplate": " {{ .Major }}.{{ .Minor }}.{{ .Patch }} "
+  },
+  {
+    "type": "jujutsu",
+    "name": "Jujutsu",
+    "description": "Displays Jujutsu repository information",
+    "icon": "Shirt",
+    "defaultTemplate": " {{ .ChangeId }} "
+  },
+  {
+    "type": "mercurial",
+    "name": "Mercurial",
+    "description": "Displays Mercurial repository information",
+    "icon": "CircleDot",
+    "defaultTemplate": " {{ .Branch }} "
+  },
+  {
+    "type": "plastic",
+    "name": "Plastic SCM",
+    "description": "Displays Plastic SCM repository information",
+    "icon": "Wrench",
+    "defaultTemplate": " {{ .Selector }} "
+  },
+  {
+    "type": "sapling",
+    "name": "Sapling",
+    "description": "Displays Sapling repository information",
+    "icon": "Sprout",
+    "defaultTemplate": " {{ .Bookmark }} "
+  },
+  {
+    "type": "svn",
+    "name": "SVN",
+    "description": "Displays Subversion repository information",
+    "icon": "FolderOpen",
+    "defaultTemplate": " {{ .Branch }} "
+  }
+]

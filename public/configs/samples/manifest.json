@@ -1,0 +1,60 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2025-12-29",
+  "configs": [
+    {
+      "id": "developer-pro",
+      "name": "Developer Pro",
+      "description": "Complete setup for software developers with Git, language versions, and execution time",
+      "icon": "Code2",
+      "author": "Oh My Posh Configurator",
+      "tags": ["developer", "git", "languages", "complete"],
+      "file": "developer-pro.json"
+    },
+    {
+      "id": "streamer",
+      "name": "Streamer Setup",
+      "description": "Clean and colorful prompt perfect for streaming with music and time info",
+      "icon": "Video",
+      "author": "Oh My Posh Configurator",
+      "tags": ["streaming", "music", "minimal", "colorful"],
+      "file": "streamer.json"
+    },
+    {
+      "id": "minimal",
+      "name": "Minimal Dev",
+      "description": "Simple and fast prompt with just the essentials",
+      "icon": "Zap",
+      "author": "Oh My Posh Configurator",
+      "tags": ["minimal", "fast", "simple", "clean"],
+      "file": "minimal.json"
+    },
+    {
+      "id": "cloud-engineer",
+      "name": "Cloud Engineer",
+      "description": "Focused on cloud services with AWS, Azure, Kubernetes, and Docker info",
+      "icon": "Cloud",
+      "author": "Oh My Posh Configurator",
+      "tags": ["cloud", "aws", "kubernetes", "docker", "devops"],
+      "file": "cloud-engineer.json"
+    },
+    {
+      "id": "full-stack",
+      "name": "Full Stack",
+      "description": "Comprehensive setup for full-stack developers with frontend and backend tools",
+      "icon": "Rocket",
+      "author": "Oh My Posh Configurator",
+      "tags": ["full-stack", "react", "node", "python", "dotnet"],
+      "file": "full-stack.json"
+    },
+    {
+      "id": "data-scientist",
+      "name": "Data Scientist",
+      "description": "Optimized for data science work with Python, R, and Julia",
+      "icon": "BarChart3",
+      "author": "Oh My Posh Configurator",
+      "tags": ["data-science", "python", "r", "julia", "analytics"],
+      "file": "data-scientist.json"
+    }
+  ]
+}

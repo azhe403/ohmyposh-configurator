@@ -1,0 +1,100 @@
+[
+  {
+    "type": "battery",
+    "name": "Battery",
+    "description": "Displays battery status and percentage",
+    "icon": "Battery",
+    "defaultTemplate": " {{ .Icon }}{{ .Percentage }}% "
+  },
+  {
+    "type": "connection",
+    "name": "Connection",
+    "description": "Displays network connection info",
+    "icon": "Globe",
+    "defaultTemplate": " {{ .Name }} "
+  },
+  {
+    "type": "executiontime",
+    "name": "Execution Time",
+    "description": "Displays last command execution time",
+    "icon": "Timer",
+    "defaultTemplate": " {{ .FormattedMs }} "
+  },
+  {
+    "type": "os",
+    "name": "Operating System",
+    "description": "Displays the current operating system",
+    "icon": "Monitor",
+    "defaultTemplate": " {{ if .WSL }}WSL at {{ end }}{{.Icon}} "
+  },
+  {
+    "type": "path",
+    "name": "Path",
+    "description": "Displays the current working directory",
+    "icon": "Folder",
+    "defaultTemplate": " {{ .Path }} "
+  },
+  {
+    "type": "project",
+    "name": "Project",
+    "description": "Displays project name and version",
+    "icon": "Package",
+    "defaultTemplate": " {{ .Name }} {{ .Version }} "
+  },
+  {
+    "type": "root",
+    "name": "Root",
+    "description": "Indicates if running as root/admin",
+    "icon": "Zap",
+    "defaultTemplate": " \u26a1 "
+  },
+  {
+    "type": "session",
+    "name": "Session",
+    "description": "Displays user and host information",
+    "icon": "User",
+    "defaultTemplate": " {{ .UserName }}@{{ .HostName }} "
+  },
+  {
+    "type": "shell",
+    "name": "Shell",
+    "description": "Displays the current shell name",
+    "icon": "Terminal",
+    "defaultTemplate": " {{ .Name }} "
+  },
+  {
+    "type": "status",
+    "name": "Status",
+    "description": "Displays exit code of last command",
+    "icon": "CheckCircle",
+    "defaultTemplate": " {{ .String }} "
+  },
+  {
+    "type": "sysinfo",
+    "name": "System Info",
+    "description": "Displays system information (CPU, memory)",
+    "icon": "BarChart",
+    "defaultTemplate": " {{ round .PhysicalPercentUsed .Precision }}% "
+  },
+  {
+    "type": "text",
+    "name": "Text",
+    "description": "Displays custom static text",
+    "icon": "FileText",
+    "defaultTemplate": " hello "
+  },
+  {
+    "type": "time",
+    "name": "Time",
+    "description": "Displays current date/time",
+    "icon": "Clock",
+    "defaultTemplate": " {{ .CurrentDate | date \"15:04:05\" }} "
+  },
+  {
+    "type": "upgrade",
+    "name": "Upgrade",
+    "description": "Shows if Oh My Posh update is available",
+    "icon": "ArrowUp",
+    "defaultTemplate": " {{ .Version }} "
+  }
+]

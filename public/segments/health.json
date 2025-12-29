@@ -1,0 +1,23 @@
+[
+  {
+    "type": "nightscout",
+    "name": "Nightscout",
+    "description": "Displays Nightscout glucose data",
+    "icon": "Syringe",
+    "defaultTemplate": " {{ .Sgv }}{{ .TrendIcon }} "
+  },
+  {
+    "type": "strava",
+    "name": "Strava",
+    "description": "Displays Strava activity data",
+    "icon": "PersonStanding",
+    "defaultTemplate": " {{ .Ago }} "
+  },
+  {
+    "type": "withings",
+    "name": "Withings",
+    "description": "Displays Withings activity data",
+    "icon": "Heart",
+    "defaultTemplate": " {{ .Steps }} "
+  }
+]

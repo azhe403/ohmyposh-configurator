@@ -1,0 +1,212 @@
+[
+  {
+    "type": "angular",
+    "name": "Angular",
+    "description": "Displays Angular CLI version",
+    "icon": "\ud83c\udd70\ufe0f",
+    "defaultTemplate": " {{ .Full }} "
+  },
+  {
+    "type": "argocd",
+    "name": "Argo CD",
+    "description": "Displays Argo CD context",
+    "icon": "\ud83d\udc19",
+    "defaultTemplate": " {{ .Context }} "
+  },
+  {
+    "type": "aurelia",
+    "name": "Aurelia",
+    "description": "Displays Aurelia version",
+    "icon": "Sparkles",
+    "defaultTemplate": " {{ .Full }} "
+  },
+  {
+    "type": "bazel",
+    "name": "Bazel",
+    "description": "Displays Bazel version",
+    "icon": "\ud83c\udfd7\ufe0f",
+    "defaultTemplate": " {{ .Full }} "
+  },
+  {
+    "type": "buf",
+    "name": "Buf",
+    "description": "Displays Buf CLI version",
+    "icon": "Package",
+    "defaultTemplate": " {{ .Full }} "
+  },
+  {
+    "type": "bun",
+    "name": "Bun",
+    "description": "Displays Bun version",
+    "icon": "\ud83c\udf5e",
+    "defaultTemplate": " {{ .Full }} "
+  },
+  {
+    "type": "claude",
+    "name": "Claude Code",
+    "description": "Displays Claude Code status",
+    "icon": "\ud83e\udd16",
+    "defaultTemplate": " claude "
+  },
+  {
+    "type": "cmake",
+    "name": "CMake",
+    "description": "Displays CMake version",
+    "icon": "\ud83d\udd28",
+    "defaultTemplate": " {{ .Full }} "
+  },
+  {
+    "type": "deno",
+    "name": "Deno",
+    "description": "Displays Deno version",
+    "icon": "Package",
+    "defaultTemplate": " {{ .Full }} "
+  },
+  {
+    "type": "docker",
+    "name": "Docker",
+    "description": "Displays Docker context",
+    "icon": "\ud83d\udc33",
+    "defaultTemplate": " {{ .Context }} "
+  },
+  {
+    "type": "firebase",
+    "name": "Firebase",
+    "description": "Displays Firebase project",
+    "icon": "Flame",
+    "defaultTemplate": " {{ .Project }} "
+  },
+  {
+    "type": "flutter",
+    "name": "Flutter",
+    "description": "Displays Flutter version",
+    "icon": "\ud83d\udc99",
+    "defaultTemplate": " {{ .Full }} "
+  },
+  {
+    "type": "copilot",
+    "name": "GitHub Copilot",
+    "description": "Displays GitHub Copilot status",
+    "icon": "\ud83e\udd16",
+    "defaultTemplate": " copilot "
+  },
+  {
+    "type": "helm",
+    "name": "Helm",
+    "description": "Displays Helm version",
+    "icon": "Ship",
+    "defaultTemplate": " {{ .Version }} "
+  },
+  {
+    "type": "mvn",
+    "name": "Maven",
+    "description": "Displays Maven version",
+    "icon": "\ud83e\udeb6",
+    "defaultTemplate": " {{ .Full }} "
+  },
+  {
+    "type": "nbgv",
+    "name": "NBGV",
+    "description": "Displays Nerdbank.GitVersioning version",
+    "icon": "Tag",
+    "defaultTemplate": " {{ .Version }} "
+  },
+  {
+    "type": "nix-shell",
+    "name": "Nix Shell",
+    "description": "Displays Nix shell status",
+    "icon": "\u2744\ufe0f",
+    "defaultTemplate": " {{ .Name }} "
+  },
+  {
+    "type": "npm",
+    "name": "NPM",
+    "description": "Displays NPM version",
+    "icon": "Package",
+    "defaultTemplate": " {{ .Full }} "
+  },
+  {
+    "type": "nx",
+    "name": "Nx",
+    "description": "Displays Nx CLI version",
+    "icon": "Diamond",
+    "defaultTemplate": " {{ .Full }} "
+  },
+  {
+    "type": "pnpm",
+    "name": "PNPM",
+    "description": "Displays PNPM version",
+    "icon": "Package",
+    "defaultTemplate": " {{ .Full }} "
+  },
+  {
+    "type": "quasar",
+    "name": "Quasar",
+    "description": "Displays Quasar version",
+    "icon": "\ud83c\udf1f",
+    "defaultTemplate": " {{ .Full }} "
+  },
+  {
+    "type": "react",
+    "name": "React",
+    "description": "Displays React version",
+    "icon": "Atom",
+    "defaultTemplate": " {{ .Full }} "
+  },
+  {
+    "type": "svelte",
+    "name": "Svelte",
+    "description": "Displays Svelte version",
+    "icon": "Flame",
+    "defaultTemplate": " {{ .Full }} "
+  },
+  {
+    "type": "talosctl",
+    "name": "Talosctl",
+    "description": "Displays Talos context",
+    "icon": "Wrench",
+    "defaultTemplate": " {{ .Context }} "
+  },
+  {
+    "type": "tauri",
+    "name": "Tauri",
+    "description": "Displays Tauri version",
+    "icon": "Package",
+    "defaultTemplate": " {{ .Full }} "
+  },
+  {
+    "type": "ui5tooling",
+    "name": "UI5 Tooling",
+    "description": "Displays UI5 tooling version",
+    "icon": "Wrench",
+    "defaultTemplate": " {{ .Full }} "
+  },
+  {
+    "type": "umbraco",
+    "name": "Umbraco",
+    "description": "Displays Umbraco version",
+    "icon": "Umbrella",
+    "defaultTemplate": " {{ .Full }} "
+  },
+  {
+    "type": "unity",
+    "name": "Unity",
+    "description": "Displays Unity version",
+    "icon": "\ud83c\udfae",
+    "defaultTemplate": " {{ .Full }} "
+  },
+  {
+    "type": "xmake",
+    "name": "XMake",
+    "description": "Displays XMake version",
+    "icon": "Wrench",
+    "defaultTemplate": " {{ .Full }} "
+  },
+  {
+    "type": "yarn",
+    "name": "Yarn",
+    "description": "Displays Yarn version",
+    "icon": "\ud83e\uddf6",
+    "defaultTemplate": " {{ .Full }} "
+  }
+]

@@ -1,0 +1,57 @@
+name: Validate Configurations
+
+on:
+  pull_request:
+    paths:
+      - 'public/configs/**'
+      - 'scripts/validate-configs.js'
+  push:
+    branches:
+      - main
+    paths:
+      - 'public/configs/**'
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  validate:
+    name: Validate Config Files
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run validation script
+        run: node scripts/validate-configs.js
+
+      - name: Comment on PR (if validation fails)
+        if: failure() && github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '❌ **Configuration Validation Failed**\n\nPlease check the validation errors in the workflow run and fix them before merging.\n\nCommon issues:\n- Missing required fields in manifest or config files\n- Invalid JSON syntax\n- File referenced in manifest but not found\n- Duplicate configuration IDs\n\nSee the [validation script](https://github.com/jamesmontemagno/ohmyposh-configurator/blob/main/scripts/validate-configs.js) for details.'
+            })
+
+      - name: Comment on PR (if validation succeeds)
+        if: success() && github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '✅ **Configuration Validation Passed**\n\nAll configuration files are valid and ready to merge! 🎉'
+            })

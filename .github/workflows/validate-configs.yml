@@ -11,6 +11,10 @@ on:
     paths:
       - 'public/configs/**'
 
+permissions:
+  contents: read
+  pull-requests: write
+
 jobs:
   validate:
     name: Validate Config Files

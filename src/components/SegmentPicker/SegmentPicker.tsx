@@ -3,6 +3,7 @@ import { Search, ChevronDown, ChevronRight, GripVertical } from 'lucide-react';
 import { segmentMetadata, segmentCategories, getSegmentsByCategory } from '../../data/segments';
 import type { SegmentMetadata, Segment } from '../../types/ohmyposh';
 import { useConfigStore, generateId } from '../../store/configStore';
+import { DynamicIcon } from '../DynamicIcon';
 
 interface SegmentItemProps {
   segment: SegmentMetadata;
@@ -21,7 +22,7 @@ function SegmentItem({ segment, onAdd }: SegmentItemProps) {
       }}
     >
       <GripVertical size={14} className="text-gray-500 opacity-0 group-hover:opacity-100 transition-opacity" />
-      <span className="text-base">{segment.icon}</span>
+      <DynamicIcon name={segment.icon} size={16} className="text-gray-400" />
       <div className="flex-1 min-w-0">
         <div className="text-sm text-gray-200 truncate">{segment.name}</div>
       </div>
@@ -59,7 +60,7 @@ function CategorySection({ category, segments, onAdd, defaultExpanded = false }:
         ) : (
           <ChevronRight size={16} className="text-gray-400" />
         )}
-        <span className="text-base">{category.icon}</span>
+        <DynamicIcon name={category.icon} size={16} className="text-gray-400" />
         <span className="text-sm font-medium text-gray-200">{category.name}</span>
         <span className="text-xs text-gray-500 ml-auto">{segments.length}</span>
       </button>
@@ -100,8 +101,8 @@ export function SegmentPicker() {
       type: metadata.type,
       style: 'powerline',
       powerline_symbol: '\ue0b0',
-      foreground: '#ffffff',
-      background: '#61AFEF',
+      foreground: metadata.defaultForeground || '#ffffff',
+      background: metadata.defaultBackground || '#61AFEF',
       template: metadata.defaultTemplate || ` {{ .${metadata.name.replace(/\s/g, '')} }} `,
       options: metadata.defaultOptions,
     };

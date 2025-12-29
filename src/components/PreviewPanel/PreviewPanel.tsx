@@ -2,6 +2,7 @@ import { Sun, Moon } from 'lucide-react';
 import { useConfigStore } from '../../store/configStore';
 import { getSegmentMetadata } from '../../data/segments';
 import type { Block, Segment } from '../../types/ohmyposh';
+import { DynamicIcon } from '../DynamicIcon';
 
 // Mock data for preview
 const mockData: Record<string, string> = {
@@ -50,38 +51,58 @@ function SegmentPreview({ segment, isFirst, isLast, prevBackground }: SegmentPre
   const fg = segment.foreground || '#ffffff';
 
   if (segment.style === 'powerline') {
-    const symbol = segment.powerline_symbol || '\ue0b0';
     return (
-      <span className="inline-flex items-center">
-        {!isFirst && prevBackground && (
-          <span style={{ color: prevBackground, backgroundColor: bg }}>{symbol}</span>
-        )}
+      <span className="inline-flex items-center -space-x-[1px]">
         <span
           style={{ backgroundColor: bg, color: fg }}
-          className="px-2 py-0.5"
+          className="px-3 py-1 inline-flex items-center gap-1.5 relative z-10"
         >
-          {metadata?.icon} {text}
+          {metadata?.icon && <DynamicIcon name={metadata.icon} size={14} />}
+          <span>{text}</span>
         </span>
+        {/* Powerline arrow - right pointing triangle */}
         {isLast && (
-          <span style={{ color: bg }}>{symbol}</span>
+          <span 
+            className="inline-block w-0 h-0 relative z-0"
+            style={{
+              borderTop: '14px solid transparent',
+              borderBottom: '14px solid transparent',
+              borderLeft: `12px solid ${bg}`,
+            }}
+          />
         )}
       </span>
     );
   }
 
   if (segment.style === 'diamond') {
-    const leadingDiamond = segment.leading_diamond || '\ue0b6';
-    const trailingDiamond = segment.trailing_diamond || '\ue0b4';
     return (
-      <span className="inline-flex items-center">
-        <span style={{ color: bg }}>{leadingDiamond}</span>
+      <span className="inline-flex items-center gap-0">
+        {/* Leading diamond - left pointing triangle */}
+        <span 
+          className="inline-block w-0 h-0"
+          style={{
+            borderTop: '14px solid transparent',
+            borderBottom: '14px solid transparent',
+            borderRight: `8px solid ${bg}`,
+          }}
+        />
         <span
           style={{ backgroundColor: bg, color: fg }}
-          className="px-2 py-0.5"
+          className="px-3 py-1 inline-flex items-center gap-1.5"
         >
-          {metadata?.icon} {text}
+          {metadata?.icon && <DynamicIcon name={metadata.icon} size={14} />}
+          <span>{text}</span>
         </span>
-        <span style={{ color: bg }}>{trailingDiamond}</span>
+        {/* Trailing diamond - right pointing triangle */}
+        <span 
+          className="inline-block w-0 h-0"
+          style={{
+            borderTop: '14px solid transparent',
+            borderBottom: '14px solid transparent',
+            borderLeft: `8px solid ${bg}`,
+          }}
+        />
       </span>
     );
   }
@@ -90,9 +111,10 @@ function SegmentPreview({ segment, isFirst, isLast, prevBackground }: SegmentPre
   return (
     <span
       style={{ backgroundColor: bg, color: fg }}
-      className="px-2 py-0.5 rounded"
+      className="px-3 py-1 rounded inline-flex items-center gap-1.5"
     >
-      {metadata?.icon} {text}
+      {metadata?.icon && <DynamicIcon name={metadata.icon} size={14} />}
+      <span>{text}</span>
     </span>
   );
 }
@@ -165,17 +187,21 @@ export function PreviewPanel() {
       </div>
 
       <div
-        className="p-4 font-mono text-sm"
-        style={{ backgroundColor: bgColor, color: textColor }}
+        className="p-4 text-sm"
+        style={{ 
+          backgroundColor: bgColor, 
+          color: textColor,
+          fontFamily: "'Fira Code', 'Cascadia Code', 'Consolas', 'Monaco', monospace",
+        }}
       >
-        <div className="space-y-1">
+        <div className="space-y-2">
           {config.blocks.map((block, index) => (
             <div key={block.id}>
               <BlockPreview block={block} />
               {block.newline && index < config.blocks.length - 1 && <br />}
             </div>
           ))}
-          <div className="mt-1">
+          <div className="mt-2">
             <span style={{ color: textColor }}>❯ </span>
             <span className="animate-pulse">▋</span>
           </div>

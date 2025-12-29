@@ -215,4 +215,6 @@ export interface SegmentMetadata {
   icon: string;
   defaultTemplate?: string;
   defaultOptions?: Record<string, unknown>;
+  defaultBackground?: string;
+  defaultForeground?: string;
 }

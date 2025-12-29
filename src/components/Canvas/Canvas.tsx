@@ -44,8 +44,8 @@ function Block({ block, isSelected, onSelect, onRemove }: BlockProps) {
           type: metadata.type,
           style: 'powerline',
           powerline_symbol: '\ue0b0',
-          foreground: '#ffffff',
-          background: '#61AFEF',
+          foreground: metadata.defaultForeground || '#ffffff',
+          background: metadata.defaultBackground || '#61AFEF',
           template: metadata.defaultTemplate || ` {{ .${metadata.name.replace(/\s/g, '')} }} `,
           options: metadata.defaultOptions,
         };

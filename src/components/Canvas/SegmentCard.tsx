@@ -3,6 +3,7 @@ import { CSS } from '@dnd-kit/utilities';
 import { X, GripVertical } from 'lucide-react';
 import type { Segment } from '../../types/ohmyposh';
 import { getSegmentMetadata } from '../../data/segments';
+import { DynamicIcon } from '../DynamicIcon';
 
 interface SegmentCardProps {
   segment: Segment;
@@ -40,7 +41,11 @@ export function SegmentCard({
       }}
     >
       <GripVertical size={14} className="opacity-50 cursor-grab" />
-      <span className="text-sm">{metadata?.icon || '📦'}</span>
+      {metadata?.icon ? (
+        <DynamicIcon name={metadata.icon} size={14} className="opacity-90" />
+      ) : (
+        <DynamicIcon name="Package" size={14} className="opacity-90" />
+      )}
       <span className="text-sm font-medium">{metadata?.name || segment.type}</span>
       <button
         onClick={(e) => {

@@ -1,7 +1,7 @@
 import { Sun, Moon } from 'lucide-react';
 import { useConfigStore } from '../../store/configStore';
 import { useSegmentMetadata } from '../../hooks/useSegmentMetadata';
-import type { Block, Segment } from '../../types/ohmyposh';
+import type { Block, Segment, SegmentStyle } from '../../types/ohmyposh';
 import { DynamicIcon } from '../DynamicIcon';
 
 // Mock data for preview
@@ -25,6 +25,11 @@ const mockData: Record<string, string> = {
   terraform: 'production',
 };
 
+// Default symbols
+const DEFAULT_POWERLINE_SYMBOL = '\ue0b0';
+const DEFAULT_LEADING_DIAMOND = '\ue0b6';
+const DEFAULT_TRAILING_DIAMOND = '\ue0b4';
+
 function getPreviewText(segment: Segment, metadata?: { name: string }): string {
   // Try to use mock data
   if (mockData[segment.type]) {
@@ -37,70 +42,84 @@ function getPreviewText(segment: Segment, metadata?: { name: string }): string {
 
 interface SegmentPreviewProps {
   segment: Segment;
-  isFirst: boolean;
-  isLast: boolean;
-  prevBackground?: string;
+  nextBackground?: string;
+  blockLeadingDiamond?: string;
+  blockTrailingDiamond?: string;
+  prevStyle?: SegmentStyle;
 }
 
-function SegmentPreview({ segment, isLast }: SegmentPreviewProps) {
+function SegmentPreview({ segment, nextBackground, blockLeadingDiamond, blockTrailingDiamond, prevStyle }: SegmentPreviewProps) {
   const metadata = useSegmentMetadata(segment.type);
   const text = getPreviewText(segment, metadata);
   const bg = segment.background || '#61AFEF';
   const fg = segment.foreground || '#ffffff';
 
+  // Add negative margin if previous segment was powerline
+  const marginClass = prevStyle === 'powerline' ? '-ml-[2px]' : '';
+
   if (segment.style === 'powerline') {
+    const powerlineSymbol = segment.powerline_symbol || DEFAULT_POWERLINE_SYMBOL;
+    // For powerline, the symbol color is the current segment's background,
+    // rendered on top of the next segment's background (or transparent)
+    const symbolBg = nextBackground || 'transparent';
+    
     return (
-      <span className="inline-flex items-center -space-x-[1px]">
+      <span className={`inline-flex items-stretch -mr-[2px] ${marginClass}`}>
         <span
           style={{ backgroundColor: bg, color: fg }}
-          className="px-3 py-1 inline-flex items-center gap-1.5 relative z-10"
+          className="px-2 py-1 inline-flex items-center gap-1.5"
         >
           {metadata?.icon && <DynamicIcon name={metadata.icon} size={14} />}
           <span>{text}</span>
         </span>
-        {/* Powerline arrow - right pointing triangle */}
-        {isLast && (
-          <span 
-            className="inline-block w-0 h-0 relative z-0"
-            style={{
-              borderTop: '14px solid transparent',
-              borderBottom: '14px solid transparent',
-              borderLeft: `12px solid ${bg}`,
-            }}
-          />
-        )}
+        {/* Powerline symbol */}
+        <span 
+          className="nerd-font-symbol -ml-[2px] inline-flex items-center"
+          style={{
+            color: bg,
+            backgroundColor: symbolBg,
+          }}
+        >
+          {powerlineSymbol}
+        </span>
       </span>
     );
   }
 
   if (segment.style === 'diamond') {
+    // Use segment-level diamonds, or fall back to block-level, or defaults
+    const leadingDiamond = segment.leading_diamond || blockLeadingDiamond || DEFAULT_LEADING_DIAMOND;
+    const trailingDiamond = segment.trailing_diamond || blockTrailingDiamond || DEFAULT_TRAILING_DIAMOND;
+    
     return (
-      <span className="inline-flex items-center gap-0">
-        {/* Leading diamond - left pointing triangle */}
+      <span className={`inline-flex items-stretch -mx-[2px] ${marginClass}`}>
+        {/* Leading diamond */}
         <span 
-          className="inline-block w-0 h-0"
+          className="nerd-font-symbol inline-flex items-center"
           style={{
-            borderTop: '14px solid transparent',
-            borderBottom: '14px solid transparent',
-            borderRight: `8px solid ${bg}`,
+            color: bg,
+            backgroundColor: 'transparent',
           }}
-        />
+        >
+          {leadingDiamond}
+        </span>
         <span
           style={{ backgroundColor: bg, color: fg }}
-          className="px-3 py-1 inline-flex items-center gap-1.5"
+          className="px-2 py-1 inline-flex items-center gap-1.5 -mx-[2px]"
         >
           {metadata?.icon && <DynamicIcon name={metadata.icon} size={14} />}
           <span>{text}</span>
         </span>
-        {/* Trailing diamond - right pointing triangle */}
+        {/* Trailing diamond */}
         <span 
-          className="inline-block w-0 h-0"
+          className="nerd-font-symbol inline-flex items-center"
           style={{
-            borderTop: '14px solid transparent',
-            borderBottom: '14px solid transparent',
-            borderLeft: `8px solid ${bg}`,
+            color: bg,
+            backgroundColor: 'transparent',
           }}
-        />
+        >
+          {trailingDiamond}
+        </span>
       </span>
     );
   }
@@ -109,7 +128,7 @@ function SegmentPreview({ segment, isLast }: SegmentPreviewProps) {
   return (
     <span
       style={{ backgroundColor: bg, color: fg }}
-      className="px-3 py-1 rounded inline-flex items-center gap-1.5"
+      className={`px-2 py-1 rounded inline-flex items-center gap-1.5 ${marginClass}`}
     >
       {metadata?.icon && <DynamicIcon name={metadata.icon} size={14} />}
       <span>{text}</span>
@@ -136,9 +155,10 @@ function BlockPreview({ block }: BlockPreviewProps) {
         <SegmentPreview
           key={segment.id}
           segment={segment}
-          isFirst={index === 0}
-          isLast={index === block.segments.length - 1}
-          prevBackground={index > 0 ? block.segments[index - 1].background : undefined}
+          nextBackground={index < block.segments.length - 1 ? block.segments[index + 1].background : undefined}
+          blockLeadingDiamond={block.leading_diamond}
+          blockTrailingDiamond={block.trailing_diamond}
+          prevStyle={index > 0 ? block.segments[index - 1].style : undefined}
         />
       ))}
     </div>

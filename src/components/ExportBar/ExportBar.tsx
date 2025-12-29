@@ -1,7 +1,9 @@
-import { useState } from 'react';
-import { Download, Copy, Check, FileJson, FileCode, Eye, EyeOff } from 'lucide-react';
+import { useState, useRef } from 'react';
+import { Download, Copy, Check, FileJson, FileCode, Eye, EyeOff, Upload, Share2 } from 'lucide-react';
 import { useConfigStore } from '../../store/configStore';
 import { exportConfig, downloadConfig, copyToClipboard } from '../../utils/configExporter';
+import { importConfig } from '../../utils/configImporter';
+import { SubmitConfigDialog } from '../SubmitConfigDialog';
 import type { ExportFormat } from '../../types/ohmyposh';
 
 const formatOptions: { value: ExportFormat; label: string; icon: typeof FileJson }[] = [
@@ -12,10 +14,13 @@ const formatOptions: { value: ExportFormat; label: string; icon: typeof FileJson
 
 export function ExportBar() {
   const config = useConfigStore((state) => state.config);
+  const setConfig = useConfigStore((state) => state.setConfig);
   const exportFormat = useConfigStore((state) => state.exportFormat);
   const setExportFormat = useConfigStore((state) => state.setExportFormat);
   const [copied, setCopied] = useState(false);
   const [showCode, setShowCode] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleCopy = async () => {
     const content = exportConfig(config, exportFormat);
@@ -28,10 +33,44 @@ export function ExportBar() {
     downloadConfig(config, exportFormat);
   };
 
+  const handleImportClick = () => {
+    fileInputRef.current?.click();
+  };
+
+  const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+
+    try {
+      const text = await file.text();
+      const importedConfig = importConfig(text, file.name);
+      setConfig(importedConfig);
+      
+      // Show success message
+      setShowSuccess(true);
+      setTimeout(() => setShowSuccess(false), 3000);
+      
+      // Reset file input
+      if (fileInputRef.current) {
+        fileInputRef.current.value = '';
+      }
+    } catch (error) {
+      console.error('Failed to import config:', error);
+      alert(`Failed to import configuration: ${error instanceof Error ? error.message : 'Unknown error'}`);
+    }
+  };
+
   const configContent = showCode ? exportConfig(config, exportFormat) : '';
 
   return (
-    <div className="bg-[#16213e] border-t border-[#0f3460]">
+    <div className="bg-[#16213e] border-t border-[#0f3460] relative">
+      {/* Success notification */}
+      {showSuccess && (
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-full mb-2 bg-green-600 text-white px-4 py-2 rounded-lg shadow-lg text-sm font-medium z-50 transition-opacity duration-300">
+          ✓ Configuration imported successfully
+        </div>
+      )}
+      
       <div className="flex items-center justify-between px-4 py-2">
         <div className="flex items-center gap-2">
           <span className="text-sm text-gray-300">Export Format:</span>
@@ -53,6 +92,25 @@ export function ExportBar() {
         </div>
 
         <div className="flex items-center gap-2">
+          <input
+            ref={fileInputRef}
+            type="file"
+            accept=".json,.yaml,.yml,.toml"
+            onChange={handleFileChange}
+            className="hidden"
+          />
+          
+          <button
+            onClick={handleImportClick}
+            className="flex items-center gap-1.5 px-3 py-1.5 text-sm text-gray-300 hover:text-white bg-[#0f3460] rounded transition-colors"
+            title="Import configuration from file"
+          >
+            <Upload size={16} />
+            <span>Import</span>
+          </button>
+
+          <SubmitConfigDialog />
+
           <button
             onClick={() => setShowCode(!showCode)}
             className="flex items-center gap-1.5 px-3 py-1.5 text-sm text-gray-300 hover:text-white bg-[#0f3460] rounded transition-colors"

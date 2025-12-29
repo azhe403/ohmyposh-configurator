@@ -29,6 +29,8 @@ Perfect for developers, DevOps engineers, and anyone who wants a beautiful, info
 - 📦 **Import & Export**: Support for JSON, YAML, and TOML formats
 - 💾 **Auto-Save**: Never lose your work with automatic browser storage
 - 🎯 **Sample Configs**: Start quickly with 6 pre-built professional templates
+- 👥 **Community Themes**: Browse and share community-contributed configurations
+- 🤝 **Easy Sharing**: Submit your own themes via GitHub PR with built-in tools
 - 🌐 **100% Client-Side**: Your configurations never leave your browser
 - 📱 **Responsive Design**: Works on desktop, tablet, and mobile devices
 - 🎨 **Smart Color Schemes**: Category-based default colors for quick setup
@@ -76,6 +78,7 @@ npm run build
 1. **🎯 Choose a Starting Point**
    - Start from scratch, or
    - Load a sample configuration, or
+   - Browse community themes, or
    - Import your existing Oh My Posh config
 
 2. **➕ Add Segments**
@@ -93,9 +96,22 @@ npm run build
    - Toggle between dark and light backgrounds
    - View powerline arrows and diamond shapes
 
-5. **💾 Export**
+5. **💾 Export or Share**
    - Choose your format: JSON, YAML, or TOML
    - Download and use with Oh My Posh
+   - Or share your creation with the community!
+
+## 🤝 Contributing Your Theme
+
+Love your configuration? Share it with the community!
+
+1. Click the **"Share"** button in the header
+2. Fill in your theme details (name, description, author, tags)
+3. Copy the generated JSON configuration
+4. Follow the GitHub PR submission steps
+5. See your theme in the Community collection!
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed instructions.
 
 ### 🔧 Using Your Configuration
 

@@ -1,0 +1,48 @@
+{
+  "id": "minimal",
+  "name": "Minimal Dev",
+  "description": "Simple and fast prompt with just the essentials",
+  "icon": "Zap",
+  "author": "Oh My Posh Configurator",
+  "tags": ["minimal", "fast", "simple", "clean"],
+  "config": {
+    "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+    "version": 2,
+    "final_space": true,
+    "blocks": [
+      {
+        "type": "prompt",
+        "alignment": "left",
+        "segments": [
+          {
+            "type": "path",
+            "style": "plain",
+            "foreground": "#26C6DA",
+            "template": "{{ .Path }} ",
+            "properties": {
+              "style": "folder"
+            }
+          },
+          {
+            "type": "git",
+            "style": "plain",
+            "foreground": "#B388FF",
+            "template": "on \ue725 {{ .HEAD }} "
+          },
+          {
+            "type": "status",
+            "style": "plain",
+            "foreground": "#ffffff",
+            "foreground_templates": [
+              "{{ if gt .Code 0 }}#FF5252{{ end }}"
+            ],
+            "template": "{{ if gt .Code 0 }}✗{{ else }}✓{{ end }} ",
+            "properties": {
+              "always_enabled": true
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

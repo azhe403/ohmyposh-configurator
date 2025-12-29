@@ -1,14 +1,10 @@
-import { Github, Book, RotateCcw, Sparkles, Upload, ChevronDown } from 'lucide-react';
+import { Github, Book, RotateCcw, ChevronDown } from 'lucide-react';
 import { useConfigStore } from '../../store/configStore';
 import { SamplePicker } from '../SamplePicker';
-import { importConfig } from '../../utils/configImporter';
 import { useRef, useState, useEffect } from 'react';
 
 export function Header() {
   const resetConfig = useConfigStore((state) => state.resetConfig);
-  const setConfig = useConfigStore((state) => state.setConfig);
-  const fileInputRef = useRef<HTMLInputElement>(null);
-  const [showSuccess, setShowSuccess] = useState(false);
   const [showGitHubDropdown, setShowGitHubDropdown] = useState(false);
   const githubDropdownRef = useRef<HTMLDivElement>(null);
 
@@ -24,68 +20,21 @@ export function Header() {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  const handleImportClick = () => {
-    fileInputRef.current?.click();
-  };
-
-  const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    if (!file) return;
-
-    try {
-      const text = await file.text();
-      const config = importConfig(text, file.name);
-      setConfig(config);
-      
-      // Show success message
-      setShowSuccess(true);
-      setTimeout(() => setShowSuccess(false), 3000);
-      
-      // Reset file input so the same file can be imported again
-      if (fileInputRef.current) {
-        fileInputRef.current.value = '';
-      }
-    } catch (error) {
-      console.error('Failed to import config:', error);
-      alert(`Failed to import configuration: ${error instanceof Error ? error.message : 'Unknown error'}`);
-    }
-  };
-
   return (
     <header className="bg-[#16213e] border-b border-[#0f3460] px-4 py-3 flex items-center justify-between relative">
       <div className="flex items-center gap-3">
-        <Sparkles className="w-6 h-6 text-purple-400" />
+        <div className="p-2 bg-purple-600 rounded-lg">
+          <svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          </svg>
+        </div>
         <div>
           <h1 className="text-lg font-bold text-white">Oh My Posh Configurator</h1>
           <p className="text-xs text-gray-400">Visual Configuration Builder</p>
         </div>
       </div>
       
-      {/* Success notification */}
-      {showSuccess && (
-        <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 bg-green-600 text-white px-4 py-2 rounded-lg shadow-lg text-sm font-medium z-50 transition-opacity duration-300">
-          ✓ Configuration imported successfully
-        </div>
-      )}
-      
       <div className="flex items-center gap-2">
-        <input
-          ref={fileInputRef}
-          type="file"
-          accept=".json,.yaml,.yml,.toml"
-          onChange={handleFileChange}
-          className="hidden"
-        />
-        
-        <button
-          onClick={handleImportClick}
-          className="flex items-center gap-1.5 px-3 py-1.5 text-sm text-gray-300 hover:text-white hover:bg-[#0f3460] rounded transition-colors"
-          title="Import configuration from file"
-        >
-          <Upload size={16} />
-          <span className="hidden sm:inline">Import</span>
-        </button>
-        
         <SamplePicker />
         
         <button
@@ -141,16 +90,6 @@ export function Header() {
         >
           <Book size={16} />
           <span className="hidden sm:inline">Docs</span>
-        </a>
-        
-        <a
-          href="https://github.com/JanDeDobbeleer/oh-my-posh"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center gap-1.5 px-3 py-1.5 text-sm text-gray-300 hover:text-white hover:bg-[#0f3460] rounded transition-colors"
-        >
-          <Github size={16} />
-          <span className="hidden sm:inline">GitHub</span>
         </a>
       </div>
     </header>

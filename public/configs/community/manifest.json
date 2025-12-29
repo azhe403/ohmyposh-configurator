@@ -1,0 +1,15 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2025-12-29",
+  "configs": [
+    {
+      "id": "dotnet-azure-developer",
+      "name": ".NET & Azure Developer",
+      "description": "Perfect for .NET developers working with Azure cloud services, featuring Azure CLI, .NET SDK, Docker, and Git integration",
+      "icon": "CloudCog",
+      "author": "James Montemagno",
+      "tags": ["dotnet", "azure", "cloud", "developer", "csharp"],
+      "file": "dotnet-azure-developer.json"
+    }
+  ]
+}

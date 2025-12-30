@@ -73,6 +73,23 @@ function SymbolPicker({ label, value, onChange, symbols, placeholder }: SymbolPi
     }
   };
 
+  const handleCustomInput = (inputValue: string) => {
+    // Convert unicode escape sequences like \ue0b0 or \u{e0b0} to actual characters
+    let processedValue = inputValue;
+    
+    // Handle \uXXXX format
+    processedValue = processedValue.replace(/\\u([0-9a-fA-F]{4})/g, (match, hex) => {
+      return String.fromCharCode(parseInt(hex, 16));
+    });
+    
+    // Handle \u{XXXXX} format (with braces)
+    processedValue = processedValue.replace(/\\u\{([0-9a-fA-F]+)\}/g, (match, hex) => {
+      return String.fromCodePoint(parseInt(hex, 16));
+    });
+    
+    onChange(processedValue);
+  };
+
   return (
     <div>
       <label className="text-xs text-gray-400">{label}</label>
@@ -91,13 +108,21 @@ function SymbolPicker({ label, value, onChange, symbols, placeholder }: SymbolPi
       </select>
       
       {isCustom && (
-        <input
-          type="text"
-          value={value || ''}
-          onChange={(e) => onChange(e.target.value)}
-          placeholder={placeholder || 'Enter symbol or Unicode (e.g., \\ue0b0)'}
-          className="w-full mt-1 px-2 py-1 text-sm bg-[#1a1a2e] border border-[#0f3460] rounded text-gray-200 focus:outline-none focus:border-[#e94560]"
-        />
+        <>
+          <input
+            type="text"
+            value={value || ''}
+            onChange={(e) => handleCustomInput(e.target.value)}
+            placeholder={placeholder || 'Enter symbol or Unicode (e.g., \\ue0b0)'}
+            className="w-full mt-1 px-2 py-1 text-sm bg-[#1a1a2e] border border-[#0f3460] rounded text-gray-200 focus:outline-none focus:border-[#e94560] font-mono"
+          />
+          {value && (
+            <div className="mt-1 text-xs text-gray-500 flex items-center gap-2">
+              <span>Preview:</span>
+              <span className="nerd-font-symbol text-lg text-white">{value}</span>
+            </div>
+          )}
+        </>
       )}
       
       {value && !isCustom && currentSymbol && (
@@ -251,14 +276,33 @@ function SegmentProperties() {
           <span className="text-xs font-medium text-gray-300">Template</span>
         </div>
         <textarea
-          value={segment.template || ''}
-          onChange={(e) => handleUpdate({ template: e.target.value })}
+          value={(() => {
+            // Display unicode characters as escape sequences in the textarea
+            const template = segment.template || '';
+            return template.replace(/[\u0080-\uffff]/g, (char) => {
+              return '\\u' + ('0000' + char.charCodeAt(0).toString(16)).slice(-4);
+            });
+          })()}
+          onChange={(e) => {
+            let processedValue = e.target.value;
+            
+            // Convert unicode escape sequences like \ue0b0 to actual characters for storage
+            processedValue = processedValue.replace(/\\u([0-9a-fA-F]{4})/g, (match, hex) => {
+              return String.fromCharCode(parseInt(hex, 16));
+            });
+            
+            processedValue = processedValue.replace(/\\u\{([0-9a-fA-F]+)\}/g, (match, hex) => {
+              return String.fromCodePoint(parseInt(hex, 16));
+            });
+            
+            handleUpdate({ template: processedValue });
+          }}
           rows={3}
           className="w-full px-2 py-1.5 text-xs font-mono bg-[#1a1a2e] border border-[#0f3460] rounded text-gray-200 focus:outline-none focus:border-[#e94560] resize-y"
           placeholder="{{ .Data }}"
         />
         <p className="text-xs text-gray-500 mt-1">
-          Uses Go template syntax.{' '}
+          Uses Go template syntax. Unicode symbols shown as \uXXXX.{' '}
           <a
             href="https://ohmyposh.dev/docs/configuration/templates"
             target="_blank"

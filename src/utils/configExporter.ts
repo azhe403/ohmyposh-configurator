@@ -40,7 +40,27 @@ export function cleanConfig(config: OhMyPoshConfig): CleanedConfig {
 
 export function exportToJson(config: OhMyPoshConfig): string {
   const cleanedConfig = cleanConfig(config);
-  return JSON.stringify(cleanedConfig, null, 2);
+  
+  // Custom replacer to escape unicode characters
+  const escapeUnicode = (str: string): string => {
+    return str.replace(/[\u0080-\uffff]/g, (char) => {
+      return '\\u' + ('0000' + char.charCodeAt(0).toString(16)).slice(-4);
+    });
+  };
+  
+  // Stringify with proper formatting
+  const jsonString = JSON.stringify(cleanedConfig, null, 2);
+  
+  // Escape unicode characters in string values
+  return jsonString.replace(/"([^"\\]*(\\.[^"\\]*)*)"/g, (match) => {
+    // Only process string values (not keys), and only if they contain high unicode
+    if (/[\u0080-\uffff]/.test(match)) {
+      const inner = match.slice(1, -1); // Remove quotes
+      const escaped = escapeUnicode(inner);
+      return '"' + escaped + '"';
+    }
+    return match;
+  });
 }
 
 export function exportToYaml(config: OhMyPoshConfig): string {

@@ -6,24 +6,52 @@ import type { Block, Segment, SegmentStyle } from '../../types/ohmyposh';
 import { DynamicIcon } from '../DynamicIcon';
 
 // Mock data for preview
-const mockData: Record<string, string> = {
-  path: '~/projects/my-app',
-  git: 'main ↑2',
-  node: 'v20.10.0',
-  python: '3.11.0',
-  go: '1.21.0',
-  rust: '1.74.0',
-  java: '17.0.1',
-  dotnet: '8.0.0',
-  time: '14:32:05',
-  battery: '85%',
-  os: '',
-  shell: 'zsh',
-  session: 'user@host',
-  aws: 'prod@us-east-1',
-  kubectl: 'k8s-prod::default',
-  docker: 'default',
-  terraform: 'production',
+const mockData: Record<string, any> = {
+  // Path segments
+  Path: '~/dev/my-app',
+  Folder: 'my-app',
+  
+  // Session
+  UserName: 'user',
+  HostName: 'laptop',
+  
+  // Git
+  HEAD: 'main',
+  BranchStatus: '↑2',
+  UpstreamIcon: '',
+  Working: { Changed: false, String: '' },
+  Staging: { Changed: false, String: '' },
+  StashCount: 0,
+  
+  // Languages
+  Full: 'v1.2.3',
+  Major: '1',
+  Minor: '2',
+  Patch: '3',
+  Venv: 'venv',
+  
+  // Time
+  CurrentDate: 'Monday at 2:45 PM',
+  Format: '',
+  
+  // Execution time
+  FormattedMs: '127ms',
+  Ms: 127,
+  
+  // Azure
+  EnvironmentName: 'production',
+  
+  // Docker/Kubectl
+  Context: 'default',
+  
+  // Status
+  Code: 0,
+  
+  // Battery
+  Percentage: 85,
+  
+  // Copilot
+  Premium: { Percent: { Gauge: '████░' } },
 };
 
 // Default symbols
@@ -83,14 +111,32 @@ function parseInlineColors(text: string, defaultColor: string): React.ReactNode[
 function getPreviewText(segment: Segment, metadata?: { name: string; previewText?: string }): string {
   // First priority: use template if available (shows inline colors and symbols)
   if (segment.template) {
-    // Replace common template variables with mock data
-    return segment.template
-      .replace(/{{\s*\.Path\s*}}/g, mockData.path)
-      .replace(/{{\s*\.HEAD\s*}}/g, mockData.git)
-      .replace(/{{\s*\.Full\s*}}/g, mockData[segment.type] || 'v1.0')
-      .replace(/{{\s*\.UserName\s*}}/g, 'user')
-      .replace(/{{\s*\.CurrentDate.*?}}/g, mockData.time)
-      .replace(/{{.*?}}/g, ''); // Remove other template expressions
+    // Replace template variables with mock data
+    let result = segment.template;
+    
+    // Replace all template variables with mock data
+    result = result.replace(/{{\s*\.(\w+)\s*}}/g, (match, key) => {
+      return mockData[key] !== undefined ? String(mockData[key]) : '';
+    });
+    
+    // Handle conditional statements - just show the content for preview
+    result = result.replace(/{{\s*if\s+[^}]*}}(.*?){{\s*end\s*}}/gs, '$1');
+    result = result.replace(/{{\s*if\s+[^}]*}}/g, '');
+    result = result.replace(/{{\s*end\s*}}/g, '');
+    
+    // Handle nested properties like .Working.Changed, .Working.String
+    result = result.replace(/{{\s*\.(\w+)\.(\w+)\s*}}/g, (match, obj, prop) => {
+      return mockData[obj]?.[prop] !== undefined ? String(mockData[obj][prop]) : '';
+    });
+    
+    // Handle date formatting
+    result = result.replace(/{{\s*\.CurrentDate\s*\|\s*date\s+\.Format\s*}}/g, mockData.CurrentDate);
+    result = result.replace(/{{\s*\.CurrentDate\s*\|\s*date\s+"([^"]+)"\s*}}/g, mockData.CurrentDate);
+    
+    // Clean up any remaining template expressions
+    result = result.replace(/{{.*?}}/g, '');
+    
+    return result;
   }
   
   // Second priority: use previewText from metadata if available
@@ -98,9 +144,31 @@ function getPreviewText(segment: Segment, metadata?: { name: string; previewText
     return metadata.previewText;
   }
   
-  // Third priority: try to use mock data
-  if (mockData[segment.type]) {
-    return mockData[segment.type];
+  // Third priority: generate preview based on segment type
+  const typeMap: Record<string, string> = {
+    path: mockData.Path,
+    git: `${mockData.HEAD} ${mockData.BranchStatus}`,
+    node: 'v20.10.0',
+    python: '3.11.0',
+    go: '1.21.0',
+    rust: '1.74.0',
+    dotnet: '8.0.0',
+    java: '17.0.0',
+    azfunc: 'v4.0',
+    az: mockData.EnvironmentName,
+    docker: mockData.Context,
+    kubectl: 'k8s-prod::default',
+    time: mockData.CurrentDate,
+    session: `${mockData.UserName}@${mockData.HostName}`,
+    executiontime: mockData.FormattedMs,
+    status: '❯',
+    battery: '85%',
+    aws: 'prod@us-east-1',
+    terraform: 'production',
+  };
+  
+  if (typeMap[segment.type]) {
+    return typeMap[segment.type];
   }
   
   // Fall back to segment name

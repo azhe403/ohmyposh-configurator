@@ -122,12 +122,12 @@
   {
     "type": "copilot",
     "name": "GitHub Copilot",
-    "description": "Displays GitHub Copilot status",
+    "description": "Displays GitHub Copilot status and usage",
     "icon": "🤖",
-    "defaultTemplate": " copilot ",
+    "defaultTemplate": "   {{ .Premium.Percent.Gauge }} ",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#8957E5",
-    "previewText": "🤖 copilot"
+    "previewText": "  ████░ "
   },
   {
     "type": "helm",

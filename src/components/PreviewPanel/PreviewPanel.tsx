@@ -114,20 +114,26 @@ function getPreviewText(segment: Segment, metadata?: { name: string; previewText
     // Replace template variables with mock data
     let result = segment.template;
     
-    // Replace all template variables with mock data
-    result = result.replace(/{{\s*\.(\w+)\s*}}/g, (match, key) => {
-      return mockData[key] !== undefined ? String(mockData[key]) : '';
+    // Handle nested properties (any depth) like .Working.Changed or .Premium.Percent.Gauge
+    result = result.replace(/{{\s*\.([.\w]+)\s*}}/g, (match, path) => {
+      const keys = path.split('.');
+      let value: any = mockData;
+      
+      for (const key of keys) {
+        if (value && typeof value === 'object' && key in value) {
+          value = value[key];
+        } else {
+          return '';
+        }
+      }
+      
+      return value !== undefined ? String(value) : '';
     });
     
     // Handle conditional statements - just show the content for preview
     result = result.replace(/{{\s*if\s+[^}]*}}(.*?){{\s*end\s*}}/gs, '$1');
     result = result.replace(/{{\s*if\s+[^}]*}}/g, '');
     result = result.replace(/{{\s*end\s*}}/g, '');
-    
-    // Handle nested properties like .Working.Changed, .Working.String
-    result = result.replace(/{{\s*\.(\w+)\.(\w+)\s*}}/g, (match, obj, prop) => {
-      return mockData[obj]?.[prop] !== undefined ? String(mockData[obj][prop]) : '';
-    });
     
     // Handle date formatting
     result = result.replace(/{{\s*\.CurrentDate\s*\|\s*date\s+\.Format\s*}}/g, mockData.CurrentDate);

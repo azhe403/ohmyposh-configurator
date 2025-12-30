@@ -18,11 +18,8 @@ const CATEGORIES = ['samples', 'community'];
 // Required fields for manifest entries
 const MANIFEST_REQUIRED_FIELDS = ['id', 'name', 'description', 'icon', 'author', 'tags', 'file'];
 
-// Required fields for config files
-const CONFIG_REQUIRED_FIELDS = ['id', 'name', 'description', 'icon', 'author', 'tags', 'config'];
-
-// Required fields for Oh My Posh config
-const OMP_CONFIG_REQUIRED_FIELDS = ['$schema', 'version', 'blocks'];
+// Required fields for Oh My Posh config files (no metadata wrapper)
+const OMP_CONFIG_REQUIRED_FIELDS = ['$schema', 'blocks'];
 
 let errors = [];
 let warnings = [];
@@ -124,42 +121,41 @@ function validateConfigFile(category, fileName) {
 
   const prefix = `${category}/${fileName}`;
 
-  // Check required config fields
-  CONFIG_REQUIRED_FIELDS.forEach(field => {
+  // Config files now contain only the Oh My Posh configuration (no metadata wrapper)
+  // Validate required Oh My Posh config fields
+  OMP_CONFIG_REQUIRED_FIELDS.forEach(field => {
     if (!config[field]) {
-      addError(`${prefix}: missing required field '${field}'`);
+      addError(`${prefix}: missing required Oh My Posh config field '${field}'`);
     }
   });
 
-  // Validate tags is an array
-  if (config.tags && !Array.isArray(config.tags)) {
-    addError(`${prefix}: 'tags' must be an array`);
+  // Validate $schema
+  if (config.$schema && !config.$schema.includes('oh-my-posh')) {
+    addWarning(`${prefix}: $schema doesn't appear to be for Oh My Posh`);
   }
 
-  // Validate config.config structure
-  if (config.config) {
-    OMP_CONFIG_REQUIRED_FIELDS.forEach(field => {
-      if (!config.config[field]) {
-        addError(`${prefix}: missing required Oh My Posh config field 'config.${field}'`);
-      }
-    });
-
-    // Validate blocks
-    if (config.config.blocks) {
-      if (!Array.isArray(config.config.blocks)) {
-        addError(`${prefix}: config.blocks must be an array`);
-      } else {
-        config.config.blocks.forEach((block, blockIndex) => {
-          if (!block.type) {
-            addError(`${prefix}: block ${blockIndex} missing 'type' field`);
-          }
-          if (!block.segments || !Array.isArray(block.segments)) {
-            addError(`${prefix}: block ${blockIndex} missing or invalid 'segments' array`);
-          } else if (block.segments.length === 0) {
-            addWarning(`${prefix}: block ${blockIndex} has no segments`);
-          }
-        });
-      }
+  // Validate blocks structure
+  if (config.blocks) {
+    if (!Array.isArray(config.blocks)) {
+      addError(`${prefix}: blocks must be an array`);
+    } else {
+      config.blocks.forEach((block, blockIndex) => {
+        if (!block.type) {
+          addError(`${prefix}: block ${blockIndex} missing 'type' field`);
+        }
+        if (!block.segments || !Array.isArray(block.segments)) {
+          addError(`${prefix}: block ${blockIndex} missing or invalid 'segments' array`);
+        } else if (block.segments.length === 0) {
+          addWarning(`${prefix}: block ${blockIndex} has no segments`);
+        } else {
+          // Validate each segment has required fields
+          block.segments.forEach((segment, segmentIndex) => {
+            if (!segment.type) {
+              addError(`${prefix}: block ${blockIndex}, segment ${segmentIndex} missing 'type' field`);
+            }
+          });
+        }
+      });
     }
   }
 

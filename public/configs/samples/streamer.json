@@ -1,13 +1,6 @@
 {
-  "id": "streamer",
-  "name": "Streamer Setup",
-  "description": "Clean and colorful prompt perfect for streaming with music and time info",
-  "icon": "Video",
-  "author": "Oh My Posh Configurator",
-  "tags": ["streaming", "music", "minimal", "colorful"],
-  "config": {
-    "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
-    "version": 2,
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "version": 2,
     "final_space": true,
     "blocks": [
       {
@@ -78,6 +71,5 @@
           }
         ]
       }
-    ]
-  }
+  ]
 }

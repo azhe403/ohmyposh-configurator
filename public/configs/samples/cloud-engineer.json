@@ -1,13 +1,6 @@
 {
-  "id": "cloud-engineer",
-  "name": "Cloud Engineer",
-  "description": "Focused on cloud services with AWS, Azure, Kubernetes, and Docker info",
-  "icon": "Cloud",
-  "author": "Oh My Posh Configurator",
-  "tags": ["cloud", "aws", "kubernetes", "docker", "devops"],
-  "config": {
-    "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
-    "version": 2,
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "version": 2,
     "final_space": true,
     "blocks": [
       {
@@ -88,6 +81,5 @@
           }
         ]
       }
-    ]
-  }
+  ]
 }

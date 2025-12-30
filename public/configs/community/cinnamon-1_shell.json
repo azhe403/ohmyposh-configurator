@@ -1,13 +1,6 @@
 {
-  "id": "cinnamon-1_shell",
-  "name": "Cinnamon 1_shell",
-  "description": "Kayla Cinnamon's mod of the original 1_shell theme including the WinGet and GitHub Copilot segments. Already includes Git integration",
-  "icon": "Code2",
-  "author": "Kayla Cinnamon",
-  "tags": ["developer", "copilot", "winget", "git"],
-  "config": {
-    "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
-    "blocks": [
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "blocks": [
       {
         "alignment": "left",
         "newline": true,
@@ -122,6 +115,5 @@
       "foreground": "#FEF5ED",
       "template": "\ue285 "
     },
-    "version": 3
-  }
+  "version": 3
 }

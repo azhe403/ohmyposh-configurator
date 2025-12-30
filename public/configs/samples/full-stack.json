@@ -1,13 +1,6 @@
 {
-  "id": "full-stack",
-  "name": "Full Stack",
-  "description": "Comprehensive setup for full-stack developers with frontend and backend tools",
-  "icon": "Rocket",
-  "author": "Oh My Posh Configurator",
-  "tags": ["full-stack", "react", "node", "python", "dotnet"],
-  "config": {
-    "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
-    "version": 2,
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "version": 2,
     "final_space": true,
     "blocks": [
       {
@@ -114,6 +107,5 @@
           }
         ]
       }
-    ]
-  }
+  ]
 }

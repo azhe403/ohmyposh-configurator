@@ -1,13 +1,6 @@
 {
-  "id": "developer-pro",
-  "name": "Developer Pro",
-  "description": "Complete setup for software developers with Git, language versions, and execution time",
-  "icon": "Code2",
-  "author": "Oh My Posh Configurator",
-  "tags": ["developer", "git", "languages", "complete"],
-  "config": {
-    "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
-    "version": 2,
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "version": 2,
     "final_space": true,
     "blocks": [
       {
@@ -128,6 +121,5 @@
           }
         ]
       }
-    ]
-  }
+  ]
 }

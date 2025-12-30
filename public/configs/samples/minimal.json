@@ -1,13 +1,6 @@
 {
-  "id": "minimal",
-  "name": "Minimal Dev",
-  "description": "Simple and fast prompt with just the essentials",
-  "icon": "Zap",
-  "author": "Oh My Posh Configurator",
-  "tags": ["minimal", "fast", "simple", "clean"],
-  "config": {
-    "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
-    "version": 2,
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "version": 2,
     "final_space": true,
     "blocks": [
       {
@@ -43,6 +36,5 @@
           }
         ]
       }
-    ]
-  }
+  ]
 }

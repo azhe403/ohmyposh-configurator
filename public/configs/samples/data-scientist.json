@@ -1,13 +1,6 @@
 {
-  "id": "data-scientist",
-  "name": "Data Scientist",
-  "description": "Optimized for data science work with Python, R, and Julia",
-  "icon": "BarChart3",
-  "author": "Oh My Posh Configurator",
-  "tags": ["data-science", "python", "r", "julia", "analytics"],
-  "config": {
-    "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
-    "version": 2,
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "version": 2,
     "final_space": true,
     "blocks": [
       {
@@ -97,6 +90,5 @@
           }
         ]
       }
-    ]
-  }
+  ]
 }

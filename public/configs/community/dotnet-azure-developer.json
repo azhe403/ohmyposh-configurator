@@ -1,13 +1,6 @@
 {
-  "id": "dotnet-azure-developer",
-  "name": ".NET & Azure Developer",
-  "description": "Perfect for .NET developers working with Azure cloud services, featuring Azure CLI, .NET SDK, Docker, and Git integration",
-  "icon": "CloudCog",
-  "author": "James Montemagno",
-  "tags": ["dotnet", "azure", "cloud", "developer", "csharp"],
-  "config": {
-    "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
-    "version": 2,
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "version": 2,
     "final_space": true,
     "blocks": [
       {
@@ -124,6 +117,5 @@
           }
         ]
       }
-    ]
-  }
+  ]
 }

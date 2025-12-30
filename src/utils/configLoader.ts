@@ -17,26 +17,20 @@ export interface ConfigManifest {
   configs: ConfigMetadata[];
 }
 
-export interface ConfigFile {
-  id: string;
-  name: string;
-  description: string;
-  icon: string;
-  author: string;
-  tags: string[];
-  config: Omit<OhMyPoshConfig, 'blocks'> & {
-    blocks: Array<{
-      type: 'prompt' | 'rprompt';
-      alignment?: 'left' | 'right';
-      newline?: boolean;
-      segments: Array<{
-        type: string;
-        style: string;
-        [key: string]: any;
-      }>;
+// Config files now contain only the Oh My Posh configuration
+// Metadata is stored separately in manifest.json
+export type ConfigFile = Omit<OhMyPoshConfig, 'blocks'> & {
+  blocks: Array<{
+    type: 'prompt' | 'rprompt';
+    alignment?: 'left' | 'right';
+    newline?: boolean;
+    segments: Array<{
+      type: string;
+      style: string;
+      [key: string]: any;
     }>;
-  };
-}
+  }>;
+};
 
 const BASE_PATH = import.meta.env.BASE_URL || '/';
 
@@ -85,9 +79,10 @@ export async function loadConfig(
   const configFile = await fetchConfigFile(category, filename);
   if (!configFile) return null;
 
+  // Config file is now a pure Oh My Posh config, just add IDs
   return {
-    ...configFile.config,
-    blocks: configFile.config.blocks.map((block) => ({
+    ...configFile,
+    blocks: configFile.blocks.map((block) => ({
       ...block,
       id: generateId(),
       segments: block.segments.map((segment) => ({

@@ -33,45 +33,47 @@ The easiest way to contribute is by sharing your Oh My Posh configuration with t
 
 #### Configuration File Structure
 
-Your configuration file should follow this structure:
+Your configuration file should contain **only** the Oh My Posh configuration (no metadata wrapper). The metadata is stored separately in the manifest.json file.
 
 ```json
 {
-  "id": "my-awesome-theme",
-  "name": "My Awesome Theme",
-  "description": "A brief description of what makes your theme special",
-  "icon": "Star",
-  "author": "Your Name or @username",
-  "tags": ["minimal", "developer", "colorful"],
-  "config": {
-    "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
-    "version": 2,
-    "final_space": true,
-    "blocks": [
-      // Your Oh My Posh configuration blocks
-    ]
-  }
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "version": 2,
+  "final_space": true,
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "type": "path",
+          "style": "powerline",
+          "foreground": "#ffffff",
+          "background": "#61AFEF",
+          "template": " {{ .Path }} ",
+          "properties": {
+            "style": "folder"
+          }
+        }
+      ]
+    }
+  ]
 }
 ```
 
-**Field Requirements:**
-
-- `id`: Lowercase, hyphenated unique identifier (e.g., `my-theme-name`)
-- `name`: Display name for your theme
-- `description`: Brief description (1-2 sentences recommended)
-- `icon`: [Lucide icon name](https://lucide.dev/icons/) (e.g., `Star`, `Code2`, `Rocket`)
-- `author`: Your name or GitHub username
-- `tags`: Array of relevant tags (e.g., `["minimal", "developer", "python"]`)
-- `config`: Your Oh My Posh configuration (without internal IDs)
+**Important:** 
+- Config files contain **ONLY** the Oh My Posh configuration
+- Do **NOT** include `id`, `name`, `description`, `icon`, `author`, or `tags` fields in the config file
+- These metadata fields belong in the `manifest.json` file only
 
 #### Updating the Manifest
 
-Add your configuration to `public/configs/community/manifest.json`:
+Add your configuration's **metadata** to `public/configs/community/manifest.json`:
 
 ```json
 {
   "version": "1.0.0",
-  "lastUpdated": "2025-12-29",
+  "lastUpdated": "2025-12-30",
   "configs": [
     {
       "id": "my-awesome-theme",
@@ -85,6 +87,16 @@ Add your configuration to `public/configs/community/manifest.json`:
   ]
 }
 ```
+
+**Metadata Field Requirements:**
+
+- `id`: Lowercase, hyphenated unique identifier matching your filename (e.g., `my-theme-name`)
+- `name`: Display name for your theme
+- `description`: Brief description (1-2 sentences recommended)
+- `icon`: [Lucide icon name](https://lucide.dev/icons/) (e.g., `Star`, `Code2`, `Rocket`)
+- `author`: Your name or GitHub username
+- `tags`: Array of relevant tags (e.g., `["minimal", "developer", "python"]`)
+- `file`: The filename of your config JSON file
 
 ### 2. Report Bugs
 
@@ -144,14 +156,15 @@ Before submitting your PR, validate your configuration files:
 npm run validate
 ```
 
-This script will check:
-- ✅ Valid JSON syntax
-- ✅ Required fields present
-- ✅ No duplicate IDs
-- ✅ Files referenced in manifest exist
-- ✅ Oh My Posh config schema compliance
+The validation script automatically runs on all pull requests via GitHub Actions and validates:
 
-The validation script automatically runs on all pull requests via GitHub Actions.
+- ✅ Valid JSON syntax in all config files
+- ✅ Required Oh My Posh fields present (`$schema`, `blocks`)
+- ✅ Blocks contain valid segments with `type` fields
+- ✅ Manifest entries have all required metadata fields
+- ✅ No duplicate IDs in manifest
+- ✅ All files referenced in manifest exist
+- ✅ Config files contain pure Oh My Posh configuration (no metadata wrapper)
 
 ## Code Style Guidelines
 

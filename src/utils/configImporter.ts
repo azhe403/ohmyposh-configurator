@@ -94,7 +94,8 @@ function normalizeConfig(config: any): OhMyPoshConfig {
         alias: segment.alias,
         include_folders: segment.include_folders,
         exclude_folders: segment.exclude_folders,
-        options: segment.options,
+        // Support both 'options' (correct) and 'properties' (legacy) for backward compatibility
+        options: segment.options || segment.properties,
         cache: segment.cache,
       };
     });

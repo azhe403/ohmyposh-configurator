@@ -23,7 +23,7 @@
             "foreground": "#ffffff",
             "background": "#3a86ff",
             "template": " \uf07c {{ .Path }} ",
-            "properties": {
+            "options": {
               "style": "folder",
               "max_depth": 2
             }

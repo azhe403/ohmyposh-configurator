@@ -12,7 +12,7 @@
             "style": "plain",
             "foreground": "#61AFEF",
             "template": "{{ .Path }} ",
-            "properties": {
+            "options": {
               "style": "folder"
             }
           },
@@ -30,7 +30,7 @@
               "{{ if gt .Code 0 }}#E06C75{{ end }}"
             ],
             "template": "{{ if gt .Code 0 }}✗{{ else }}✓{{ end }} ",
-            "properties": {
+            "options": {
               "always_enabled": true
             }
           }

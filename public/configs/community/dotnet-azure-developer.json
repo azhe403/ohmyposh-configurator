@@ -23,7 +23,7 @@
             "foreground": "#ffffff",
             "background": "#512bd4",
             "template": " \uf07c {{ .Path }} ",
-            "properties": {
+            "options": {
               "style": "folder",
               "max_depth": 3
             }
@@ -41,7 +41,7 @@
               "{{ if or (.Working.Changed) (.Staging.Changed) }}#ffca00{{ end }}"
             ],
             "template": " \ue725 {{ .HEAD }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }} ",
-            "properties": {
+            "options": {
               "fetch_status": true
             }
           },
@@ -91,7 +91,7 @@
             "leading_diamond": "\ue0b2",
             "trailing_diamond": "\ue0b4",
             "template": " \uf252 {{ .FormattedMs }} ",
-            "properties": {
+            "options": {
               "threshold": 500,
               "style": "roundrock"
             }
@@ -111,7 +111,7 @@
               "{{ if gt .Code 0 }}#e81123{{ end }}"
             ],
             "template": "❯ ",
-            "properties": {
+            "options": {
               "always_enabled": true
             }
           }

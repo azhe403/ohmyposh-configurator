@@ -23,7 +23,7 @@
             "foreground": "#ffffff",
             "background": "#0077b6",
             "template": " \uf07c {{ .Path }} ",
-            "properties": {
+            "options": {
               "style": "folder",
               "max_depth": 3
             }
@@ -75,7 +75,7 @@
               "{{ if gt .Code 0 }}#ff6b9d{{ end }}"
             ],
             "template": "❯ ",
-            "properties": {
+            "options": {
               "always_enabled": true
             }
           }

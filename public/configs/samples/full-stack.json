@@ -15,7 +15,7 @@
             "leading_diamond": "\ue0b6",
             "trailing_diamond": "\ue0b0",
             "template": " {{ .Path }} ",
-            "properties": {
+            "options": {
               "style": "folder",
               "max_depth": 3
             }
@@ -82,7 +82,7 @@
             "leading_diamond": "\ue0b2",
             "trailing_diamond": "\ue0b4",
             "template": " \uf252 {{ .FormattedMs }} ",
-            "properties": {
+            "options": {
               "threshold": 500
             }
           }
@@ -101,7 +101,7 @@
               "{{ if gt .Code 0 }}#ff5370{{ end }}"
             ],
             "template": "❯ ",
-            "properties": {
+            "options": {
               "always_enabled": true
             }
           }

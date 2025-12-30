@@ -220,4 +220,11 @@ export interface SegmentMetadata {
   defaultBackground?: string;
   defaultForeground?: string;
   previewText?: string;
+  properties?: SegmentProperty[];
+}
+
+export interface SegmentProperty {
+  name: string;
+  type: string;
+  description: string;
 }

@@ -7,17 +7,56 @@
     "defaultTemplate": " {{ .Branch }} ",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#556270",
-    "previewText": "trunk"
+    "previewText": "trunk",
+    "properties": [
+      {
+        "name": ".Branch",
+        "type": "string",
+        "description": "current branch"
+      },
+      {
+        "name": ".Status.Changed",
+        "type": "boolean",
+        "description": "if the status contains changes"
+      }
+    ]
   },
   {
     "type": "git",
     "name": "Git",
     "description": "Displays Git repository information",
     "icon": "GitMerge",
-    "defaultTemplate": "{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uF044 {{ .Working.String }}{{ end }}{{ if and (.Staging.Changed) (.Working.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uF046 {{ .Staging.String }}{{ end }}",
+    "defaultTemplate": "{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }}  {{ .Working.String }}{{ end }}{{ if and (.Staging.Changed) (.Working.Changed) }} |{{ end }}{{ if .Staging.Changed }}  {{ .Staging.String }}{{ end }}",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#98C379",
-    "previewText": "main ✓"
+    "previewText": "main ✓",
+    "properties": [
+      {
+        "name": ".RepoName",
+        "type": "string",
+        "description": "the repo folder name"
+      },
+      {
+        "name": ".HEAD",
+        "type": "string",
+        "description": "the current HEAD context"
+      },
+      {
+        "name": ".Working.Changed",
+        "type": "boolean",
+        "description": "if the worktree has changes"
+      },
+      {
+        "name": ".Staging.Changed",
+        "type": "boolean",
+        "description": "if the staging area has changes"
+      },
+      {
+        "name": ".BranchStatus",
+        "type": "string",
+        "description": "the current branch context"
+      }
+    ]
   },
   {
     "type": "gitversion",
@@ -27,7 +66,24 @@
     "defaultTemplate": " {{ .Major }}.{{ .Minor }}.{{ .Patch }} ",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#4EC9B0",
-    "previewText": "1.2.3"
+    "previewText": "1.2.3",
+    "properties": [
+      {
+        "name": ".Major",
+        "type": "string",
+        "description": "major number"
+      },
+      {
+        "name": ".Minor",
+        "type": "string",
+        "description": "minor number"
+      },
+      {
+        "name": ".Patch",
+        "type": "string",
+        "description": "patch number"
+      }
+    ]
   },
   {
     "type": "jujutsu",
@@ -37,7 +93,14 @@
     "defaultTemplate": " {{ .ChangeId }} ",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#9B59B6",
-    "previewText": "qpvuntsm"
+    "previewText": "qpvuntsm",
+    "properties": [
+      {
+        "name": ".ChangeId",
+        "type": "string",
+        "description": "the current change id"
+      }
+    ]
   },
   {
     "type": "mercurial",
@@ -47,7 +110,14 @@
     "defaultTemplate": " {{ .Branch }} ",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#8FAA54",
-    "previewText": "default"
+    "previewText": "default",
+    "properties": [
+      {
+        "name": ".Branch",
+        "type": "string",
+        "description": "current branch"
+      }
+    ]
   },
   {
     "type": "plastic",
@@ -57,7 +127,19 @@
     "defaultTemplate": " {{ .Selector }} ",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#2C8EBB",
-    "previewText": "main@myrepo"
+    "previewText": "main@myrepo",
+    "properties": [
+      {
+        "name": ".Selector",
+        "type": "string",
+        "description": "the current selector context"
+      },
+      {
+        "name": ".Behind",
+        "type": "bool",
+        "description": "workspace is behind and changes are incoming"
+      }
+    ]
   },
   {
     "type": "sapling",
@@ -67,7 +149,19 @@
     "defaultTemplate": " {{ .Bookmark }} ",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#6FC13E",
-    "previewText": "main"
+    "previewText": "main",
+    "properties": [
+      {
+        "name": ".Bookmark",
+        "type": "string",
+        "description": "the commit's bookmark"
+      },
+      {
+        "name": ".Hash",
+        "type": "string",
+        "description": "the commit hash"
+      }
+    ]
   },
   {
     "type": "svn",
@@ -77,6 +171,18 @@
     "defaultTemplate": " {{ .Branch }} ",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#809CC9",
-    "previewText": "trunk"
+    "previewText": "trunk",
+    "properties": [
+      {
+        "name": ".Branch",
+        "type": "string",
+        "description": "current branch"
+      },
+      {
+        "name": ".BaseRev",
+        "type": "int",
+        "description": "the currently checked out revision number"
+      }
+    ]
   }
 ]

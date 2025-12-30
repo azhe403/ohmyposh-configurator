@@ -7,7 +7,24 @@
     "defaultTemplate": " {{ .StatusIcon }} {{ .Recipe.Name }} ",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#D78C14",
-    "previewText": "🍺 IPA Batch"
+    "previewText": "🍺 IPA Batch",
+    "properties": [
+      {
+        "name": ".Status",
+        "type": "string",
+        "description": "batch status"
+      },
+      {
+        "name": ".StatusIcon",
+        "type": "string",
+        "description": "Icon representing status"
+      },
+      {
+        "name": ".Recipe.Name",
+        "type": "string",
+        "description": "The recipe being brewed"
+      }
+    ]
   },
   {
     "type": "carbonintensity",
@@ -17,17 +34,36 @@
     "defaultTemplate": " {{ .Actual.Index }} ",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#4CAF50",
-    "previewText": "Low"
+    "previewText": "Low",
+    "properties": [
+      {
+        "name": ".Actual.Index",
+        "type": "string",
+        "description": "carbon intensity rating"
+      },
+      {
+        "name": ".TrendIcon",
+        "type": "string",
+        "description": "icon representation of trend"
+      }
+    ]
   },
   {
     "type": "http",
     "name": "HTTP",
     "description": "Makes HTTP requests and displays response",
-    "icon": "\ud83d\udd17",
+    "icon": "🔗",
     "defaultTemplate": " {{ .Body }} ",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#0288D1",
-    "previewText": "API Response"
+    "previewText": "API Response",
+    "properties": [
+      {
+        "name": ".Body",
+        "type": "object",
+        "description": "the JSON response body"
+      }
+    ]
   },
   {
     "type": "ipify",
@@ -37,7 +73,14 @@
     "defaultTemplate": " {{ .IP }} ",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#00897B",
-    "previewText": "192.168.1.100"
+    "previewText": "192.168.1.100",
+    "properties": [
+      {
+        "name": ".IP",
+        "type": "string",
+        "description": "Your external IP address"
+      }
+    ]
   },
   {
     "type": "wakatime",
@@ -47,26 +90,62 @@
     "defaultTemplate": " {{ secondsRound .CumulativeTotal.Seconds }} ",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#000000",
-    "previewText": "3h 24m"
+    "previewText": "3h 24m",
+    "properties": [
+      {
+        "name": ".CumulativeTotal.Seconds",
+        "type": "float64",
+        "description": "total tracked time in seconds"
+      },
+      {
+        "name": ".CumulativeTotal.Text",
+        "type": "string",
+        "description": "human readable tracked time"
+      }
+    ]
   },
   {
     "type": "owm",
     "name": "Weather",
     "description": "Displays weather from OpenWeatherMap",
-    "icon": "\ud83c\udf24\ufe0f",
+    "icon": "🌤️",
     "defaultTemplate": " {{ .Weather }} {{ .Temperature }}{{ .UnitIcon }} ",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#1E88E5",
-    "previewText": "☀️ 72°F"
+    "previewText": "☀️ 72°F",
+    "properties": [
+      {
+        "name": ".Weather",
+        "type": "string",
+        "description": "the current weather icon"
+      },
+      {
+        "name": ".Temperature",
+        "type": "int",
+        "description": "the current temperature"
+      },
+      {
+        "name": ".UnitIcon",
+        "type": "string",
+        "description": "the current unit icon"
+      }
+    ]
   },
   {
     "type": "winreg",
     "name": "Windows Registry",
     "description": "Reads Windows registry values",
-    "icon": "\ud83e\ude9f",
+    "icon": "🪟",
     "defaultTemplate": " {{ .Value }} ",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#0078D4",
-    "previewText": "RegistryValue"
+    "previewText": "RegistryValue",
+    "properties": [
+      {
+        "name": ".Value",
+        "type": "string",
+        "description": "the registry value"
+      }
+    ]
   }
 ]

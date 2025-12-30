@@ -4,10 +4,27 @@
     "name": ".NET",
     "description": "Displays .NET SDK version",
     "icon": "Circle",
-    "defaultTemplate": "{{ if .Unsupported }}\uf071{{ else }}{{ .Full }}{{ end }}",
+    "defaultTemplate": "{{ if .Unsupported }}{{ else }}{{ .Full }}{{ end }}",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#512BD4",
-    "previewText": ".NET 9.0.0"
+    "previewText": ".NET 9.0.0",
+    "properties": [
+      {
+        "name": ".Full",
+        "type": "string",
+        "description": "the full version"
+      },
+      {
+        "name": ".Unsupported",
+        "type": "boolean",
+        "description": "true when the version is not supported"
+      },
+      {
+        "name": ".Error",
+        "type": "string",
+        "description": "error encountered when fetching the version string"
+      }
+    ]
   },
   {
     "type": "clojure",
@@ -17,7 +34,39 @@
     "defaultTemplate": " {{ .Full }} ",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#5881D8",
-    "previewText": "1.11.1"
+    "previewText": "1.11.1",
+    "properties": [
+      {
+        "name": ".Full",
+        "type": "string",
+        "description": "the full version"
+      },
+      {
+        "name": ".Major",
+        "type": "string",
+        "description": "major number"
+      },
+      {
+        "name": ".Minor",
+        "type": "string",
+        "description": "minor number"
+      },
+      {
+        "name": ".Patch",
+        "type": "string",
+        "description": "patch number"
+      },
+      {
+        "name": ".URL",
+        "type": "string",
+        "description": "URL of the version info / release notes"
+      },
+      {
+        "name": ".Error",
+        "type": "string",
+        "description": "error encountered when fetching the version string"
+      }
+    ]
   },
   {
     "type": "crystal",
@@ -27,7 +76,39 @@
     "defaultTemplate": " {{ .Full }} ",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#000000",
-    "previewText": "1.10.1"
+    "previewText": "1.10.1",
+    "properties": [
+      {
+        "name": ".Full",
+        "type": "string",
+        "description": "the full version"
+      },
+      {
+        "name": ".Major",
+        "type": "string",
+        "description": "major number"
+      },
+      {
+        "name": ".Minor",
+        "type": "string",
+        "description": "minor number"
+      },
+      {
+        "name": ".Patch",
+        "type": "string",
+        "description": "patch number"
+      },
+      {
+        "name": ".URL",
+        "type": "string",
+        "description": "URL of the version info / release notes"
+      },
+      {
+        "name": ".Error",
+        "type": "string",
+        "description": "error encountered when fetching the version string"
+      }
+    ]
   },
   {
     "type": "dart",
@@ -37,7 +118,39 @@
     "defaultTemplate": " {{ .Full }} ",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#0175C2",
-    "previewText": "3.2.0"
+    "previewText": "3.2.0",
+    "properties": [
+      {
+        "name": ".Full",
+        "type": "string",
+        "description": "the full version"
+      },
+      {
+        "name": ".Major",
+        "type": "string",
+        "description": "major number"
+      },
+      {
+        "name": ".Minor",
+        "type": "string",
+        "description": "minor number"
+      },
+      {
+        "name": ".Patch",
+        "type": "string",
+        "description": "patch number"
+      },
+      {
+        "name": ".URL",
+        "type": "string",
+        "description": "URL of the version info / release notes"
+      },
+      {
+        "name": ".Error",
+        "type": "string",
+        "description": "error encountered when fetching the version string"
+      }
+    ]
   },
   {
     "type": "elixir",
@@ -47,7 +160,39 @@
     "defaultTemplate": " {{ .Full }} ",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#4B275F",
-    "previewText": "1.15.7"
+    "previewText": "1.15.7",
+    "properties": [
+      {
+        "name": ".Full",
+        "type": "string",
+        "description": "the full version"
+      },
+      {
+        "name": ".Major",
+        "type": "string",
+        "description": "major number"
+      },
+      {
+        "name": ".Minor",
+        "type": "string",
+        "description": "minor number"
+      },
+      {
+        "name": ".Patch",
+        "type": "string",
+        "description": "patch number"
+      },
+      {
+        "name": ".URL",
+        "type": "string",
+        "description": "URL of the version info / release notes"
+      },
+      {
+        "name": ".Error",
+        "type": "string",
+        "description": "error encountered when fetching the version string"
+      }
+    ]
   },
   {
     "type": "fortran",
@@ -57,7 +202,39 @@
     "defaultTemplate": " {{ .Full }} ",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#734F96",
-    "previewText": "gfortran 13.2"
+    "previewText": "gfortran 13.2",
+    "properties": [
+      {
+        "name": ".Full",
+        "type": "string",
+        "description": "the full version"
+      },
+      {
+        "name": ".Major",
+        "type": "string",
+        "description": "major number"
+      },
+      {
+        "name": ".Minor",
+        "type": "string",
+        "description": "minor number"
+      },
+      {
+        "name": ".Patch",
+        "type": "string",
+        "description": "patch number"
+      },
+      {
+        "name": ".URL",
+        "type": "string",
+        "description": "URL of the version info / release notes"
+      },
+      {
+        "name": ".Error",
+        "type": "string",
+        "description": "error encountered when fetching the version string"
+      }
+    ]
   },
   {
     "type": "go",
@@ -67,7 +244,39 @@
     "defaultTemplate": "{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#00ADD8",
-    "previewText": "1.21.5"
+    "previewText": "1.21.5",
+    "properties": [
+      {
+        "name": ".Full",
+        "type": "string",
+        "description": "the full version"
+      },
+      {
+        "name": ".Major",
+        "type": "string",
+        "description": "major number"
+      },
+      {
+        "name": ".Minor",
+        "type": "string",
+        "description": "minor number"
+      },
+      {
+        "name": ".Patch",
+        "type": "string",
+        "description": "patch number"
+      },
+      {
+        "name": ".URL",
+        "type": "string",
+        "description": "URL of the version info / release notes"
+      },
+      {
+        "name": ".Error",
+        "type": "string",
+        "description": "error encountered when fetching the version string"
+      }
+    ]
   },
   {
     "type": "haskell",
@@ -77,7 +286,39 @@
     "defaultTemplate": " {{ .Full }} ",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#5E5086",
-    "previewText": "GHC 9.8.1"
+    "previewText": "GHC 9.8.1",
+    "properties": [
+      {
+        "name": ".Full",
+        "type": "string",
+        "description": "the full version"
+      },
+      {
+        "name": ".Major",
+        "type": "string",
+        "description": "major number"
+      },
+      {
+        "name": ".Minor",
+        "type": "string",
+        "description": "minor number"
+      },
+      {
+        "name": ".Patch",
+        "type": "string",
+        "description": "patch number"
+      },
+      {
+        "name": ".URL",
+        "type": "string",
+        "description": "URL of the version info / release notes"
+      },
+      {
+        "name": ".Error",
+        "type": "string",
+        "description": "error encountered when fetching the version string"
+      }
+    ]
   },
   {
     "type": "java",
@@ -87,7 +328,39 @@
     "defaultTemplate": "{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#E76F00",
-    "previewText": "OpenJDK 21"
+    "previewText": "OpenJDK 21",
+    "properties": [
+      {
+        "name": ".Full",
+        "type": "string",
+        "description": "the full version"
+      },
+      {
+        "name": ".Major",
+        "type": "string",
+        "description": "major number"
+      },
+      {
+        "name": ".Minor",
+        "type": "string",
+        "description": "minor number"
+      },
+      {
+        "name": ".Patch",
+        "type": "string",
+        "description": "patch number"
+      },
+      {
+        "name": ".URL",
+        "type": "string",
+        "description": "URL of the version info / release notes"
+      },
+      {
+        "name": ".Error",
+        "type": "string",
+        "description": "error encountered when fetching the version string"
+      }
+    ]
   },
   {
     "type": "julia",
@@ -97,7 +370,39 @@
     "defaultTemplate": " {{ .Full }} ",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#9558B2",
-    "previewText": "1.10.0"
+    "previewText": "1.10.0",
+    "properties": [
+      {
+        "name": ".Full",
+        "type": "string",
+        "description": "the full version"
+      },
+      {
+        "name": ".Major",
+        "type": "string",
+        "description": "major number"
+      },
+      {
+        "name": ".Minor",
+        "type": "string",
+        "description": "minor number"
+      },
+      {
+        "name": ".Patch",
+        "type": "string",
+        "description": "patch number"
+      },
+      {
+        "name": ".URL",
+        "type": "string",
+        "description": "URL of the version info / release notes"
+      },
+      {
+        "name": ".Error",
+        "type": "string",
+        "description": "error encountered when fetching the version string"
+      }
+    ]
   },
   {
     "type": "kotlin",
@@ -107,7 +412,39 @@
     "defaultTemplate": " {{ .Full }} ",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#7F52FF",
-    "previewText": "1.9.21"
+    "previewText": "1.9.21",
+    "properties": [
+      {
+        "name": ".Full",
+        "type": "string",
+        "description": "the full version"
+      },
+      {
+        "name": ".Major",
+        "type": "string",
+        "description": "major number"
+      },
+      {
+        "name": ".Minor",
+        "type": "string",
+        "description": "minor number"
+      },
+      {
+        "name": ".Patch",
+        "type": "string",
+        "description": "patch number"
+      },
+      {
+        "name": ".URL",
+        "type": "string",
+        "description": "URL of the version info / release notes"
+      },
+      {
+        "name": ".Error",
+        "type": "string",
+        "description": "error encountered when fetching the version string"
+      }
+    ]
   },
   {
     "type": "lua",
@@ -117,7 +454,39 @@
     "defaultTemplate": " {{ .Full }} ",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#000080",
-    "previewText": "5.4.6"
+    "previewText": "5.4.6",
+    "properties": [
+      {
+        "name": ".Full",
+        "type": "string",
+        "description": "the full version"
+      },
+      {
+        "name": ".Major",
+        "type": "string",
+        "description": "major number"
+      },
+      {
+        "name": ".Minor",
+        "type": "string",
+        "description": "minor number"
+      },
+      {
+        "name": ".Patch",
+        "type": "string",
+        "description": "patch number"
+      },
+      {
+        "name": ".URL",
+        "type": "string",
+        "description": "URL of the version info / release notes"
+      },
+      {
+        "name": ".Error",
+        "type": "string",
+        "description": "error encountered when fetching the version string"
+      }
+    ]
   },
   {
     "type": "mojo",
@@ -127,7 +496,39 @@
     "defaultTemplate": " {{ .Full }} ",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#FF6B35",
-    "previewText": "0.6.0"
+    "previewText": "0.6.0",
+    "properties": [
+      {
+        "name": ".Full",
+        "type": "string",
+        "description": "the full version"
+      },
+      {
+        "name": ".Major",
+        "type": "string",
+        "description": "major number"
+      },
+      {
+        "name": ".Minor",
+        "type": "string",
+        "description": "minor number"
+      },
+      {
+        "name": ".Patch",
+        "type": "string",
+        "description": "patch number"
+      },
+      {
+        "name": ".URL",
+        "type": "string",
+        "description": "URL of the version info / release notes"
+      },
+      {
+        "name": ".Error",
+        "type": "string",
+        "description": "error encountered when fetching the version string"
+      }
+    ]
   },
   {
     "type": "nim",
@@ -137,7 +538,39 @@
     "defaultTemplate": " {{ .Full }} ",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#FFE953",
-    "previewText": "2.0.0"
+    "previewText": "2.0.0",
+    "properties": [
+      {
+        "name": ".Full",
+        "type": "string",
+        "description": "the full version"
+      },
+      {
+        "name": ".Major",
+        "type": "string",
+        "description": "major number"
+      },
+      {
+        "name": ".Minor",
+        "type": "string",
+        "description": "minor number"
+      },
+      {
+        "name": ".Patch",
+        "type": "string",
+        "description": "patch number"
+      },
+      {
+        "name": ".URL",
+        "type": "string",
+        "description": "URL of the version info / release notes"
+      },
+      {
+        "name": ".Error",
+        "type": "string",
+        "description": "error encountered when fetching the version string"
+      }
+    ]
   },
   {
     "type": "node",
@@ -147,7 +580,49 @@
     "defaultTemplate": "{{ if .PackageManagerIcon }}{{ .PackageManagerIcon }} {{ end }}{{ .Full }}",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#6CC24A",
-    "previewText": "v20.10.0"
+    "previewText": "v20.10.0",
+    "properties": [
+      {
+        "name": ".Full",
+        "type": "string",
+        "description": "the full version"
+      },
+      {
+        "name": ".Major",
+        "type": "string",
+        "description": "major number"
+      },
+      {
+        "name": ".Minor",
+        "type": "string",
+        "description": "minor number"
+      },
+      {
+        "name": ".Patch",
+        "type": "string",
+        "description": "patch number"
+      },
+      {
+        "name": ".URL",
+        "type": "string",
+        "description": "URL of the version info / release notes"
+      },
+      {
+        "name": ".Error",
+        "type": "string",
+        "description": "error encountered when fetching the version string"
+      },
+      {
+        "name": ".PackageManagerIcon",
+        "type": "string",
+        "description": "the package manager icon"
+      },
+      {
+        "name": ".PackageManagerName",
+        "type": "string",
+        "description": "the package manager name"
+      }
+    ]
   },
   {
     "type": "ocaml",
@@ -157,7 +632,39 @@
     "defaultTemplate": " {{ .Full }} ",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#EE6A1A",
-    "previewText": "5.1.0"
+    "previewText": "5.1.0",
+    "properties": [
+      {
+        "name": ".Full",
+        "type": "string",
+        "description": "the full version"
+      },
+      {
+        "name": ".Major",
+        "type": "string",
+        "description": "major number"
+      },
+      {
+        "name": ".Minor",
+        "type": "string",
+        "description": "minor number"
+      },
+      {
+        "name": ".Patch",
+        "type": "string",
+        "description": "patch number"
+      },
+      {
+        "name": ".URL",
+        "type": "string",
+        "description": "URL of the version info / release notes"
+      },
+      {
+        "name": ".Error",
+        "type": "string",
+        "description": "error encountered when fetching the version string"
+      }
+    ]
   },
   {
     "type": "perl",
@@ -167,7 +674,39 @@
     "defaultTemplate": " {{ .Full }} ",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#0073A1",
-    "previewText": "v5.38.0"
+    "previewText": "v5.38.0",
+    "properties": [
+      {
+        "name": ".Full",
+        "type": "string",
+        "description": "the full version"
+      },
+      {
+        "name": ".Major",
+        "type": "string",
+        "description": "major number"
+      },
+      {
+        "name": ".Minor",
+        "type": "string",
+        "description": "minor number"
+      },
+      {
+        "name": ".Patch",
+        "type": "string",
+        "description": "patch number"
+      },
+      {
+        "name": ".URL",
+        "type": "string",
+        "description": "URL of the version info / release notes"
+      },
+      {
+        "name": ".Error",
+        "type": "string",
+        "description": "error encountered when fetching the version string"
+      }
+    ]
   },
   {
     "type": "php",
@@ -177,7 +716,39 @@
     "defaultTemplate": " {{ .Full }} ",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#777BB3",
-    "previewText": "8.3.0"
+    "previewText": "8.3.0",
+    "properties": [
+      {
+        "name": ".Full",
+        "type": "string",
+        "description": "the full version"
+      },
+      {
+        "name": ".Major",
+        "type": "string",
+        "description": "major number"
+      },
+      {
+        "name": ".Minor",
+        "type": "string",
+        "description": "minor number"
+      },
+      {
+        "name": ".Patch",
+        "type": "string",
+        "description": "patch number"
+      },
+      {
+        "name": ".URL",
+        "type": "string",
+        "description": "URL of the version info / release notes"
+      },
+      {
+        "name": ".Error",
+        "type": "string",
+        "description": "error encountered when fetching the version string"
+      }
+    ]
   },
   {
     "type": "python",
@@ -187,7 +758,44 @@
     "defaultTemplate": "{{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}{{ .Venv }} {{ end }}{{ .Full }}{{ end }}",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#3776AB",
-    "previewText": "🐍 venv 3.12.0"
+    "previewText": "🐍 venv 3.12.0",
+    "properties": [
+      {
+        "name": ".Venv",
+        "type": "string",
+        "description": "the virtual environment name (if present)"
+      },
+      {
+        "name": ".Full",
+        "type": "string",
+        "description": "the full version"
+      },
+      {
+        "name": ".Major",
+        "type": "string",
+        "description": "major number"
+      },
+      {
+        "name": ".Minor",
+        "type": "string",
+        "description": "minor number"
+      },
+      {
+        "name": ".Patch",
+        "type": "string",
+        "description": "patch number"
+      },
+      {
+        "name": ".URL",
+        "type": "string",
+        "description": "URL of the version info / release notes"
+      },
+      {
+        "name": ".Error",
+        "type": "string",
+        "description": "error encountered when fetching the version string"
+      }
+    ]
   },
   {
     "type": "r",
@@ -197,7 +805,39 @@
     "defaultTemplate": " {{ .Full }} ",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#276DC3",
-    "previewText": "4.3.2"
+    "previewText": "4.3.2",
+    "properties": [
+      {
+        "name": ".Full",
+        "type": "string",
+        "description": "the full version"
+      },
+      {
+        "name": ".Major",
+        "type": "string",
+        "description": "major number"
+      },
+      {
+        "name": ".Minor",
+        "type": "string",
+        "description": "minor number"
+      },
+      {
+        "name": ".Patch",
+        "type": "string",
+        "description": "patch number"
+      },
+      {
+        "name": ".URL",
+        "type": "string",
+        "description": "URL of the version info / release notes"
+      },
+      {
+        "name": ".Error",
+        "type": "string",
+        "description": "error encountered when fetching the version string"
+      }
+    ]
   },
   {
     "type": "ruby",
@@ -207,7 +847,19 @@
     "defaultTemplate": " {{ .Full }} ",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#CC342D",
-    "previewText": "💎 3.3.0"
+    "previewText": "💎 3.3.0",
+    "properties": [
+      {
+        "name": ".Full",
+        "type": "string",
+        "description": "the full version"
+      },
+      {
+        "name": ".Error",
+        "type": "string",
+        "description": "error encountered when fetching the version string"
+      }
+    ]
   },
   {
     "type": "rust",
@@ -217,7 +869,24 @@
     "defaultTemplate": "{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#CE412B",
-    "previewText": "1.75.0"
+    "previewText": "1.75.0",
+    "properties": [
+      {
+        "name": ".Full",
+        "type": "string",
+        "description": "the full version"
+      },
+      {
+        "name": ".Prerelease",
+        "type": "string",
+        "description": "channel name"
+      },
+      {
+        "name": ".Error",
+        "type": "string",
+        "description": "error encountered when fetching the version string"
+      }
+    ]
   },
   {
     "type": "swift",
@@ -227,7 +896,39 @@
     "defaultTemplate": " {{ .Full }} ",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#F05138",
-    "previewText": "5.9.2"
+    "previewText": "5.9.2",
+    "properties": [
+      {
+        "name": ".Full",
+        "type": "string",
+        "description": "the full version"
+      },
+      {
+        "name": ".Major",
+        "type": "string",
+        "description": "major number"
+      },
+      {
+        "name": ".Minor",
+        "type": "string",
+        "description": "minor number"
+      },
+      {
+        "name": ".Patch",
+        "type": "string",
+        "description": "patch number"
+      },
+      {
+        "name": ".URL",
+        "type": "string",
+        "description": "URL of the version info / release notes"
+      },
+      {
+        "name": ".Error",
+        "type": "string",
+        "description": "error encountered when fetching the version string"
+      }
+    ]
   },
   {
     "type": "v",
@@ -237,7 +938,39 @@
     "defaultTemplate": " {{ .Full }} ",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#5D87BF",
-    "previewText": "0.4.3"
+    "previewText": "0.4.3",
+    "properties": [
+      {
+        "name": ".Full",
+        "type": "string",
+        "description": "the full version"
+      },
+      {
+        "name": ".Major",
+        "type": "string",
+        "description": "major number"
+      },
+      {
+        "name": ".Minor",
+        "type": "string",
+        "description": "minor number"
+      },
+      {
+        "name": ".Patch",
+        "type": "string",
+        "description": "patch number"
+      },
+      {
+        "name": ".URL",
+        "type": "string",
+        "description": "URL of the version info / release notes"
+      },
+      {
+        "name": ".Error",
+        "type": "string",
+        "description": "error encountered when fetching the version string"
+      }
+    ]
   },
   {
     "type": "vala",
@@ -247,7 +980,39 @@
     "defaultTemplate": " {{ .Full }} ",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#A56DE2",
-    "previewText": "0.56.14"
+    "previewText": "0.56.14",
+    "properties": [
+      {
+        "name": ".Full",
+        "type": "string",
+        "description": "the full version"
+      },
+      {
+        "name": ".Major",
+        "type": "string",
+        "description": "major number"
+      },
+      {
+        "name": ".Minor",
+        "type": "string",
+        "description": "minor number"
+      },
+      {
+        "name": ".Patch",
+        "type": "string",
+        "description": "patch number"
+      },
+      {
+        "name": ".URL",
+        "type": "string",
+        "description": "URL of the version info / release notes"
+      },
+      {
+        "name": ".Error",
+        "type": "string",
+        "description": "error encountered when fetching the version string"
+      }
+    ]
   },
   {
     "type": "zig",
@@ -257,6 +1022,38 @@
     "defaultTemplate": " {{ .Full }} ",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#F7A41D",
-    "previewText": "0.11.0"
+    "previewText": "0.11.0",
+    "properties": [
+      {
+        "name": ".Full",
+        "type": "string",
+        "description": "the full version"
+      },
+      {
+        "name": ".Major",
+        "type": "string",
+        "description": "major number"
+      },
+      {
+        "name": ".Minor",
+        "type": "string",
+        "description": "minor number"
+      },
+      {
+        "name": ".Patch",
+        "type": "string",
+        "description": "patch number"
+      },
+      {
+        "name": ".URL",
+        "type": "string",
+        "description": "URL of the version info / release notes"
+      },
+      {
+        "name": ".Error",
+        "type": "string",
+        "description": "error encountered when fetching the version string"
+      }
+    ]
   }
 ]

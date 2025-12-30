@@ -7,7 +7,24 @@
     "defaultTemplate": "{{ if not .Error }}{{ .Icon }}{{ .Percentage }}{{ end }}{{ .Error }}",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#f36943",
-    "previewText": "🔋85%"
+    "previewText": "🔋85%",
+    "properties": [
+      {
+        "name": ".Percentage",
+        "type": "float64",
+        "description": "the current battery percentage"
+      },
+      {
+        "name": ".Icon",
+        "type": "string",
+        "description": "the icon based on battery state"
+      },
+      {
+        "name": ".Error",
+        "type": "string",
+        "description": "error fetching battery information"
+      }
+    ]
   },
   {
     "type": "connection",
@@ -17,7 +34,19 @@
     "defaultTemplate": " {{ .Name }} ",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#40c4ff",
-    "previewText": "WiFi"
+    "previewText": "WiFi",
+    "properties": [
+      {
+        "name": ".Type",
+        "type": "string",
+        "description": "the connection type"
+      },
+      {
+        "name": ".Name",
+        "type": "string",
+        "description": "the name of the connection"
+      }
+    ]
   },
   {
     "type": "executiontime",
@@ -27,7 +56,19 @@
     "defaultTemplate": " {{ .FormattedMs }} ",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#8800dd",
-    "previewText": "2.3s"
+    "previewText": "2.3s",
+    "properties": [
+      {
+        "name": ".Ms",
+        "type": "number",
+        "description": "the execution time in milliseconds"
+      },
+      {
+        "name": ".FormattedMs",
+        "type": "string",
+        "description": "the formatted value"
+      }
+    ]
   },
   {
     "type": "os",
@@ -37,7 +78,14 @@
     "defaultTemplate": " {{ if .WSL }}WSL at {{ end }}{{.Icon}} ",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#546E7A",
-    "previewText": "🪟"
+    "previewText": "🪟",
+    "properties": [
+      {
+        "name": ".Icon",
+        "type": "string",
+        "description": "the OS icon"
+      }
+    ]
   },
   {
     "type": "path",
@@ -47,7 +95,24 @@
     "defaultTemplate": "{{ .Path }}",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#61AFEF",
-    "previewText": "~/projects/app"
+    "previewText": "~/projects/app",
+    "properties": [
+      {
+        "name": ".Path",
+        "type": "string",
+        "description": "the current directory"
+      },
+      {
+        "name": ".Parent",
+        "type": "string",
+        "description": "the current directory's parent folder"
+      },
+      {
+        "name": ".Writable",
+        "type": "boolean",
+        "description": "is the directory writable"
+      }
+    ]
   },
   {
     "type": "project",
@@ -57,17 +122,35 @@
     "defaultTemplate": " {{ .Name }} {{ .Version }} ",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#7E57C2",
-    "previewText": "my-app 1.0.0"
+    "previewText": "my-app 1.0.0",
+    "properties": [
+      {
+        "name": ".Name",
+        "type": "string",
+        "description": "The name of your project"
+      },
+      {
+        "name": ".Version",
+        "type": "string",
+        "description": "The version of your project"
+      },
+      {
+        "name": ".Type",
+        "type": "string",
+        "description": "The type of project"
+      }
+    ]
   },
   {
     "type": "root",
     "name": "Root",
     "description": "Indicates if running as root/admin",
     "icon": "Zap",
-    "defaultTemplate": " \u26a1 ",
+    "defaultTemplate": " ⚡ ",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#ffcc00",
-    "previewText": "⚡"
+    "previewText": "⚡",
+    "properties": []
   },
   {
     "type": "session",
@@ -77,7 +160,24 @@
     "defaultTemplate": " {{ .UserName }}@{{ .HostName }} ",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#c678dd",
-    "previewText": "user@laptop"
+    "previewText": "user@laptop",
+    "properties": [
+      {
+        "name": ".UserName",
+        "type": "string",
+        "description": "the current user's name"
+      },
+      {
+        "name": ".HostName",
+        "type": "string",
+        "description": "the current computer's name"
+      },
+      {
+        "name": ".SSHSession",
+        "type": "boolean",
+        "description": "active SSH session or not"
+      }
+    ]
   },
   {
     "type": "shell",
@@ -87,7 +187,19 @@
     "defaultTemplate": " {{ .Name }} ",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#0077c2",
-    "previewText": "pwsh"
+    "previewText": "pwsh",
+    "properties": [
+      {
+        "name": ".Name",
+        "type": "string",
+        "description": "the shell name"
+      },
+      {
+        "name": ".Version",
+        "type": "string",
+        "description": "the shell version"
+      }
+    ]
   },
   {
     "type": "status",
@@ -97,7 +209,24 @@
     "defaultTemplate": " {{ .String }} ",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#00897b",
-    "previewText": "✓"
+    "previewText": "✓",
+    "properties": [
+      {
+        "name": ".Code",
+        "type": "number",
+        "description": "the last known exit code"
+      },
+      {
+        "name": ".String",
+        "type": "string",
+        "description": "the formatted status codes"
+      },
+      {
+        "name": ".Error",
+        "type": "boolean",
+        "description": "true if command has an error"
+      }
+    ]
   },
   {
     "type": "sysinfo",
@@ -107,7 +236,19 @@
     "defaultTemplate": " {{ round .PhysicalPercentUsed .Precision }}% ",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#e91e63",
-    "previewText": "42%"
+    "previewText": "42%",
+    "properties": [
+      {
+        "name": ".PhysicalPercentUsed",
+        "type": "float64",
+        "description": "percentage of physical memory in usage"
+      },
+      {
+        "name": ".SwapPercentUsed",
+        "type": "float64",
+        "description": "percentage of swap memory in usage"
+      }
+    ]
   },
   {
     "type": "text",
@@ -117,7 +258,8 @@
     "defaultTemplate": " hello ",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#546E7A",
-    "previewText": "hello"
+    "previewText": "hello",
+    "properties": []
   },
   {
     "type": "time",
@@ -127,7 +269,19 @@
     "defaultTemplate": "{{ .CurrentDate | date .Format }}",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#2e9599",
-    "previewText": "14:32:15"
+    "previewText": "14:32:15",
+    "properties": [
+      {
+        "name": ".CurrentDate",
+        "type": "time",
+        "description": "The time to display"
+      },
+      {
+        "name": ".Format",
+        "type": "string",
+        "description": "The time format"
+      }
+    ]
   },
   {
     "type": "upgrade",
@@ -137,6 +291,18 @@
     "defaultTemplate": " {{ .Version }} ",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#4CAF50",
-    "previewText": "v2.0.1"
+    "previewText": "v2.0.1",
+    "properties": [
+      {
+        "name": ".Current",
+        "type": "string",
+        "description": "the current version number"
+      },
+      {
+        "name": ".Latest",
+        "type": "string",
+        "description": "the latest available version number"
+      }
+    ]
   }
 ]

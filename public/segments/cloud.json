@@ -7,7 +7,19 @@
     "defaultTemplate": "{{ .Profile }}{{ if .Region }}@{{ .Region }}{{ end }}",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#FF9900",
-    "previewText": "default@us-east-1"
+    "previewText": "default@us-east-1",
+    "properties": [
+      {
+        "name": ".Profile",
+        "type": "string",
+        "description": "the currently active profile"
+      },
+      {
+        "name": ".Region",
+        "type": "string",
+        "description": "the currently active region"
+      }
+    ]
   },
   {
     "type": "az",
@@ -17,7 +29,24 @@
     "defaultTemplate": "{{ .Name }}",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#0078D4",
-    "previewText": "My Subscription"
+    "previewText": "My Subscription",
+    "properties": [
+      {
+        "name": ".Name",
+        "type": "string",
+        "description": "subscription name"
+      },
+      {
+        "name": ".ID",
+        "type": "string",
+        "description": "subscription id"
+      },
+      {
+        "name": ".User.Name",
+        "type": "string",
+        "description": "user name"
+      }
+    ]
   },
   {
     "type": "azd",
@@ -27,7 +56,14 @@
     "defaultTemplate": " {{ .Name }} ",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#00BCF2",
-    "previewText": "my-app-env"
+    "previewText": "my-app-env",
+    "properties": [
+      {
+        "name": ".DefaultEnvironment",
+        "type": "string",
+        "description": "Azure Developer CLI environment name"
+      }
+    ]
   },
   {
     "type": "azfunc",
@@ -37,7 +73,34 @@
     "defaultTemplate": " {{ .Full }} ",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#0062AD",
-    "previewText": "4.0.5"
+    "previewText": "4.0.5",
+    "properties": [
+      {
+        "name": ".Full",
+        "type": "string",
+        "description": "the full version"
+      },
+      {
+        "name": ".Major",
+        "type": "string",
+        "description": "major number"
+      },
+      {
+        "name": ".Minor",
+        "type": "string",
+        "description": "minor number"
+      },
+      {
+        "name": ".Patch",
+        "type": "string",
+        "description": "patch number"
+      },
+      {
+        "name": ".Error",
+        "type": "string",
+        "description": "error encountered when fetching the version string"
+      }
+    ]
   },
   {
     "type": "cf",
@@ -47,7 +110,39 @@
     "defaultTemplate": " {{ .Full }} ",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#0C9DD1",
-    "previewText": "8.7.0"
+    "previewText": "8.7.0",
+    "properties": [
+      {
+        "name": ".Full",
+        "type": "string",
+        "description": "the full version"
+      },
+      {
+        "name": ".Major",
+        "type": "string",
+        "description": "major number"
+      },
+      {
+        "name": ".Minor",
+        "type": "string",
+        "description": "minor number"
+      },
+      {
+        "name": ".Patch",
+        "type": "string",
+        "description": "patch number"
+      },
+      {
+        "name": ".URL",
+        "type": "string",
+        "description": "URL of the version info / release notes"
+      },
+      {
+        "name": ".Error",
+        "type": "string",
+        "description": "error encountered when fetching the version string"
+      }
+    ]
   },
   {
     "type": "cftarget",
@@ -57,17 +152,41 @@
     "defaultTemplate": " {{ .Org }}/{{ .Space }} ",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#0C9DD1",
-    "previewText": "myorg/prod"
+    "previewText": "myorg/prod",
+    "properties": [
+      {
+        "name": ".Org",
+        "type": "string",
+        "description": "Cloud Foundry organization"
+      },
+      {
+        "name": ".Space",
+        "type": "string",
+        "description": "Cloud Foundry space"
+      }
+    ]
   },
   {
     "type": "gcp",
     "name": "Google Cloud",
     "description": "Displays GCP project and account",
-    "icon": "\ud83c\udf29\ufe0f",
+    "icon": "🌩️",
     "defaultTemplate": " {{ .Project }} ",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#4285F4",
-    "previewText": "my-project-123"
+    "previewText": "my-project-123",
+    "properties": [
+      {
+        "name": ".Project",
+        "type": "string",
+        "description": "the currently active project"
+      },
+      {
+        "name": ".Error",
+        "type": "string",
+        "description": "error when loading the GCP config"
+      }
+    ]
   },
   {
     "type": "kubectl",
@@ -77,17 +196,41 @@
     "defaultTemplate": "{{ .Context }}{{ if .Namespace }} :: {{ .Namespace }}{{ end }}",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#326CE5",
-    "previewText": "prod-cluster::default"
+    "previewText": "prod-cluster::default",
+    "properties": [
+      {
+        "name": ".Context",
+        "type": "string",
+        "description": "the current kubectl context"
+      },
+      {
+        "name": ".Namespace",
+        "type": "string",
+        "description": "the current kubectl context namespace"
+      }
+    ]
   },
   {
     "type": "pulumi",
     "name": "Pulumi",
     "description": "Displays Pulumi stack information",
-    "icon": "\ud83c\udf9b\ufe0f",
+    "icon": "🎛️",
     "defaultTemplate": " {{ .Stack }} ",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#8A3391",
-    "previewText": "dev"
+    "previewText": "dev",
+    "properties": [
+      {
+        "name": ".Stack",
+        "type": "string",
+        "description": "the current stack name"
+      },
+      {
+        "name": ".User",
+        "type": "string",
+        "description": "the current logged in user"
+      }
+    ]
   },
   {
     "type": "cds",
@@ -97,7 +240,44 @@
     "defaultTemplate": " {{ .Full }} ",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#0FAAFF",
-    "previewText": "7.5.2"
+    "previewText": "7.5.2",
+    "properties": [
+      {
+        "name": ".Full",
+        "type": "string",
+        "description": "the full version"
+      },
+      {
+        "name": ".Major",
+        "type": "string",
+        "description": "major number"
+      },
+      {
+        "name": ".Minor",
+        "type": "string",
+        "description": "minor number"
+      },
+      {
+        "name": ".Patch",
+        "type": "string",
+        "description": "patch number"
+      },
+      {
+        "name": ".URL",
+        "type": "string",
+        "description": "URL of the version info / release notes"
+      },
+      {
+        "name": ".Error",
+        "type": "string",
+        "description": "error encountered when fetching the version string"
+      },
+      {
+        "name": ".HasDependency",
+        "type": "bool",
+        "description": "if @sap/cds was found in package.json"
+      }
+    ]
   },
   {
     "type": "sitecore",
@@ -107,16 +287,30 @@
     "defaultTemplate": " {{ .Name }} ",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#EB1F1F",
-    "previewText": "Production"
+    "previewText": "Production",
+    "properties": [
+      {
+        "name": ".EndpointName",
+        "type": "string",
+        "description": "name of the current Sitecore environment"
+      }
+    ]
   },
   {
     "type": "terraform",
     "name": "Terraform",
     "description": "Displays Terraform workspace",
-    "icon": "\ud83c\udfd7\ufe0f",
+    "icon": "🏗️",
     "defaultTemplate": " {{ .WorkspaceName }} ",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#7B42BC",
-    "previewText": "production"
+    "previewText": "production",
+    "properties": [
+      {
+        "name": ".WorkspaceName",
+        "type": "string",
+        "description": "the current workspace name"
+      }
+    ]
   }
 ]

@@ -4,7 +4,7 @@
     "name": ".NET",
     "description": "Displays .NET SDK version",
     "icon": "Circle",
-    "defaultTemplate": " {{ .Full }} ",
+    "defaultTemplate": "{{ if .Unsupported }}\uf071{{ else }}{{ .Full }}{{ end }}",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#512BD4",
     "previewText": ".NET 9.0.0"
@@ -64,7 +64,7 @@
     "name": "Go",
     "description": "Displays Go version",
     "icon": "Package",
-    "defaultTemplate": " {{ .Full }} ",
+    "defaultTemplate": "{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#00ADD8",
     "previewText": "1.21.5"
@@ -84,7 +84,7 @@
     "name": "Java",
     "description": "Displays Java version",
     "icon": "Coffee",
-    "defaultTemplate": " {{ .Full }} ",
+    "defaultTemplate": "{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#E76F00",
     "previewText": "OpenJDK 21"
@@ -144,7 +144,7 @@
     "name": "Node.js",
     "description": "Displays Node.js version",
     "icon": "Circle",
-    "defaultTemplate": " {{ .Full }} ",
+    "defaultTemplate": "{{ if .PackageManagerIcon }}{{ .PackageManagerIcon }} {{ end }}{{ .Full }}",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#6CC24A",
     "previewText": "v20.10.0"
@@ -184,7 +184,7 @@
     "name": "Python",
     "description": "Displays Python version and virtual env",
     "icon": "Snake",
-    "defaultTemplate": " {{ if .Venv }}{{ .Venv }} {{ end }}{{ .Full }} ",
+    "defaultTemplate": "{{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}{{ .Venv }} {{ end }}{{ .Full }}{{ end }}",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#3776AB",
     "previewText": "🐍 venv 3.12.0"
@@ -214,7 +214,7 @@
     "name": "Rust",
     "description": "Displays Rust version",
     "icon": "Package",
-    "defaultTemplate": " {{ .Full }} ",
+    "defaultTemplate": "{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#CE412B",
     "previewText": "1.75.0"

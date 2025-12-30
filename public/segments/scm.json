@@ -14,7 +14,7 @@
     "name": "Git",
     "description": "Displays Git repository information",
     "icon": "GitMerge",
-    "defaultTemplate": " {{ .HEAD }}{{ if .BranchStatus }} {{ .BranchStatus }}{{ end }} ",
+    "defaultTemplate": "{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uF044 {{ .Working.String }}{{ end }}{{ if and (.Staging.Changed) (.Working.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uF046 {{ .Staging.String }}{{ end }}",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#98C379",
     "previewText": "main ✓"

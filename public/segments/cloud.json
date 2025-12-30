@@ -4,7 +4,7 @@
     "name": "AWS",
     "description": "Displays AWS profile and region",
     "icon": "Cloud",
-    "defaultTemplate": " {{ .Profile }}{{ if .Region }}@{{ .Region }}{{ end }} ",
+    "defaultTemplate": "{{ .Profile }}{{ if .Region }}@{{ .Region }}{{ end }}",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#FF9900",
     "previewText": "default@us-east-1"
@@ -14,7 +14,7 @@
     "name": "Azure",
     "description": "Displays Azure CLI subscription",
     "icon": "Diamond",
-    "defaultTemplate": " {{ .Name }} ",
+    "defaultTemplate": "{{ .Name }}",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#0078D4",
     "previewText": "My Subscription"
@@ -74,7 +74,7 @@
     "name": "Kubernetes",
     "description": "Displays Kubernetes context",
     "icon": "Settings",
-    "defaultTemplate": " {{ .Context }}{{ if .Namespace }}::{{ .Namespace }}{{ end }} ",
+    "defaultTemplate": "{{ .Context }}{{ if .Namespace }} :: {{ .Namespace }}{{ end }}",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#326CE5",
     "previewText": "prod-cluster::default"

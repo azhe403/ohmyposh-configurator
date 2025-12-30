@@ -4,7 +4,7 @@
     "name": "Angular",
     "description": "Displays Angular CLI version",
     "icon": "🅰️",
-    "defaultTemplate": " {{ .Full }} ",
+    "defaultTemplate": "{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#DD0031",
     "previewText": "@angular/cli 17.0.0"
@@ -94,7 +94,7 @@
     "name": "Docker",
     "description": "Displays Docker context",
     "icon": "🐳",
-    "defaultTemplate": " {{ .Context }} ",
+    "defaultTemplate": "\uf308 {{ .Context }}",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#2496ED",
     "previewText": "🐳 default"
@@ -104,7 +104,7 @@
     "name": "Firebase",
     "description": "Displays Firebase project",
     "icon": "Flame",
-    "defaultTemplate": " {{ .Project }} ",
+    "defaultTemplate": "{{ .Project }}",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#FFA611",
     "previewText": "🔥 my-app"
@@ -134,7 +134,7 @@
     "name": "Helm",
     "description": "Displays Helm version",
     "icon": "Ship",
-    "defaultTemplate": " {{ .Version }} ",
+    "defaultTemplate": " Helm {{ .Version }}",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#0F1689",
     "previewText": "⚓ v3.13.3"
@@ -174,7 +174,7 @@
     "name": "NPM",
     "description": "Displays NPM version",
     "icon": "Package",
-    "defaultTemplate": " {{ .Full }} ",
+    "defaultTemplate": "\ue71e {{.Full}}",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#CB3837",
     "previewText": "10.2.5"

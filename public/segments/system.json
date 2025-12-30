@@ -4,7 +4,7 @@
     "name": "Battery",
     "description": "Displays battery status and percentage",
     "icon": "Battery",
-    "defaultTemplate": " {{ .Icon }}{{ .Percentage }}% ",
+    "defaultTemplate": "{{ if not .Error }}{{ .Icon }}{{ .Percentage }}{{ end }}{{ .Error }}",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#f36943",
     "previewText": "🔋85%"
@@ -44,7 +44,7 @@
     "name": "Path",
     "description": "Displays the current working directory",
     "icon": "Folder",
-    "defaultTemplate": " {{ .Path }} ",
+    "defaultTemplate": "{{ .Path }}",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#61AFEF",
     "previewText": "~/projects/app"
@@ -124,7 +124,7 @@
     "name": "Time",
     "description": "Displays current date/time",
     "icon": "Clock",
-    "defaultTemplate": " {{ .CurrentDate | date \"15:04:05\" }} ",
+    "defaultTemplate": "{{ .CurrentDate | date .Format }}",
     "defaultForeground": "#ffffff",
     "defaultBackground": "#2e9599",
     "previewText": "14:32:15"

@@ -5,59 +5,304 @@ import { useSegmentMetadata } from '../../hooks/useSegmentMetadata';
 import type { Block, Segment, SegmentStyle } from '../../types/ohmyposh';
 import { DynamicIcon } from '../DynamicIcon';
 
-// Mock data for preview
+// Mock data for preview - comprehensive data based on segment properties
 const mockData: Record<string, any> = {
   // Path segments
   Path: '~/dev/my-app',
   Folder: 'my-app',
+  Parent: '~/dev/',
+  Location: '~/dev/my-app',
+  RootDir: false,
+  StackCount: 0,
+  Writable: true,
   
   // Session
   UserName: 'user',
   HostName: 'laptop',
+  SSHSession: false,
+  Root: false,
   
   // Git
+  RepoName: 'my-app',
   HEAD: 'main',
+  Ref: 'main',
   BranchStatus: '↑2',
+  Behind: 0,
+  Ahead: 2,
   UpstreamIcon: '',
-  Working: { Changed: false, String: '' },
-  Staging: { Changed: false, String: '' },
+  UpstreamGone: false,
+  Working: { 
+    Changed: false, 
+    String: '',
+    Modified: 0,
+    Added: 0,
+    Deleted: 0,
+    Untracked: 0
+  },
+  Staging: { 
+    Changed: false, 
+    String: '',
+    Modified: 0,
+    Added: 0,
+    Deleted: 0
+  },
   StashCount: 0,
+  Detached: false,
+  Merge: false,
+  Rebase: false,
+  CherryPick: false,
+  Revert: false,
+  Commit: {
+    Sha: 'abc1234',
+    Author: 'Developer',
+    Subject: 'Latest commit'
+  },
   
-  // Languages
+  // Version properties (used by most language/CLI segments)
   Full: 'v1.2.3',
   Major: '1',
   Minor: '2',
   Patch: '3',
+  Error: '',
+  URL: '',
+  
+  // Language specific
   Venv: 'venv',
+  PackageManagerIcon: '',
+  PackageManagerName: 'npm',
+  Mismatch: false,
+  Expected: '',
+  Unsupported: false,
+  Prerelease: '',
+  BuildMetadata: '',
   
   // Time
   CurrentDate: 'Monday at 2:45 PM',
-  Format: '',
+  Format: '15:04:05',
   
   // Execution time
   FormattedMs: '127ms',
   Ms: 127,
   
-  // Azure
-  EnvironmentName: 'production',
+  // Cloud - AWS
+  Profile: 'default',
+  Region: 'us-east-1',
+  RegionAlias: 'use1',
   
-  // Docker/Kubectl
+  // Cloud - Azure
+  Name: 'My Subscription',
+  ID: 'sub-123',
+  EnvironmentName: 'production',
+  TenantID: 'tenant-456',
+  User: { Name: 'user@domain.com', Type: 'user' },
+  Origin: 'CLI',
+  
+  // Cloud - GCP
+  Project: 'my-project',
+  Account: 'user@example.com',
+  ActiveConfig: 'default',
+  
+  // Cloud - Azure Functions
+  DefaultEnvironment: 'dev',
+  
+  // Docker/Kubectl/Containers
   Context: 'default',
+  Namespace: 'default',
+  Cluster: 'production',
+  
+  // Cloud Foundry
+  Org: 'myorg',
+  Space: 'production',
+  
+  // Pulumi
+  Stack: 'dev',
+  
+  // Terraform
+  WorkspaceName: 'production',
   
   // Status
   Code: 0,
+  String: '✓',
   
   // Battery
+  State: { String: 'Charging' },
+  Current: 50.5,
   Percentage: 85,
+  Icon: '🔋',
   
-  // Copilot
-  Premium: { Percent: { Gauge: '████░' } },
+  // OS
+  WSL: false,
+  
+  // Shell
+  Version: '7.3.0',
+  
+  // System Info
+  PhysicalPercentUsed: 45.2,
+  PhysicalTotalMemory: 16384,
+  PhysicalAvailableMemory: 8192,
+  SwapPercentUsed: 10.5,
+  
+  // Connection
+  Type: 'wifi',
+  
+  // Project
+  ProjectType: 'node',
+  ProjectVersion: '1.2.3',
+  Target: 'ES2020',
+  
+  // Upgrade
+  UpgradeCurrent: '1.2.0',
+  Latest: '1.3.0',
+  
+  // GitHub Copilot
+  Premium: { 
+    Used: 45,
+    Limit: 100,
+    Percent: { Gauge: '████░' },
+    Remaining: { Gauge: '░░░░░' },
+    Unlimited: false
+  },
+  Inline: {
+    Used: 500,
+    Limit: 1000,
+    Percent: { Gauge: '█████' },
+    Unlimited: false
+  },
+  Chat: {
+    Used: 20,
+    Limit: 50,
+    Percent: { Gauge: '██░░░' },
+    Unlimited: false
+  },
+  BillingCycleEnd: '2025-01-15',
+  
+  // Music segments
+  Status: 'playing',
+  Artist: 'Artist Name',
+  Track: 'Song Title',
+  MusicIcon: '🎵',
+  Ago: '5m',
+  
+  // Health segments
+  Sgv: 120,
+  TrendIcon: '↗',
+  Weight: 70.5,
+  Steps: 8542,
+  SleepHours: '7.5',
+  
+  // Web segments
+  IP: '192.168.1.100',
+  Body: { status: 'ok', data: 'response' },
+  Weather: '☀️',
+  Temperature: 72,
+  UnitIcon: '°F',
+  Value: 'RegistryValue',
+  
+  // Brewfather
+  StatusIcon: '🍺',
+  Recipe: { Name: 'IPA' },
+  BatchName: 'Batch #42',
+  MeasuredAbv: 6.5,
+  
+  // Carbon Intensity
+  Actual: { Index: 'low' },
+  Forecast: 150,
+  
+  // WakaTime
+  CumulativeTotal: {
+    Seconds: 12345,
+    Text: '3h 25m'
+  },
+  
+  // Special segments
+  SessionID: 'session-123',
+  Model: { DisplayName: 'Claude 3.5 Sonnet' },
+  FormattedCost: '$0.15',
+  TokenUsagePercent: { Gauge: '███░░' },
+  
+  // ArgoCD
+  Server: 'argocd.example.com',
+  
+  // NBGV
+  AssemblyVersion: '1.2.3.0',
+  SimpleVersion: '1.2.3',
+  
+  // Nix Shell
+  
+  // Quasar
+  Vite: { Version: '4.0.0', Dev: true },
+  AppVite: { Version: '1.5.0', Dev: true },
+  
+  // Talosctl
+  
+  // Umbraco
+  Modern: true,
+  
+  // Unity
+  UnityVersion: '2023.1.0',
+  CSharpVersion: '10.0',
+  
+  // WinGet
+  UpdateCount: 5,
+  Updates: [
+    { Name: 'App1', ID: 'app1', Current: '1.0', Available: '1.1' }
+  ],
+  
+  // Fossil
+  Branch: 'trunk',
+  
+  // GitVersion
+  
+  // Jujutsu
+  ChangeId: 'qpvuntsm',
+  
+  // Mercurial
+  
+  // Plastic SCM
+  Selector: 'main@myrepo',
+  PlasticBehind: false,
+  MergePending: false,
+  
+  // Sapling
+  Bookmark: 'main',
+  Hash: 'abc123def456',
+  ShortHash: 'abc123',
+  Description: 'Latest commit',
+  Author: 'Developer',
+  When: '2h ago',
+  Dir: '/home/user/repo',
+  RelativeDir: 'src',
+  New: false,
+  
+  // SVN
+  BaseRev: 1234,
+  Repo: 'svn://example.com/repo',
+  
+  // Sitecore
+  EndpointName: 'Production',
+  CmHost: 'cm.example.com',
+  
+  // SAP CDS
+  HasDependency: true,
+  
+  // Nightscout
+  DateString: '2h ago',
+  Device: 'DexcomG6',
+  
+  // Strava
+  Hours: 2,
+  Duration: 3600,
+  Distance: 10000,
+  AverageWatts: 180,
+  KudosCount: 15,
+  
+  // Firebase
+  
+  // Helm
 };
 
 // Default symbols
 const DEFAULT_POWERLINE_SYMBOL = '\ue0b0';
-const DEFAULT_LEADING_DIAMOND = '\ue0b6';
-const DEFAULT_TRAILING_DIAMOND = '\ue0b4';
 
 // Parse inline color codes from Oh My Posh templates
 // Format: <#hexcolor>text</> or </>text (to reset)
@@ -115,7 +360,7 @@ function getPreviewText(segment: Segment, metadata?: { name: string; previewText
     let result = segment.template;
     
     // Handle nested properties (any depth) like .Working.Changed or .Premium.Percent.Gauge
-    result = result.replace(/{{\s*\.([.\w]+)\s*}}/g, (match, path) => {
+    result = result.replace(/\{\{\s*\.([.\w]+)\s*\}\}/g, (_match, path) => {
       const keys = path.split('.');
       let value: any = mockData;
       
@@ -130,17 +375,146 @@ function getPreviewText(segment: Segment, metadata?: { name: string; previewText
       return value !== undefined ? String(value) : '';
     });
     
-    // Handle conditional statements - just show the content for preview
-    result = result.replace(/{{\s*if\s+[^}]*}}(.*?){{\s*end\s*}}/gs, '$1');
-    result = result.replace(/{{\s*if\s+[^}]*}}/g, '');
-    result = result.replace(/{{\s*end\s*}}/g, '');
+    // Handle "if not" conditions - {{ if not .Error }}
+    result = result.replace(/\{\{\s*if\s+not\s+\.([.\w]+)\s*\}\}(.*?)(\{\{\s*end\s*\}\}|$)/gs, (_match, prop, content) => {
+      const keys = prop.split('.');
+      let value: any = mockData;
+      
+      for (const key of keys) {
+        if (value && typeof value === 'object' && key in value) {
+          value = value[key];
+        } else {
+          value = undefined;
+          break;
+        }
+      }
+      
+      // Show content if property is falsy
+      return (!value) ? content : '';
+    });
+    
+    // Handle conditional statements with else - {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}
+    result = result.replace(/\{\{\s*if\s+\.([.\w]+)\s*\}\}(.*?)\{\{\s*else\s*\}\}(.*?)\{\{\s*end\s*\}\}/gs, (_match, prop, trueContent, falseContent) => {
+      const keys = prop.split('.');
+      let value: any = mockData;
+      
+      for (const key of keys) {
+        if (value && typeof value === 'object' && key in value) {
+          value = value[key];
+        } else {
+          value = undefined;
+          break;
+        }
+      }
+      
+      // Show trueContent if property is truthy, otherwise falseContent
+      return value ? trueContent : falseContent;
+    });
+    
+    // Handle simple conditional statements - {{ if .Venv }}{{ .Venv }} {{ end }}
+    result = result.replace(/\{\{\s*if\s+\.([.\w]+)\s*\}\}(.*?)\{\{\s*end\s*\}\}/gs, (_match, prop, content) => {
+      const keys = prop.split('.');
+      let value: any = mockData;
+      
+      for (const key of keys) {
+        if (value && typeof value === 'object' && key in value) {
+          value = value[key];
+        } else {
+          value = undefined;
+          break;
+        }
+      }
+      
+      // Show content if property is truthy
+      return value ? content : '';
+    });
+    
+    // Handle "and" conditions - {{ if and (.Staging.Changed) (.Working.Changed) }}
+    result = result.replace(/\{\{\s*if\s+and\s+\(\.([.\w]+)\)\s+\(\.([.\w]+)\)\s*\}\}(.*?)\{\{\s*end\s*\}\}/gs, (_match, prop1, prop2, content) => {
+      const getValue = (prop: string) => {
+        const keys = prop.split('.');
+        let value: any = mockData;
+        for (const key of keys) {
+          if (value && typeof value === 'object' && key in value) {
+            value = value[key];
+          } else {
+            return undefined;
+          }
+        }
+        return value;
+      };
+      
+      const val1 = getValue(prop1);
+      const val2 = getValue(prop2);
+      return (val1 && val2) ? content : '';
+    });
+    
+    // Handle "ne" (not equal) conditions - {{ if ne .Status "stopped" }}
+    result = result.replace(/\{\{\s*if\s+ne\s+\.([.\w]+)\s+"([^"]*)"\s*\}\}(.*?)\{\{\s*end\s*\}\}/gs, (_match, prop, compareValue, content) => {
+      const keys = prop.split('.');
+      let value: any = mockData;
+      
+      for (const key of keys) {
+        if (value && typeof value === 'object' && key in value) {
+          value = value[key];
+        } else {
+          value = undefined;
+          break;
+        }
+      }
+      
+      return String(value) !== compareValue ? content : '';
+    });
+    
+    // Handle remaining if statements
+    result = result.replace(/\{\{\s*if\s+[^}]*\}\}/g, '');
+    result = result.replace(/\{\{\s*else\s*\}\}/g, '');
+    result = result.replace(/\{\{\s*end\s*\}\}/g, '');
     
     // Handle date formatting
-    result = result.replace(/{{\s*\.CurrentDate\s*\|\s*date\s+\.Format\s*}}/g, mockData.CurrentDate);
-    result = result.replace(/{{\s*\.CurrentDate\s*\|\s*date\s+"([^"]+)"\s*}}/g, mockData.CurrentDate);
+    result = result.replace(/\{\{\s*\.CurrentDate\s*\|\s*date\s+\.Format\s*\}\}/g, mockData.CurrentDate);
+    result = result.replace(/\{\{\s*\.CurrentDate\s*\|\s*date\s+"([^"]+)"\s*\}\}/g, mockData.CurrentDate);
+    
+    // Handle round function - {{ round .PhysicalPercentUsed .Precision }}
+    result = result.replace(/\{\{\s*round\s+\.([.\w]+)(?:\s+\.Precision)?\s*\}\}/g, (_match, prop) => {
+      const keys = prop.split('.');
+      let value: any = mockData;
+      
+      for (const key of keys) {
+        if (value && typeof value === 'object' && key in value) {
+          value = value[key];
+        } else {
+          return '';
+        }
+      }
+      
+      return typeof value === 'number' ? Math.round(value).toString() : String(value);
+    });
+    
+    // Handle secondsRound function for WakaTime - {{ secondsRound .CumulativeTotal.Seconds }}
+    result = result.replace(/\{\{\s*secondsRound\s+\.([.\w]+)\s*\}\}/g, (_match, prop) => {
+      const keys = prop.split('.');
+      let value: any = mockData;
+      
+      for (const key of keys) {
+        if (value && typeof value === 'object' && key in value) {
+          value = value[key];
+        } else {
+          return '';
+        }
+      }
+      
+      // Convert seconds to human readable format
+      if (typeof value === 'number') {
+        const hours = Math.floor(value / 3600);
+        const minutes = Math.floor((value % 3600) / 60);
+        return `${hours}h ${minutes}m`;
+      }
+      return String(value);
+    });
     
     // Clean up any remaining template expressions
-    result = result.replace(/{{.*?}}/g, '');
+    result = result.replace(/\{\{.*?\}\}/g, '');
     
     return result;
   }
@@ -161,16 +535,42 @@ function getPreviewText(segment: Segment, metadata?: { name: string; previewText
     dotnet: '8.0.0',
     java: '17.0.0',
     azfunc: 'v4.0',
-    az: mockData.EnvironmentName,
+    az: mockData.Name,
+    azd: mockData.DefaultEnvironment,
+    aws: `${mockData.Profile}@${mockData.Region}`,
+    gcp: mockData.Project,
     docker: mockData.Context,
-    kubectl: 'k8s-prod::default',
+    kubectl: `${mockData.Context}::${mockData.Namespace}`,
     time: mockData.CurrentDate,
     session: `${mockData.UserName}@${mockData.HostName}`,
     executiontime: mockData.FormattedMs,
     status: '❯',
-    battery: '85%',
-    aws: 'prod@us-east-1',
-    terraform: 'production',
+    battery: `${mockData.Icon}${mockData.Percentage}%`,
+    terraform: mockData.WorkspaceName,
+    pulumi: mockData.Stack,
+    firebase: mockData.Project,
+    helm: 'Helm 3.13.3',
+    spotify: `${mockData.MusicIcon}${mockData.Artist} - ${mockData.Track}`,
+    lastfm: `${mockData.MusicIcon}${mockData.Artist} - ${mockData.Track}`,
+    ytm: `${mockData.MusicIcon}${mockData.Artist} - ${mockData.Track}`,
+    nightscout: `${mockData.Sgv}${mockData.TrendIcon}`,
+    strava: mockData.Ago,
+    withings: `${mockData.Steps} steps`,
+    ipify: mockData.IP,
+    wakatime: mockData.CumulativeTotal.Text,
+    owm: `${mockData.Weather} ${mockData.Temperature}${mockData.UnitIcon}`,
+    brewfather: `${mockData.StatusIcon} ${mockData.Recipe.Name}`,
+    carbonintensity: mockData.Actual.Index,
+    copilot: mockData.Premium.Percent.Gauge,
+    winget: `${mockData.UpdateCount} updates`,
+    os: '🪟',
+    shell: 'pwsh',
+    project: `${mockData.Name} ${mockData.ProjectVersion}`,
+    sysinfo: `${mockData.PhysicalPercentUsed}%`,
+    upgrade: mockData.Latest,
+    connection: mockData.Type,
+    root: '⚡',
+    text: 'hello',
   };
   
   if (typeMap[segment.type]) {

@@ -38,9 +38,9 @@ export function PreviewPanel() {
                   ? 'bg-[#0f3460] text-white'
                   : 'text-gray-400 hover:text-white'
               }`}
-              title="Preview Data - Show configured segment data"
+              title="Mock Preview Data - Show configured segment data"
             >
-              Preview
+              Mock Preview
             </button>
             <button
               onClick={() => setPreviewMode('mock')}
@@ -49,9 +49,9 @@ export function PreviewPanel() {
                   ? 'bg-[#0f3460] text-white'
                   : 'text-gray-400 hover:text-white'
               }`}
-              title="Mock Template - Show templates with realistic data"
+              title="Try to use Template - Show templates with realistic data"
             >
-              Mock
+              Use Template
             </button>
           </div>
           

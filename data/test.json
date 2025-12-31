@@ -1,0 +1,76 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "version": 3,
+  "final_space": true,
+  "blocks": [
+    {
+      "alignment": "left",
+      "type": "prompt",
+      "segments": [
+        {
+          "foreground": "#7eb8da",
+          "options": {
+            "style": "full"
+          },
+          "style": "diamond",
+          "template": "[<#ffffff>\uf115</> {{ .Path }}]",
+          "type": "path"
+        },
+        {
+          "foreground": "#bbbbbb",
+          "options": {
+            "fetch_status": true,
+            "fetch_upstream_icon": true
+          },
+          "style": "plain",
+          "template": "[<#ffffff>{{ .UpstreamIcon }} </>{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} <#ffffff>\uf044</> {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} <#ffffff>\uf046</> {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} <#ffffff>\ueb4b</> {{ .StashCount }}{{ end }}]",
+          "type": "git"
+        }
+      ]
+    },
+    {
+      "alignment": "right",
+      "leading_diamond": "\ue0b6",
+      "trailing_diamond": "\ue0b4",
+      "type": "prompt",      
+      "segments": [
+        {
+          "background": "#7eb8da",
+          "foreground": "#ffffff",
+          "invert_powerline": true,
+          "style": "diamond",
+          "type": "time",
+          "template": " \ue641 {{ .CurrentDate | date .Format }} ",
+          "options": {
+            "time_format": "01/02/2006 @ 15:04:05"
+          }
+        }
+      ]
+    },
+    {
+      "alignment": "left",
+      "newline": true,
+      "leading_diamond": "<#7eb8da>\u2514\u2500</>",
+      "segments": [
+        {
+          "style": "diamond",
+          "foreground": "#ff6600",
+          "template": "[\u16B1]",
+          "type": "root"
+        },
+        {
+          "foreground": "#a50815",
+          "style": "diamond",
+          "template": "[<#ffffff>\uea6c</>]",
+          "type": "status"
+        },
+        {
+          "style": "diamond",
+          "template": ">",
+          "type": "text"
+        }
+      ],
+      "type": "prompt"
+    }
+  ]
+}

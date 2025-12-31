@@ -6,46 +6,46 @@ import { mockData } from './mockData';
 // Format: <#hexcolor>text</> or </>text (to reset)
 export function parseInlineColors(text: string, defaultColor: string): ReactNode[] {
   const parts: ReactNode[] = [];
-  const regex = /<#([0-9a-fA-F]{6})>([^<]*)<\/>|<\/>/g;
+  // Match color start tags <#RRGGBB> or color end tags </>
+  const tagRegex = /<#([0-9a-fA-F]{6})>|<\/>/g;
   let lastIndex = 0;
   let match;
   let currentColor = defaultColor;
 
-  while ((match = regex.exec(text)) !== null) {
-    // Add text before the match
+  while ((match = tagRegex.exec(text)) !== null) {
+    // Add text before the tag with current color
     if (match.index > lastIndex) {
       const beforeText = text.substring(lastIndex, match.index);
-      parts.push(
-        <span key={`text-${lastIndex}`} style={{ color: currentColor }}>
-          {beforeText}
-        </span>
-      );
+      if (beforeText) {
+        parts.push(
+          <span key={`text-${lastIndex}`} style={{ color: currentColor }}>
+            {beforeText}
+          </span>
+        );
+      }
     }
 
-    // Add colored text or handle color reset
     if (match[1]) {
-      // Color code found
+      // Color start tag found - set new color
       currentColor = `#${match[1]}`;
-      parts.push(
-        <span key={`color-${match.index}`} style={{ color: currentColor }}>
-          {match[2]}
-        </span>
-      );
     } else {
-      // Reset to default color
+      // Color end tag </> - reset to default color
       currentColor = defaultColor;
     }
 
-    lastIndex = regex.lastIndex;
+    lastIndex = tagRegex.lastIndex;
   }
 
-  // Add remaining text
+  // Add remaining text after the last tag
   if (lastIndex < text.length) {
-    parts.push(
-      <span key={`text-${lastIndex}`} style={{ color: currentColor }}>
-        {text.substring(lastIndex)}
-      </span>
-    );
+    const remainingText = text.substring(lastIndex);
+    if (remainingText) {
+      parts.push(
+        <span key={`text-${lastIndex}`} style={{ color: currentColor }}>
+          {remainingText}
+        </span>
+      );
+    }
   }
 
   return parts.length > 0 ? parts : [<span key="default">{text}</span>];

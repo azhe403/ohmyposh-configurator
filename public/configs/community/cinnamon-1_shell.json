@@ -28,6 +28,7 @@
             "type": "winget",
             "style": "plain",
             "foreground": "#70e2ff",
+            "template": " \uf409 {{ .UpdateCount }} ",
             "options": {
               "cache_duration": "5m"
             }

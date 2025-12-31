@@ -8,6 +8,7 @@ import { SymbolPicker } from './SymbolPicker';
 import { AvailableProperties } from './AvailableProperties';
 import { AvailableOptions } from './AvailableOptions';
 import { SegmentOptionsEditor } from './SegmentOptionsEditor';
+import { NerdFontPicker } from './NerdFontPicker';
 import type { Segment, SegmentStyle } from '../../types/ohmyposh';
 
 const segmentStyles: { value: SegmentStyle; label: string }[] = [
@@ -151,6 +152,11 @@ export function SegmentProperties() {
             Learn more
           </a>
         </p>
+        
+        {/* Nerd Font Icon Picker */}
+        <div className="mt-2">
+          <NerdFontPicker />
+        </div>
         
         {/* Available Properties */}
         {metadata?.properties && metadata.properties.length > 0 && (

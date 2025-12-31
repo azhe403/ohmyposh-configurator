@@ -51,8 +51,8 @@ export function SegmentPreview({
           }}
           className="px-2 py-1 inline-flex items-center gap-1.5"
         >
-          {metadata?.icon && <DynamicIcon name={metadata.icon} size={14} />}
-          <span>{renderedText}</span>
+          {!useMockData && metadata?.icon && <DynamicIcon name={metadata.icon} size={14} />}
+          <span className="nerd-font-symbol whitespace-pre">{renderedText}</span>
         </span>
         {/* Powerline symbol - only show if current segment has background */}
         {hasBackground && (
@@ -99,8 +99,8 @@ export function SegmentPreview({
           }}
           className={`px-2 py-1 inline-flex items-center gap-1.5 ${leadingDiamond ? '-ml-[2px]' : ''} ${trailingDiamond ? '-mr-[2px]' : ''}`}
         >
-          {metadata?.icon && <DynamicIcon name={metadata.icon} size={14} />}
-          <span>{renderedText}</span>
+          {!useMockData && metadata?.icon && <DynamicIcon name={metadata.icon} size={14} />}
+          <span className="nerd-font-symbol whitespace-pre">{renderedText}</span>
         </span>
         {/* Trailing diamond - only show if explicitly set */}
         {trailingDiamond && (
@@ -128,8 +128,8 @@ export function SegmentPreview({
       }}
       className={`px-2 py-1 rounded inline-flex items-center gap-1.5 ${marginClass}`}
     >
-      {metadata?.icon && <DynamicIcon name={metadata.icon} size={14} />}
-      <span>{renderedText}</span>
+      {!useMockData && metadata?.icon && <DynamicIcon name={metadata.icon} size={14} />}
+      <span className="nerd-font-symbol whitespace-pre">{renderedText}</span>
     </span>
   );
 }

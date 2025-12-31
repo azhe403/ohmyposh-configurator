@@ -7,3 +7,4 @@ export { AvailableOptions } from './AvailableOptions';
 export { AvailableProperties } from './AvailableProperties';
 export { ColorInput } from './ColorInput';
 export { SymbolPicker } from './SymbolPicker';
+export { NerdFontPicker } from './NerdFontPicker';

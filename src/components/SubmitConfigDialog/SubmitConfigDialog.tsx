@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { Share2, X, Github, Check, ExternalLink } from 'lucide-react';
+import { Share2, X, Github, Check, ExternalLink, ChevronDown } from 'lucide-react';
 import { useConfigStore } from '../../store/configStore';
+import { DynamicIcon } from '../DynamicIcon';
 
 export function SubmitConfigDialog() {
   const [isOpen, setIsOpen] = useState(false);
@@ -8,29 +9,53 @@ export function SubmitConfigDialog() {
   const [description, setDescription] = useState('');
   const [author, setAuthor] = useState('');
   const [tags, setTags] = useState('');
-  const [copied, setCopied] = useState(false);
+  const [icon, setIcon] = useState('Star');
+  const [isIconPickerOpen, setIsIconPickerOpen] = useState(false);
+  const [copiedConfig, setCopiedConfig] = useState(false);
+  const [copiedManifest, setCopiedManifest] = useState(false);
   const config = useConfigStore((state) => state.config);
+
+  // Popular icons for Oh My Posh configurations
+  const popularIcons = [
+    'Star', 'Code2', 'Terminal', 'Zap', 'Sparkles', 'CloudCog', 'Rocket',
+    'GitBranch', 'Cpu', 'Heart', 'Flame', 'Crown', 'Shield', 'Trophy',
+    'Palette', 'Layers', 'Box', 'Circle', 'Square', 'Diamond', 'Hexagon',
+    'Coffee', 'Moon', 'Sun', 'Cloud', 'Database', 'Server', 'Globe',
+    'Lock', 'Unlock', 'Key', 'Gem', 'Music', 'Camera', 'Gamepad2',
+    'Wifi', 'Bluetooth', 'Battery', 'Lightbulb', 'Aperture', 'Target',
+    'Award', 'Medal', 'Flag', 'Bookmark', 'AlertCircle', 'CheckCircle',
+    'XCircle', 'Smile', 'Ghost', 'Anchor'
+  ];
 
   const handleCopyConfig = () => {
     const configData = {
-      id: configName.toLowerCase().replace(/\s+/g, '-'),
-      name: configName,
-      description,
-      icon: 'Star',
-      author,
-      tags: tags.split(',').map((t) => t.trim()).filter(Boolean),
-      config: {
-        ...config,
-        blocks: config.blocks.map(({ id, ...block }) => ({
-          ...block,
-          segments: block.segments.map(({ id: segId, ...segment }) => segment),
-        })),
-      },
+      ...config,
+      blocks: config.blocks.map(({ id, ...block }) => ({
+        ...block,
+        segments: block.segments.map(({ id: segId, ...segment }) => segment),
+      })),
     };
 
     navigator.clipboard.writeText(JSON.stringify(configData, null, 2));
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    setCopiedConfig(true);
+    setTimeout(() => setCopiedConfig(false), 2000);
+  };
+
+  const handleCopyManifest = () => {
+    const configId = configName.toLowerCase().replace(/\s+/g, '-');
+    const manifestEntry = {
+      id: configId,
+      name: configName,
+      description,
+      icon: icon,
+      author,
+      tags: tags.split(',').map((t) => t.trim()).filter(Boolean),
+      file: `${configId}.json`,
+    };
+
+    navigator.clipboard.writeText(JSON.stringify(manifestEntry, null, 2));
+    setCopiedManifest(true);
+    setTimeout(() => setCopiedManifest(false), 2000);
   };
 
   const isFormValid = configName && description && author;
@@ -120,6 +145,48 @@ export function SubmitConfigDialog() {
                   />
                 </div>
 
+                <div className="relative">
+                  <label className="block text-sm font-medium text-gray-300 mb-2">
+                    Icon
+                  </label>
+                  <button
+                    type="button"
+                    onClick={() => setIsIconPickerOpen(!isIconPickerOpen)}
+                    className="w-full px-3 py-2 bg-[#0f0f23] border border-gray-700 rounded-lg text-white hover:border-purple-500 focus:outline-none focus:border-purple-500 transition-colors flex items-center justify-between"
+                  >
+                    <div className="flex items-center gap-2">
+                      <DynamicIcon name={icon} size={18} />
+                      <span>{icon}</span>
+                    </div>
+                    <ChevronDown size={16} className="text-gray-400" />
+                  </button>
+                  {isIconPickerOpen && (
+                    <div className="absolute z-10 w-full mt-1 bg-[#0f0f23] border border-gray-700 rounded-lg shadow-xl max-h-64 overflow-y-auto">
+                      <div className="grid grid-cols-4 gap-1 p-2">
+                        {popularIcons.map((iconName) => (
+                          <button
+                            key={iconName}
+                            type="button"
+                            onClick={() => {
+                              setIcon(iconName);
+                              setIsIconPickerOpen(false);
+                            }}
+                            className={`flex flex-col items-center gap-1 p-2 rounded hover:bg-gray-700 transition-colors ${
+                              icon === iconName ? 'bg-purple-600/20 border border-purple-500' : ''
+                            }`}
+                            title={iconName}
+                          >
+                            <DynamicIcon name={iconName} size={24} className="text-gray-300" />
+                            <span className="text-xs text-gray-400 truncate w-full text-center">
+                              {iconName}
+                            </span>
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+
                 <div>
                   <label className="block text-sm font-medium text-gray-300 mb-2">
                     Tags (comma-separated)
@@ -139,7 +206,6 @@ export function SubmitConfigDialog() {
                 <h3 className="text-sm font-semibold text-white">Submission Steps:</h3>
                 <ol className="space-y-2 text-sm text-gray-300 list-decimal list-inside">
                   <li>Fill in all required fields above</li>
-                  <li>Click "Copy Configuration" to copy the JSON to your clipboard</li>
                   <li>
                     Fork the{' '}
                     <a
@@ -151,18 +217,16 @@ export function SubmitConfigDialog() {
                       repository
                     </a>
                   </li>
-                  <li>
-                    Create a new file in <code className="bg-gray-900 px-1 py-0.5 rounded text-xs">public/configs/community/</code> named <code className="bg-gray-900 px-1 py-0.5 rounded text-xs">your-theme-name.json</code>
-                  </li>
-                  <li>Paste your copied configuration into that file</li>
-                  <li>Update <code className="bg-gray-900 px-1 py-0.5 rounded text-xs">public/configs/community/manifest.json</code> to include your config</li>
+                  <li>Click "Copy Configuration" and create a new file in <code className="bg-gray-900 px-1 py-0.5 rounded text-xs">public/configs/community/your-theme-name.json</code></li>
+                  <li>Paste the configuration into that file</li>
+                  <li>Click "Copy Manifest Entry" and add it to <code className="bg-gray-900 px-1 py-0.5 rounded text-xs">public/configs/community/manifest.json</code></li>
                   <li>Submit a pull request with your changes</li>
                 </ol>
               </div>
             </div>
 
             {/* Footer */}
-            <div className="p-6 border-t border-gray-700 bg-[#0f0f23] flex items-center justify-between">
+            <div className="p-6 border-t border-gray-700 bg-[#0f0f23] space-y-4">
               <a
                 href="https://github.com/jamesmontemagno/ohmyposh-configurator/blob/main/CONTRIBUTING.md"
                 target="_blank"
@@ -172,7 +236,7 @@ export function SubmitConfigDialog() {
                 <ExternalLink size={14} />
                 View Contribution Guide
               </a>
-              <div className="flex items-center gap-3">
+              <div className="flex items-center justify-end gap-3">
                 <button
                   onClick={() => setIsOpen(false)}
                   className="px-4 py-2 text-sm text-gray-400 hover:text-white transition-colors"
@@ -184,7 +248,7 @@ export function SubmitConfigDialog() {
                   disabled={!isFormValid}
                   className="flex items-center gap-2 px-4 py-2 bg-purple-600 hover:bg-purple-700 disabled:bg-gray-700 disabled:cursor-not-allowed text-white rounded-lg transition-colors text-sm"
                 >
-                  {copied ? (
+                  {copiedConfig ? (
                     <>
                       <Check size={16} />
                       Copied!
@@ -193,6 +257,23 @@ export function SubmitConfigDialog() {
                     <>
                       <Github size={16} />
                       Copy Configuration
+                    </>
+                  )}
+                </button>
+                <button
+                  onClick={handleCopyManifest}
+                  disabled={!isFormValid}
+                  className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-700 disabled:cursor-not-allowed text-white rounded-lg transition-colors text-sm"
+                >
+                  {copiedManifest ? (
+                    <>
+                      <Check size={16} />
+                      Copied!
+                    </>
+                  ) : (
+                    <>
+                      <Github size={16} />
+                      Copy Manifest Entry
                     </>
                   )}
                 </button>

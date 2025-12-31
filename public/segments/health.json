@@ -19,6 +19,32 @@
         "type": "string",
         "description": "icon representation of trend"
       }
+    ],
+    "options": [
+      {
+        "name": "url",
+        "type": "string",
+        "default": "",
+        "description": "Nightscout URL"
+      },
+      {
+        "name": "access_token",
+        "type": "string",
+        "default": "",
+        "description": "API access token"
+      },
+      {
+        "name": "http_timeout",
+        "type": "number",
+        "default": 20,
+        "description": "HTTP timeout in milliseconds"
+      },
+      {
+        "name": "cache_timeout",
+        "type": "number",
+        "default": 5,
+        "description": "Cache timeout in minutes"
+      }
     ]
   },
   {
@@ -41,6 +67,38 @@
         "type": "string",
         "description": "Activity based icon"
       }
+    ],
+    "options": [
+      {
+        "name": "access_token",
+        "type": "string",
+        "default": "",
+        "description": "Strava API access token"
+      },
+      {
+        "name": "refresh_token",
+        "type": "string",
+        "default": "",
+        "description": "Strava API refresh token"
+      },
+      {
+        "name": "http_timeout",
+        "type": "number",
+        "default": 20,
+        "description": "HTTP timeout in milliseconds"
+      },
+      {
+        "name": "cache_timeout",
+        "type": "number",
+        "default": 10,
+        "description": "Cache timeout in minutes"
+      },
+      {
+        "name": "activity_type",
+        "type": "string",
+        "default": "Run",
+        "description": "Activity type to display"
+      }
     ]
   },
   {
@@ -62,6 +120,26 @@
         "name": ".Steps",
         "type": "int",
         "description": "your last measured steps"
+      }
+    ],
+    "options": [
+      {
+        "name": "access_token",
+        "type": "string",
+        "default": "",
+        "description": "Withings API access token"
+      },
+      {
+        "name": "http_timeout",
+        "type": "number",
+        "default": 20,
+        "description": "HTTP timeout in milliseconds"
+      },
+      {
+        "name": "cache_timeout",
+        "type": "number",
+        "default": 10,
+        "description": "Cache timeout in minutes"
       }
     ]
   }

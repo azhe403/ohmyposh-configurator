@@ -19,6 +19,14 @@
         "type": "string",
         "description": "the currently active region"
       }
+    ],
+    "options": [
+      {
+        "name": "display_default",
+        "type": "boolean",
+        "default": true,
+        "description": "Display segment when using default profile"
+      }
     ]
   },
   {
@@ -45,6 +53,19 @@
         "name": ".User.Name",
         "type": "string",
         "description": "user name"
+      }
+    ],
+    "options": [
+      {
+        "name": "source",
+        "type": "enum",
+        "default": "cli",
+        "description": "Sources to get subscription information from",
+        "values": [
+          "cli",
+          "pwsh",
+          "cli|pwsh"
+        ]
       }
     ]
   },
@@ -100,6 +121,32 @@
         "type": "string",
         "description": "error encountered when fetching the version string"
       }
+    ],
+    "options": [
+      {
+        "name": "home_enabled",
+        "type": "boolean",
+        "default": false,
+        "description": "Display in HOME folder"
+      },
+      {
+        "name": "fetch_version",
+        "type": "boolean",
+        "default": true,
+        "description": "Fetch Azure Functions CLI version"
+      },
+      {
+        "name": "cache_duration",
+        "type": "string",
+        "default": "none",
+        "description": "Cache duration (e.g., \"5m\", \"1h\")"
+      },
+      {
+        "name": "missing_command_text",
+        "type": "string",
+        "default": "",
+        "description": "Text when command is missing"
+      }
     ]
   },
   {
@@ -142,6 +189,32 @@
         "type": "string",
         "description": "error encountered when fetching the version string"
       }
+    ],
+    "options": [
+      {
+        "name": "home_enabled",
+        "type": "boolean",
+        "default": false,
+        "description": "Display in HOME folder"
+      },
+      {
+        "name": "fetch_version",
+        "type": "boolean",
+        "default": true,
+        "description": "Fetch Cloud Foundry CLI version"
+      },
+      {
+        "name": "cache_duration",
+        "type": "string",
+        "default": "none",
+        "description": "Cache duration (e.g., \"5m\", \"1h\")"
+      },
+      {
+        "name": "missing_command_text",
+        "type": "string",
+        "default": "",
+        "description": "Text when command is missing"
+      }
     ]
   },
   {
@@ -163,6 +236,18 @@
         "name": ".Space",
         "type": "string",
         "description": "Cloud Foundry space"
+      }
+    ],
+    "options": [
+      {
+        "name": "display_mode",
+        "type": "enum",
+        "default": "always",
+        "description": "When to display segment",
+        "values": [
+          "always",
+          "context"
+        ]
       }
     ]
   },
@@ -208,6 +293,20 @@
         "type": "string",
         "description": "the current kubectl context namespace"
       }
+    ],
+    "options": [
+      {
+        "name": "parse_kubeconfig",
+        "type": "boolean",
+        "default": false,
+        "description": "Parse kubeconfig files to get context"
+      },
+      {
+        "name": "display_default",
+        "type": "boolean",
+        "default": true,
+        "description": "Display default context"
+      }
     ]
   },
   {
@@ -229,6 +328,14 @@
         "name": ".User",
         "type": "string",
         "description": "the current logged in user"
+      }
+    ],
+    "options": [
+      {
+        "name": "fetch_stack",
+        "type": "boolean",
+        "default": true,
+        "description": "Fetch the current stack name"
       }
     ]
   },
@@ -277,6 +384,32 @@
         "type": "bool",
         "description": "if @sap/cds was found in package.json"
       }
+    ],
+    "options": [
+      {
+        "name": "home_enabled",
+        "type": "boolean",
+        "default": false,
+        "description": "Display in HOME folder"
+      },
+      {
+        "name": "fetch_version",
+        "type": "boolean",
+        "default": true,
+        "description": "Fetch CDS version"
+      },
+      {
+        "name": "cache_duration",
+        "type": "string",
+        "default": "none",
+        "description": "Cache duration (e.g., \"5m\", \"1h\")"
+      },
+      {
+        "name": "missing_command_text",
+        "type": "string",
+        "default": "",
+        "description": "Text when command is missing"
+      }
     ]
   },
   {
@@ -294,6 +427,18 @@
         "type": "string",
         "description": "name of the current Sitecore environment"
       }
+    ],
+    "options": [
+      {
+        "name": "display_mode",
+        "type": "enum",
+        "default": "files",
+        "description": "When to display segment",
+        "values": [
+          "always",
+          "files"
+        ]
+      }
     ]
   },
   {
@@ -310,6 +455,19 @@
         "name": ".WorkspaceName",
         "type": "string",
         "description": "the current workspace name"
+      }
+    ],
+    "options": [
+      {
+        "name": "display_mode",
+        "type": "enum",
+        "default": "context",
+        "description": "When to display segment",
+        "values": [
+          "always",
+          "files",
+          "context"
+        ]
       }
     ]
   }

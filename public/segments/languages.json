@@ -24,6 +24,49 @@
         "type": "string",
         "description": "error encountered when fetching the version string"
       }
+    ],
+    "options": [
+      {
+        "name": "home_enabled",
+        "type": "boolean",
+        "default": false,
+        "description": "Display in HOME folder"
+      },
+      {
+        "name": "fetch_version",
+        "type": "boolean",
+        "default": true,
+        "description": "Fetch .NET version"
+      },
+      {
+        "name": "cache_duration",
+        "type": "string",
+        "default": "none",
+        "description": "Cache duration (e.g., \"5m\", \"1h\")"
+      },
+      {
+        "name": "missing_command_text",
+        "type": "string",
+        "default": "",
+        "description": "Text when command is missing"
+      },
+      {
+        "name": "display_mode",
+        "type": "enum",
+        "default": "context",
+        "description": "When to display segment",
+        "values": [
+          "always",
+          "files",
+          "context"
+        ]
+      },
+      {
+        "name": "version_url_template",
+        "type": "string",
+        "default": "",
+        "description": "Template for version URL"
+      }
     ]
   },
   {
@@ -65,6 +108,49 @@
         "name": ".Error",
         "type": "string",
         "description": "error encountered when fetching the version string"
+      }
+    ],
+    "options": [
+      {
+        "name": "home_enabled",
+        "type": "boolean",
+        "default": false,
+        "description": "Display in HOME folder"
+      },
+      {
+        "name": "fetch_version",
+        "type": "boolean",
+        "default": true,
+        "description": "Fetch Clojure version"
+      },
+      {
+        "name": "cache_duration",
+        "type": "string",
+        "default": "none",
+        "description": "Cache duration (e.g., \"5m\", \"1h\")"
+      },
+      {
+        "name": "missing_command_text",
+        "type": "string",
+        "default": "",
+        "description": "Text when command is missing"
+      },
+      {
+        "name": "display_mode",
+        "type": "enum",
+        "default": "context",
+        "description": "When to display segment",
+        "values": [
+          "always",
+          "files",
+          "context"
+        ]
+      },
+      {
+        "name": "version_url_template",
+        "type": "string",
+        "default": "",
+        "description": "Template for version URL"
       }
     ]
   },
@@ -108,6 +194,49 @@
         "type": "string",
         "description": "error encountered when fetching the version string"
       }
+    ],
+    "options": [
+      {
+        "name": "home_enabled",
+        "type": "boolean",
+        "default": false,
+        "description": "Display in HOME folder"
+      },
+      {
+        "name": "fetch_version",
+        "type": "boolean",
+        "default": true,
+        "description": "Fetch Crystal version"
+      },
+      {
+        "name": "cache_duration",
+        "type": "string",
+        "default": "none",
+        "description": "Cache duration (e.g., \"5m\", \"1h\")"
+      },
+      {
+        "name": "missing_command_text",
+        "type": "string",
+        "default": "",
+        "description": "Text when command is missing"
+      },
+      {
+        "name": "display_mode",
+        "type": "enum",
+        "default": "context",
+        "description": "When to display segment",
+        "values": [
+          "always",
+          "files",
+          "context"
+        ]
+      },
+      {
+        "name": "version_url_template",
+        "type": "string",
+        "default": "",
+        "description": "Template for version URL"
+      }
     ]
   },
   {
@@ -149,6 +278,49 @@
         "name": ".Error",
         "type": "string",
         "description": "error encountered when fetching the version string"
+      }
+    ],
+    "options": [
+      {
+        "name": "home_enabled",
+        "type": "boolean",
+        "default": false,
+        "description": "Display in HOME folder"
+      },
+      {
+        "name": "fetch_version",
+        "type": "boolean",
+        "default": true,
+        "description": "Fetch Dart version"
+      },
+      {
+        "name": "cache_duration",
+        "type": "string",
+        "default": "none",
+        "description": "Cache duration (e.g., \"5m\", \"1h\")"
+      },
+      {
+        "name": "missing_command_text",
+        "type": "string",
+        "default": "",
+        "description": "Text when command is missing"
+      },
+      {
+        "name": "display_mode",
+        "type": "enum",
+        "default": "context",
+        "description": "When to display segment",
+        "values": [
+          "always",
+          "files",
+          "context"
+        ]
+      },
+      {
+        "name": "version_url_template",
+        "type": "string",
+        "default": "",
+        "description": "Template for version URL"
       }
     ]
   },
@@ -192,6 +364,49 @@
         "type": "string",
         "description": "error encountered when fetching the version string"
       }
+    ],
+    "options": [
+      {
+        "name": "home_enabled",
+        "type": "boolean",
+        "default": false,
+        "description": "Display in HOME folder"
+      },
+      {
+        "name": "fetch_version",
+        "type": "boolean",
+        "default": true,
+        "description": "Fetch Elixir version"
+      },
+      {
+        "name": "cache_duration",
+        "type": "string",
+        "default": "none",
+        "description": "Cache duration (e.g., \"5m\", \"1h\")"
+      },
+      {
+        "name": "missing_command_text",
+        "type": "string",
+        "default": "",
+        "description": "Text when command is missing"
+      },
+      {
+        "name": "display_mode",
+        "type": "enum",
+        "default": "context",
+        "description": "When to display segment",
+        "values": [
+          "always",
+          "files",
+          "context"
+        ]
+      },
+      {
+        "name": "version_url_template",
+        "type": "string",
+        "default": "",
+        "description": "Template for version URL"
+      }
     ]
   },
   {
@@ -233,6 +448,49 @@
         "name": ".Error",
         "type": "string",
         "description": "error encountered when fetching the version string"
+      }
+    ],
+    "options": [
+      {
+        "name": "home_enabled",
+        "type": "boolean",
+        "default": false,
+        "description": "Display in HOME folder"
+      },
+      {
+        "name": "fetch_version",
+        "type": "boolean",
+        "default": true,
+        "description": "Fetch gfortran version"
+      },
+      {
+        "name": "cache_duration",
+        "type": "string",
+        "default": "none",
+        "description": "Cache duration (e.g., \"5m\", \"1h\")"
+      },
+      {
+        "name": "missing_command_text",
+        "type": "string",
+        "default": "",
+        "description": "Text when command is missing"
+      },
+      {
+        "name": "display_mode",
+        "type": "enum",
+        "default": "context",
+        "description": "When to display segment",
+        "values": [
+          "always",
+          "files",
+          "context"
+        ]
+      },
+      {
+        "name": "version_url_template",
+        "type": "string",
+        "default": "",
+        "description": "Template for version URL"
       }
     ]
   },
@@ -276,6 +534,49 @@
         "type": "string",
         "description": "error encountered when fetching the version string"
       }
+    ],
+    "options": [
+      {
+        "name": "home_enabled",
+        "type": "boolean",
+        "default": false,
+        "description": "Display in HOME folder"
+      },
+      {
+        "name": "fetch_version",
+        "type": "boolean",
+        "default": true,
+        "description": "Fetch Go version"
+      },
+      {
+        "name": "cache_duration",
+        "type": "string",
+        "default": "none",
+        "description": "Cache duration (e.g., \"5m\", \"1h\")"
+      },
+      {
+        "name": "missing_command_text",
+        "type": "string",
+        "default": "",
+        "description": "Text when command is missing"
+      },
+      {
+        "name": "display_mode",
+        "type": "enum",
+        "default": "context",
+        "description": "When to display segment",
+        "values": [
+          "always",
+          "files",
+          "context"
+        ]
+      },
+      {
+        "name": "version_url_template",
+        "type": "string",
+        "default": "",
+        "description": "Template for version URL"
+      }
     ]
   },
   {
@@ -317,6 +618,49 @@
         "name": ".Error",
         "type": "string",
         "description": "error encountered when fetching the version string"
+      }
+    ],
+    "options": [
+      {
+        "name": "home_enabled",
+        "type": "boolean",
+        "default": false,
+        "description": "Display in HOME folder"
+      },
+      {
+        "name": "fetch_version",
+        "type": "boolean",
+        "default": true,
+        "description": "Fetch GHC version"
+      },
+      {
+        "name": "cache_duration",
+        "type": "string",
+        "default": "none",
+        "description": "Cache duration (e.g., \"5m\", \"1h\")"
+      },
+      {
+        "name": "missing_command_text",
+        "type": "string",
+        "default": "",
+        "description": "Text when command is missing"
+      },
+      {
+        "name": "display_mode",
+        "type": "enum",
+        "default": "context",
+        "description": "When to display segment",
+        "values": [
+          "always",
+          "files",
+          "context"
+        ]
+      },
+      {
+        "name": "version_url_template",
+        "type": "string",
+        "default": "",
+        "description": "Template for version URL"
       }
     ]
   },
@@ -360,6 +704,49 @@
         "type": "string",
         "description": "error encountered when fetching the version string"
       }
+    ],
+    "options": [
+      {
+        "name": "home_enabled",
+        "type": "boolean",
+        "default": false,
+        "description": "Display in HOME folder"
+      },
+      {
+        "name": "fetch_version",
+        "type": "boolean",
+        "default": true,
+        "description": "Fetch Java version"
+      },
+      {
+        "name": "cache_duration",
+        "type": "string",
+        "default": "none",
+        "description": "Cache duration (e.g., \"5m\", \"1h\")"
+      },
+      {
+        "name": "missing_command_text",
+        "type": "string",
+        "default": "",
+        "description": "Text when command is missing"
+      },
+      {
+        "name": "display_mode",
+        "type": "enum",
+        "default": "context",
+        "description": "When to display segment",
+        "values": [
+          "always",
+          "files",
+          "context"
+        ]
+      },
+      {
+        "name": "version_url_template",
+        "type": "string",
+        "default": "",
+        "description": "Template for version URL"
+      }
     ]
   },
   {
@@ -401,6 +788,49 @@
         "name": ".Error",
         "type": "string",
         "description": "error encountered when fetching the version string"
+      }
+    ],
+    "options": [
+      {
+        "name": "home_enabled",
+        "type": "boolean",
+        "default": false,
+        "description": "Display in HOME folder"
+      },
+      {
+        "name": "fetch_version",
+        "type": "boolean",
+        "default": true,
+        "description": "Fetch Julia version"
+      },
+      {
+        "name": "cache_duration",
+        "type": "string",
+        "default": "none",
+        "description": "Cache duration (e.g., \"5m\", \"1h\")"
+      },
+      {
+        "name": "missing_command_text",
+        "type": "string",
+        "default": "",
+        "description": "Text when command is missing"
+      },
+      {
+        "name": "display_mode",
+        "type": "enum",
+        "default": "context",
+        "description": "When to display segment",
+        "values": [
+          "always",
+          "files",
+          "context"
+        ]
+      },
+      {
+        "name": "version_url_template",
+        "type": "string",
+        "default": "",
+        "description": "Template for version URL"
       }
     ]
   },
@@ -444,6 +874,49 @@
         "type": "string",
         "description": "error encountered when fetching the version string"
       }
+    ],
+    "options": [
+      {
+        "name": "home_enabled",
+        "type": "boolean",
+        "default": false,
+        "description": "Display in HOME folder"
+      },
+      {
+        "name": "fetch_version",
+        "type": "boolean",
+        "default": true,
+        "description": "Fetch Kotlin version"
+      },
+      {
+        "name": "cache_duration",
+        "type": "string",
+        "default": "none",
+        "description": "Cache duration (e.g., \"5m\", \"1h\")"
+      },
+      {
+        "name": "missing_command_text",
+        "type": "string",
+        "default": "",
+        "description": "Text when command is missing"
+      },
+      {
+        "name": "display_mode",
+        "type": "enum",
+        "default": "context",
+        "description": "When to display segment",
+        "values": [
+          "always",
+          "files",
+          "context"
+        ]
+      },
+      {
+        "name": "version_url_template",
+        "type": "string",
+        "default": "",
+        "description": "Template for version URL"
+      }
     ]
   },
   {
@@ -485,6 +958,49 @@
         "name": ".Error",
         "type": "string",
         "description": "error encountered when fetching the version string"
+      }
+    ],
+    "options": [
+      {
+        "name": "home_enabled",
+        "type": "boolean",
+        "default": false,
+        "description": "Display in HOME folder"
+      },
+      {
+        "name": "fetch_version",
+        "type": "boolean",
+        "default": true,
+        "description": "Fetch Lua version"
+      },
+      {
+        "name": "cache_duration",
+        "type": "string",
+        "default": "none",
+        "description": "Cache duration (e.g., \"5m\", \"1h\")"
+      },
+      {
+        "name": "missing_command_text",
+        "type": "string",
+        "default": "",
+        "description": "Text when command is missing"
+      },
+      {
+        "name": "display_mode",
+        "type": "enum",
+        "default": "context",
+        "description": "When to display segment",
+        "values": [
+          "always",
+          "files",
+          "context"
+        ]
+      },
+      {
+        "name": "version_url_template",
+        "type": "string",
+        "default": "",
+        "description": "Template for version URL"
       }
     ]
   },
@@ -528,6 +1044,56 @@
         "type": "string",
         "description": "error encountered when fetching the version string"
       }
+    ],
+    "options": [
+      {
+        "name": "home_enabled",
+        "type": "boolean",
+        "default": false,
+        "description": "Display in HOME folder"
+      },
+      {
+        "name": "fetch_virtual_env",
+        "type": "boolean",
+        "default": true,
+        "description": "Fetch virtualenv name"
+      },
+      {
+        "name": "display_default",
+        "type": "boolean",
+        "default": true,
+        "description": "Show virtualenv when default"
+      },
+      {
+        "name": "fetch_version",
+        "type": "boolean",
+        "default": true,
+        "description": "Fetch Mojo version"
+      },
+      {
+        "name": "cache_duration",
+        "type": "string",
+        "default": "none",
+        "description": "Cache duration (e.g., \"5m\", \"1h\")"
+      },
+      {
+        "name": "missing_command_text",
+        "type": "string",
+        "default": "",
+        "description": "Text when command is missing"
+      },
+      {
+        "name": "display_mode",
+        "type": "enum",
+        "default": "environment",
+        "description": "When to display segment",
+        "values": [
+          "always",
+          "files",
+          "environment",
+          "context"
+        ]
+      }
     ]
   },
   {
@@ -569,6 +1135,49 @@
         "name": ".Error",
         "type": "string",
         "description": "error encountered when fetching the version string"
+      }
+    ],
+    "options": [
+      {
+        "name": "home_enabled",
+        "type": "boolean",
+        "default": false,
+        "description": "Display in HOME folder"
+      },
+      {
+        "name": "fetch_version",
+        "type": "boolean",
+        "default": true,
+        "description": "Fetch Nim version"
+      },
+      {
+        "name": "cache_duration",
+        "type": "string",
+        "default": "none",
+        "description": "Cache duration (e.g., \"5m\", \"1h\")"
+      },
+      {
+        "name": "missing_command_text",
+        "type": "string",
+        "default": "",
+        "description": "Text when command is missing"
+      },
+      {
+        "name": "display_mode",
+        "type": "enum",
+        "default": "context",
+        "description": "When to display segment",
+        "values": [
+          "always",
+          "files",
+          "context"
+        ]
+      },
+      {
+        "name": "version_url_template",
+        "type": "string",
+        "default": "",
+        "description": "Template for version URL"
       }
     ]
   },
@@ -622,6 +1231,49 @@
         "type": "string",
         "description": "the package manager name"
       }
+    ],
+    "options": [
+      {
+        "name": "home_enabled",
+        "type": "boolean",
+        "default": false,
+        "description": "Display in HOME folder"
+      },
+      {
+        "name": "fetch_version",
+        "type": "boolean",
+        "default": true,
+        "description": "Fetch Node.js version"
+      },
+      {
+        "name": "cache_duration",
+        "type": "string",
+        "default": "none",
+        "description": "Cache duration (e.g., \"5m\", \"1h\")"
+      },
+      {
+        "name": "missing_command_text",
+        "type": "string",
+        "default": "",
+        "description": "Text when command is missing"
+      },
+      {
+        "name": "display_mode",
+        "type": "enum",
+        "default": "context",
+        "description": "When to display segment",
+        "values": [
+          "always",
+          "files",
+          "context"
+        ]
+      },
+      {
+        "name": "version_url_template",
+        "type": "string",
+        "default": "",
+        "description": "Template for version URL"
+      }
     ]
   },
   {
@@ -663,6 +1315,49 @@
         "name": ".Error",
         "type": "string",
         "description": "error encountered when fetching the version string"
+      }
+    ],
+    "options": [
+      {
+        "name": "home_enabled",
+        "type": "boolean",
+        "default": false,
+        "description": "Display in HOME folder"
+      },
+      {
+        "name": "fetch_version",
+        "type": "boolean",
+        "default": true,
+        "description": "Fetch OCaml version"
+      },
+      {
+        "name": "cache_duration",
+        "type": "string",
+        "default": "none",
+        "description": "Cache duration (e.g., \"5m\", \"1h\")"
+      },
+      {
+        "name": "missing_command_text",
+        "type": "string",
+        "default": "",
+        "description": "Text when command is missing"
+      },
+      {
+        "name": "display_mode",
+        "type": "enum",
+        "default": "context",
+        "description": "When to display segment",
+        "values": [
+          "always",
+          "files",
+          "context"
+        ]
+      },
+      {
+        "name": "version_url_template",
+        "type": "string",
+        "default": "",
+        "description": "Template for version URL"
       }
     ]
   },
@@ -706,6 +1401,49 @@
         "type": "string",
         "description": "error encountered when fetching the version string"
       }
+    ],
+    "options": [
+      {
+        "name": "home_enabled",
+        "type": "boolean",
+        "default": false,
+        "description": "Display in HOME folder"
+      },
+      {
+        "name": "fetch_version",
+        "type": "boolean",
+        "default": true,
+        "description": "Fetch Perl version"
+      },
+      {
+        "name": "cache_duration",
+        "type": "string",
+        "default": "none",
+        "description": "Cache duration (e.g., \"5m\", \"1h\")"
+      },
+      {
+        "name": "missing_command_text",
+        "type": "string",
+        "default": "",
+        "description": "Text when command is missing"
+      },
+      {
+        "name": "display_mode",
+        "type": "enum",
+        "default": "context",
+        "description": "When to display segment",
+        "values": [
+          "always",
+          "files",
+          "context"
+        ]
+      },
+      {
+        "name": "version_url_template",
+        "type": "string",
+        "default": "",
+        "description": "Template for version URL"
+      }
     ]
   },
   {
@@ -747,6 +1485,49 @@
         "name": ".Error",
         "type": "string",
         "description": "error encountered when fetching the version string"
+      }
+    ],
+    "options": [
+      {
+        "name": "home_enabled",
+        "type": "boolean",
+        "default": false,
+        "description": "Display in HOME folder"
+      },
+      {
+        "name": "fetch_version",
+        "type": "boolean",
+        "default": true,
+        "description": "Fetch PHP version"
+      },
+      {
+        "name": "cache_duration",
+        "type": "string",
+        "default": "none",
+        "description": "Cache duration (e.g., \"5m\", \"1h\")"
+      },
+      {
+        "name": "missing_command_text",
+        "type": "string",
+        "default": "",
+        "description": "Text when command is missing"
+      },
+      {
+        "name": "display_mode",
+        "type": "enum",
+        "default": "context",
+        "description": "When to display segment",
+        "values": [
+          "always",
+          "files",
+          "context"
+        ]
+      },
+      {
+        "name": "version_url_template",
+        "type": "string",
+        "default": "",
+        "description": "Template for version URL"
       }
     ]
   },
@@ -795,6 +1576,56 @@
         "type": "string",
         "description": "error encountered when fetching the version string"
       }
+    ],
+    "options": [
+      {
+        "name": "home_enabled",
+        "type": "boolean",
+        "default": false,
+        "description": "Display in HOME folder"
+      },
+      {
+        "name": "fetch_virtual_env",
+        "type": "boolean",
+        "default": true,
+        "description": "Fetch virtualenv name"
+      },
+      {
+        "name": "display_default",
+        "type": "boolean",
+        "default": true,
+        "description": "Show virtualenv when default (system, base)"
+      },
+      {
+        "name": "fetch_version",
+        "type": "boolean",
+        "default": true,
+        "description": "Fetch Python version"
+      },
+      {
+        "name": "cache_duration",
+        "type": "string",
+        "default": "none",
+        "description": "Cache duration (e.g., \"5m\", \"1h\")"
+      },
+      {
+        "name": "missing_command_text",
+        "type": "string",
+        "default": "",
+        "description": "Text when command is missing"
+      },
+      {
+        "name": "display_mode",
+        "type": "enum",
+        "default": "environment",
+        "description": "When to display segment",
+        "values": [
+          "always",
+          "files",
+          "environment",
+          "context"
+        ]
+      }
     ]
   },
   {
@@ -837,6 +1668,49 @@
         "type": "string",
         "description": "error encountered when fetching the version string"
       }
+    ],
+    "options": [
+      {
+        "name": "home_enabled",
+        "type": "boolean",
+        "default": false,
+        "description": "Display in HOME folder"
+      },
+      {
+        "name": "fetch_version",
+        "type": "boolean",
+        "default": true,
+        "description": "Fetch R version"
+      },
+      {
+        "name": "cache_duration",
+        "type": "string",
+        "default": "none",
+        "description": "Cache duration (e.g., \"5m\", \"1h\")"
+      },
+      {
+        "name": "missing_command_text",
+        "type": "string",
+        "default": "",
+        "description": "Text when command is missing"
+      },
+      {
+        "name": "display_mode",
+        "type": "enum",
+        "default": "context",
+        "description": "When to display segment",
+        "values": [
+          "always",
+          "files",
+          "context"
+        ]
+      },
+      {
+        "name": "version_url_template",
+        "type": "string",
+        "default": "",
+        "description": "Template for version URL"
+      }
     ]
   },
   {
@@ -858,6 +1732,49 @@
         "name": ".Error",
         "type": "string",
         "description": "error encountered when fetching the version string"
+      }
+    ],
+    "options": [
+      {
+        "name": "home_enabled",
+        "type": "boolean",
+        "default": false,
+        "description": "Display in HOME folder"
+      },
+      {
+        "name": "fetch_version",
+        "type": "boolean",
+        "default": true,
+        "description": "Fetch Ruby version"
+      },
+      {
+        "name": "cache_duration",
+        "type": "string",
+        "default": "none",
+        "description": "Cache duration (e.g., \"5m\", \"1h\")"
+      },
+      {
+        "name": "missing_command_text",
+        "type": "string",
+        "default": "",
+        "description": "Text when command is missing"
+      },
+      {
+        "name": "display_mode",
+        "type": "enum",
+        "default": "context",
+        "description": "When to display segment",
+        "values": [
+          "always",
+          "files",
+          "context"
+        ]
+      },
+      {
+        "name": "version_url_template",
+        "type": "string",
+        "default": "",
+        "description": "Template for version URL"
       }
     ]
   },
@@ -885,6 +1802,49 @@
         "name": ".Error",
         "type": "string",
         "description": "error encountered when fetching the version string"
+      }
+    ],
+    "options": [
+      {
+        "name": "home_enabled",
+        "type": "boolean",
+        "default": false,
+        "description": "Display in HOME folder"
+      },
+      {
+        "name": "fetch_version",
+        "type": "boolean",
+        "default": true,
+        "description": "Fetch Rust version"
+      },
+      {
+        "name": "cache_duration",
+        "type": "string",
+        "default": "none",
+        "description": "Cache duration (e.g., \"5m\", \"1h\")"
+      },
+      {
+        "name": "missing_command_text",
+        "type": "string",
+        "default": "",
+        "description": "Text when command is missing"
+      },
+      {
+        "name": "display_mode",
+        "type": "enum",
+        "default": "context",
+        "description": "When to display segment",
+        "values": [
+          "always",
+          "files",
+          "context"
+        ]
+      },
+      {
+        "name": "version_url_template",
+        "type": "string",
+        "default": "",
+        "description": "Template for version URL"
       }
     ]
   },
@@ -928,6 +1888,49 @@
         "type": "string",
         "description": "error encountered when fetching the version string"
       }
+    ],
+    "options": [
+      {
+        "name": "home_enabled",
+        "type": "boolean",
+        "default": false,
+        "description": "Display in HOME folder"
+      },
+      {
+        "name": "fetch_version",
+        "type": "boolean",
+        "default": true,
+        "description": "Fetch Swift version"
+      },
+      {
+        "name": "cache_duration",
+        "type": "string",
+        "default": "none",
+        "description": "Cache duration (e.g., \"5m\", \"1h\")"
+      },
+      {
+        "name": "missing_command_text",
+        "type": "string",
+        "default": "",
+        "description": "Text when command is missing"
+      },
+      {
+        "name": "display_mode",
+        "type": "enum",
+        "default": "context",
+        "description": "When to display segment",
+        "values": [
+          "always",
+          "files",
+          "context"
+        ]
+      },
+      {
+        "name": "version_url_template",
+        "type": "string",
+        "default": "",
+        "description": "Template for version URL"
+      }
     ]
   },
   {
@@ -969,6 +1972,49 @@
         "name": ".Error",
         "type": "string",
         "description": "error encountered when fetching the version string"
+      }
+    ],
+    "options": [
+      {
+        "name": "home_enabled",
+        "type": "boolean",
+        "default": false,
+        "description": "Display in HOME folder"
+      },
+      {
+        "name": "fetch_version",
+        "type": "boolean",
+        "default": true,
+        "description": "Fetch V version"
+      },
+      {
+        "name": "cache_duration",
+        "type": "string",
+        "default": "none",
+        "description": "Cache duration (e.g., \"5m\", \"1h\")"
+      },
+      {
+        "name": "missing_command_text",
+        "type": "string",
+        "default": "",
+        "description": "Text when command is missing"
+      },
+      {
+        "name": "display_mode",
+        "type": "enum",
+        "default": "context",
+        "description": "When to display segment",
+        "values": [
+          "always",
+          "files",
+          "context"
+        ]
+      },
+      {
+        "name": "version_url_template",
+        "type": "string",
+        "default": "",
+        "description": "Template for version URL"
       }
     ]
   },
@@ -1012,6 +2058,49 @@
         "type": "string",
         "description": "error encountered when fetching the version string"
       }
+    ],
+    "options": [
+      {
+        "name": "home_enabled",
+        "type": "boolean",
+        "default": false,
+        "description": "Display in HOME folder"
+      },
+      {
+        "name": "fetch_version",
+        "type": "boolean",
+        "default": true,
+        "description": "Fetch Vala version"
+      },
+      {
+        "name": "cache_duration",
+        "type": "string",
+        "default": "none",
+        "description": "Cache duration (e.g., \"5m\", \"1h\")"
+      },
+      {
+        "name": "missing_command_text",
+        "type": "string",
+        "default": "",
+        "description": "Text when command is missing"
+      },
+      {
+        "name": "display_mode",
+        "type": "enum",
+        "default": "context",
+        "description": "When to display segment",
+        "values": [
+          "always",
+          "files",
+          "context"
+        ]
+      },
+      {
+        "name": "version_url_template",
+        "type": "string",
+        "default": "",
+        "description": "Template for version URL"
+      }
     ]
   },
   {
@@ -1053,6 +2142,49 @@
         "name": ".Error",
         "type": "string",
         "description": "error encountered when fetching the version string"
+      }
+    ],
+    "options": [
+      {
+        "name": "home_enabled",
+        "type": "boolean",
+        "default": false,
+        "description": "Display in HOME folder"
+      },
+      {
+        "name": "fetch_version",
+        "type": "boolean",
+        "default": true,
+        "description": "Fetch Zig version"
+      },
+      {
+        "name": "cache_duration",
+        "type": "string",
+        "default": "none",
+        "description": "Cache duration (e.g., \"5m\", \"1h\")"
+      },
+      {
+        "name": "missing_command_text",
+        "type": "string",
+        "default": "",
+        "description": "Text when command is missing"
+      },
+      {
+        "name": "display_mode",
+        "type": "enum",
+        "default": "context",
+        "description": "When to display segment",
+        "values": [
+          "always",
+          "files",
+          "context"
+        ]
+      },
+      {
+        "name": "version_url_template",
+        "type": "string",
+        "default": "",
+        "description": "Template for version URL"
       }
     ]
   }

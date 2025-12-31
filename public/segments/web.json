@@ -24,6 +24,38 @@
         "type": "string",
         "description": "The recipe being brewed"
       }
+    ],
+    "options": [
+      {
+        "name": "user_id",
+        "type": "string",
+        "default": "",
+        "description": "Brewfather user ID"
+      },
+      {
+        "name": "api_key",
+        "type": "string",
+        "default": "",
+        "description": "Brewfather API key"
+      },
+      {
+        "name": "batch_id",
+        "type": "string",
+        "default": "",
+        "description": "Specific batch ID to display"
+      },
+      {
+        "name": "http_timeout",
+        "type": "number",
+        "default": 20,
+        "description": "HTTP timeout in milliseconds"
+      },
+      {
+        "name": "cache_timeout",
+        "type": "number",
+        "default": 10,
+        "description": "Cache timeout in minutes"
+      }
     ]
   },
   {
@@ -46,6 +78,26 @@
         "type": "string",
         "description": "icon representation of trend"
       }
+    ],
+    "options": [
+      {
+        "name": "url",
+        "type": "string",
+        "default": "https://api.carbonintensity.org.uk/regional",
+        "description": "Carbon intensity API URL"
+      },
+      {
+        "name": "http_timeout",
+        "type": "number",
+        "default": 20,
+        "description": "HTTP timeout in milliseconds"
+      },
+      {
+        "name": "cache_timeout",
+        "type": "number",
+        "default": 10,
+        "description": "Cache timeout in minutes"
+      }
     ]
   },
   {
@@ -63,6 +115,32 @@
         "type": "object",
         "description": "the JSON response body"
       }
+    ],
+    "options": [
+      {
+        "name": "url",
+        "type": "string",
+        "default": "",
+        "description": "HTTP endpoint URL"
+      },
+      {
+        "name": "headers",
+        "type": "object",
+        "default": {},
+        "description": "HTTP request headers"
+      },
+      {
+        "name": "http_timeout",
+        "type": "number",
+        "default": 20,
+        "description": "HTTP timeout in milliseconds"
+      },
+      {
+        "name": "cache_timeout",
+        "type": "number",
+        "default": 10,
+        "description": "Cache timeout in minutes"
+      }
     ]
   },
   {
@@ -79,6 +157,26 @@
         "name": ".IP",
         "type": "string",
         "description": "Your external IP address"
+      }
+    ],
+    "options": [
+      {
+        "name": "url",
+        "type": "string",
+        "default": "https://api.ipify.org",
+        "description": "IP lookup service URL"
+      },
+      {
+        "name": "http_timeout",
+        "type": "number",
+        "default": 20,
+        "description": "HTTP timeout in milliseconds"
+      },
+      {
+        "name": "cache_timeout",
+        "type": "number",
+        "default": 10,
+        "description": "Cache timeout in minutes"
       }
     ]
   },
@@ -101,6 +199,32 @@
         "name": ".CumulativeTotal.Text",
         "type": "string",
         "description": "human readable tracked time"
+      }
+    ],
+    "options": [
+      {
+        "name": "url",
+        "type": "string",
+        "default": "https://wakatime.com/api/v1/users/current/summaries",
+        "description": "WakaTime API URL"
+      },
+      {
+        "name": "api_key",
+        "type": "string",
+        "default": "",
+        "description": "WakaTime API key"
+      },
+      {
+        "name": "http_timeout",
+        "type": "number",
+        "default": 20,
+        "description": "HTTP timeout in milliseconds"
+      },
+      {
+        "name": "cache_timeout",
+        "type": "number",
+        "default": 10,
+        "description": "Cache timeout in minutes"
       }
     ]
   },
@@ -129,6 +253,43 @@
         "type": "string",
         "description": "the current unit icon"
       }
+    ],
+    "options": [
+      {
+        "name": "apikey",
+        "type": "string",
+        "default": "",
+        "description": "OpenWeatherMap API key"
+      },
+      {
+        "name": "location",
+        "type": "string",
+        "default": "",
+        "description": "Location (city name or coordinates)"
+      },
+      {
+        "name": "units",
+        "type": "enum",
+        "default": "standard",
+        "description": "Temperature units",
+        "values": [
+          "standard",
+          "metric",
+          "imperial"
+        ]
+      },
+      {
+        "name": "http_timeout",
+        "type": "number",
+        "default": 20,
+        "description": "HTTP timeout in milliseconds"
+      },
+      {
+        "name": "cache_timeout",
+        "type": "number",
+        "default": 10,
+        "description": "Cache timeout in minutes"
+      }
     ]
   },
   {
@@ -145,6 +306,26 @@
         "name": ".Value",
         "type": "string",
         "description": "the registry value"
+      }
+    ],
+    "options": [
+      {
+        "name": "path",
+        "type": "string",
+        "default": "",
+        "description": "Windows registry path"
+      },
+      {
+        "name": "key",
+        "type": "string",
+        "default": "",
+        "description": "Registry key name"
+      },
+      {
+        "name": "fallback",
+        "type": "string",
+        "default": "",
+        "description": "Fallback value if key not found"
       }
     ]
   }

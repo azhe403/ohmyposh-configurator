@@ -19,6 +19,14 @@
         "type": "boolean",
         "description": "if the status contains changes"
       }
+    ],
+    "options": [
+      {
+        "name": "native_fallback",
+        "type": "boolean",
+        "default": false,
+        "description": "Fallback to native fossil executable in WSL2"
+      }
     ]
   },
   {
@@ -56,6 +64,228 @@
         "type": "string",
         "description": "the current branch context"
       }
+    ],
+    "options": [
+      {
+        "name": "fetch_status",
+        "type": "boolean",
+        "default": true,
+        "description": "Fetch the local changes"
+      },
+      {
+        "name": "fetch_upstream_icon",
+        "type": "boolean",
+        "default": false,
+        "description": "Fetch upstream icon"
+      },
+      {
+        "name": "fetch_bare_info",
+        "type": "boolean",
+        "default": false,
+        "description": "Fetch bare repository info"
+      },
+      {
+        "name": "fetch_worktree_count",
+        "type": "boolean",
+        "default": false,
+        "description": "Fetch worktree count"
+      },
+      {
+        "name": "untracked_modes",
+        "type": "object",
+        "default": {},
+        "description": "Map of repo paths to untracked file modes"
+      },
+      {
+        "name": "ignore_submodules",
+        "type": "object",
+        "default": {},
+        "description": "Map of repo paths to ignore submodules settings"
+      },
+      {
+        "name": "native_fallback",
+        "type": "boolean",
+        "default": false,
+        "description": "Use native git when libgit2 fails"
+      },
+      {
+        "name": "branch_max_length",
+        "type": "number",
+        "default": 0,
+        "description": "Maximum length of branch name"
+      },
+      {
+        "name": "branch_gone_icon",
+        "type": "string",
+        "default": "≢",
+        "description": "Icon for gone upstream branch"
+      },
+      {
+        "name": "branch_identical_icon",
+        "type": "string",
+        "default": "≡",
+        "description": "Icon when local and remote are identical"
+      },
+      {
+        "name": "branch_ahead_icon",
+        "type": "string",
+        "default": "↑",
+        "description": "Icon for commits ahead of remote"
+      },
+      {
+        "name": "branch_behind_icon",
+        "type": "string",
+        "default": "↓",
+        "description": "Icon for commits behind remote"
+      },
+      {
+        "name": "cherry_pick_icon",
+        "type": "string",
+        "default": "",
+        "description": "Icon for cherry-pick state"
+      },
+      {
+        "name": "commit_icon",
+        "type": "string",
+        "default": "",
+        "description": "Icon for commit reference"
+      },
+      {
+        "name": "merge_icon",
+        "type": "string",
+        "default": "",
+        "description": "Icon for merge state"
+      },
+      {
+        "name": "no_commits_icon",
+        "type": "string",
+        "default": "",
+        "description": "Icon when repository has no commits"
+      },
+      {
+        "name": "rebase_icon",
+        "type": "string",
+        "default": "",
+        "description": "Icon for rebase state"
+      },
+      {
+        "name": "revert_icon",
+        "type": "string",
+        "default": "",
+        "description": "Icon for revert state"
+      },
+      {
+        "name": "tag_icon",
+        "type": "string",
+        "default": "笠",
+        "description": "Icon for tag reference"
+      },
+      {
+        "name": "fetch_push_status",
+        "type": "boolean",
+        "default": false,
+        "description": "Fetch push-remote ahead/behind information (requires fetch_status)"
+      },
+      {
+        "name": "fetch_user",
+        "type": "boolean",
+        "default": false,
+        "description": "Fetch the current configured user for the repository"
+      },
+      {
+        "name": "ignore_status",
+        "type": "array",
+        "default": [],
+        "description": "Do not fetch status for these repos"
+      },
+      {
+        "name": "source",
+        "type": "enum",
+        "default": "cli",
+        "description": "How to fetch git information",
+        "values": [
+          "cli",
+          "pwsh"
+        ]
+      },
+      {
+        "name": "branch_icon",
+        "type": "string",
+        "default": "",
+        "description": "Icon to use in front of git branch name"
+      },
+      {
+        "name": "github_icon",
+        "type": "string",
+        "default": "",
+        "description": "Icon when upstream is GitHub"
+      },
+      {
+        "name": "gitlab_icon",
+        "type": "string",
+        "default": "",
+        "description": "Icon when upstream is GitLab"
+      },
+      {
+        "name": "bitbucket_icon",
+        "type": "string",
+        "default": "",
+        "description": "Icon when upstream is Bitbucket"
+      },
+      {
+        "name": "azure_devops_icon",
+        "type": "string",
+        "default": "",
+        "description": "Icon when upstream is Azure DevOps"
+      },
+      {
+        "name": "codecommit_icon",
+        "type": "string",
+        "default": "",
+        "description": "Icon when upstream is AWS CodeCommit"
+      },
+      {
+        "name": "codeberg_icon",
+        "type": "string",
+        "default": "",
+        "description": "Icon when upstream is Codeberg"
+      },
+      {
+        "name": "git_icon",
+        "type": "string",
+        "default": "",
+        "description": "Icon when upstream is unknown"
+      },
+      {
+        "name": "mapped_branches",
+        "type": "object",
+        "default": {},
+        "description": "Custom glyphs for specific branches"
+      },
+      {
+        "name": "branch_template",
+        "type": "string",
+        "default": "",
+        "description": "Template to format branch name"
+      },
+      {
+        "name": "status_formats",
+        "type": "object",
+        "default": {},
+        "description": "Override how status items are displayed"
+      },
+      {
+        "name": "upstream_icons",
+        "type": "object",
+        "default": {},
+        "description": "Map of remote URL patterns to icons"
+      },
+      {
+        "name": "disable_with_jj",
+        "type": "boolean",
+        "default": false,
+        "description": "Disable in Jujutsu collocated repository"
+      }
     ]
   },
   {
@@ -83,6 +313,14 @@
         "type": "string",
         "description": "patch number"
       }
+    ],
+    "options": [
+      {
+        "name": "home_enabled",
+        "type": "boolean",
+        "default": false,
+        "description": "Display in HOME folder"
+      }
     ]
   },
   {
@@ -100,6 +338,50 @@
         "type": "string",
         "description": "the current change id"
       }
+    ],
+    "options": [
+      {
+        "name": "change_id_min_len",
+        "type": "number",
+        "default": 0,
+        "description": "ChangeID minimum length, even if shorter would be unique"
+      },
+      {
+        "name": "fetch_status",
+        "type": "boolean",
+        "default": false,
+        "description": "Fetch the local changes"
+      },
+      {
+        "name": "ignore_working_copy",
+        "type": "boolean",
+        "default": true,
+        "description": "Don't snapshot/update the working copy"
+      },
+      {
+        "name": "fetch_ahead_counter",
+        "type": "boolean",
+        "default": false,
+        "description": "Fetch counter for changes between working copy and closest bookmark"
+      },
+      {
+        "name": "ahead_icon",
+        "type": "string",
+        "default": "⇡",
+        "description": "Icon/character between bookmark and ahead counter"
+      },
+      {
+        "name": "native_fallback",
+        "type": "boolean",
+        "default": false,
+        "description": "Fallback to native jj executable in WSL2"
+      },
+      {
+        "name": "status_formats",
+        "type": "object",
+        "default": {},
+        "description": "Override how status items are displayed"
+      }
     ]
   },
   {
@@ -116,6 +398,26 @@
         "name": ".Branch",
         "type": "string",
         "description": "current branch"
+      }
+    ],
+    "options": [
+      {
+        "name": "fetch_status",
+        "type": "boolean",
+        "default": false,
+        "description": "Fetch the local changes"
+      },
+      {
+        "name": "native_fallback",
+        "type": "boolean",
+        "default": false,
+        "description": "Fallback to native hg executable in WSL2"
+      },
+      {
+        "name": "status_formats",
+        "type": "object",
+        "default": {},
+        "description": "Override how status items are displayed"
       }
     ]
   },
@@ -139,6 +441,50 @@
         "type": "bool",
         "description": "workspace is behind and changes are incoming"
       }
+    ],
+    "options": [
+      {
+        "name": "fetch_status",
+        "type": "boolean",
+        "default": false,
+        "description": "Fetch the local changes"
+      },
+      {
+        "name": "status_formats",
+        "type": "object",
+        "default": {},
+        "description": "Override how status items are displayed"
+      },
+      {
+        "name": "branch_icon",
+        "type": "string",
+        "default": "",
+        "description": "Icon to use in front of branch name"
+      },
+      {
+        "name": "mapped_branches",
+        "type": "object",
+        "default": {},
+        "description": "Custom glyphs for specific branches"
+      },
+      {
+        "name": "branch_template",
+        "type": "string",
+        "default": "",
+        "description": "Template to format branch name"
+      },
+      {
+        "name": "commit_icon",
+        "type": "string",
+        "default": "",
+        "description": "Icon/text to display before commit context"
+      },
+      {
+        "name": "tag_icon",
+        "type": "string",
+        "default": "",
+        "description": "Icon/text to display before tag context"
+      }
     ]
   },
   {
@@ -161,6 +507,26 @@
         "type": "string",
         "description": "the commit hash"
       }
+    ],
+    "options": [
+      {
+        "name": "fetch_status",
+        "type": "boolean",
+        "default": true,
+        "description": "Fetch the local changes"
+      },
+      {
+        "name": "native_fallback",
+        "type": "boolean",
+        "default": false,
+        "description": "Fallback to native sl executable in WSL2"
+      },
+      {
+        "name": "status_formats",
+        "type": "object",
+        "default": {},
+        "description": "Override how status items are displayed"
+      }
     ]
   },
   {
@@ -182,6 +548,26 @@
         "name": ".BaseRev",
         "type": "int",
         "description": "the currently checked out revision number"
+      }
+    ],
+    "options": [
+      {
+        "name": "fetch_status",
+        "type": "boolean",
+        "default": false,
+        "description": "Fetch the local changes"
+      },
+      {
+        "name": "native_fallback",
+        "type": "boolean",
+        "default": false,
+        "description": "Fallback to native svn executable in WSL2"
+      },
+      {
+        "name": "status_formats",
+        "type": "object",
+        "default": {},
+        "description": "Override how status items are displayed"
       }
     ]
   }

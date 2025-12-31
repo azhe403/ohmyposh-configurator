@@ -24,6 +24,32 @@
         "type": "string",
         "description": "error fetching battery information"
       }
+    ],
+    "options": [
+      {
+        "name": "display_charging",
+        "type": "boolean",
+        "default": true,
+        "description": "Display battery when charging"
+      },
+      {
+        "name": "charging_icon",
+        "type": "string",
+        "default": "",
+        "description": "Icon for charging state"
+      },
+      {
+        "name": "discharging_icon",
+        "type": "string",
+        "default": "",
+        "description": "Icon for discharging state"
+      },
+      {
+        "name": "charged_icon",
+        "type": "string",
+        "default": "",
+        "description": "Icon for fully charged state"
+      }
     ]
   },
   {
@@ -45,6 +71,21 @@
         "name": ".Name",
         "type": "string",
         "description": "the name of the connection"
+      }
+    ],
+    "options": [
+      {
+        "name": "type",
+        "type": "enum",
+        "default": "wifi",
+        "description": "Connection type to display",
+        "values": [
+          "wifi",
+          "ethernet",
+          "bluetooth",
+          "cellular",
+          "wifi|ethernet"
+        ]
       }
     ]
   },
@@ -68,6 +109,34 @@
         "type": "string",
         "description": "the formatted value"
       }
+    ],
+    "options": [
+      {
+        "name": "threshold",
+        "type": "number",
+        "default": 500,
+        "description": "Minimum duration to display (milliseconds)"
+      },
+      {
+        "name": "style",
+        "type": "enum",
+        "default": "austin",
+        "values": [
+          "austin",
+          "roundrock",
+          "dallas",
+          "galveston",
+          "houston",
+          "luck"
+        ],
+        "description": "Format style for time display"
+      },
+      {
+        "name": "always_enabled",
+        "type": "boolean",
+        "default": false,
+        "description": "Always display even if threshold not met"
+      }
     ]
   },
   {
@@ -84,6 +153,110 @@
         "name": ".Icon",
         "type": "string",
         "description": "the OS icon"
+      }
+    ],
+    "options": [
+      {
+        "name": "display_distro_name",
+        "type": "boolean",
+        "default": false,
+        "description": "Display distro name instead of icon for Linux/WSL"
+      },
+      {
+        "name": "macos",
+        "type": "string",
+        "default": "",
+        "description": "String to use for macOS"
+      },
+      {
+        "name": "linux",
+        "type": "string",
+        "default": "",
+        "description": "Icon to use for Linux"
+      },
+      {
+        "name": "windows",
+        "type": "string",
+        "default": "",
+        "description": "Icon to use for Windows"
+      },
+      {
+        "name": "alpine",
+        "type": "string",
+        "default": "",
+        "description": "Icon for Alpine Linux"
+      },
+      {
+        "name": "arch",
+        "type": "string",
+        "default": "",
+        "description": "Icon for Arch Linux"
+      },
+      {
+        "name": "centos",
+        "type": "string",
+        "default": "",
+        "description": "Icon for CentOS"
+      },
+      {
+        "name": "debian",
+        "type": "string",
+        "default": "",
+        "description": "Icon for Debian"
+      },
+      {
+        "name": "fedora",
+        "type": "string",
+        "default": "",
+        "description": "Icon for Fedora"
+      },
+      {
+        "name": "ubuntu",
+        "type": "string",
+        "default": "",
+        "description": "Icon for Ubuntu"
+      },
+      {
+        "name": "manjaro",
+        "type": "string",
+        "default": "",
+        "description": "Icon for Manjaro Linux"
+      },
+      {
+        "name": "mint",
+        "type": "string",
+        "default": "",
+        "description": "Icon for Linux Mint"
+      },
+      {
+        "name": "opensuse",
+        "type": "string",
+        "default": "",
+        "description": "Icon for openSUSE"
+      },
+      {
+        "name": "raspbian",
+        "type": "string",
+        "default": "",
+        "description": "Icon for Raspberry Pi OS"
+      },
+      {
+        "name": "redhat",
+        "type": "string",
+        "default": "",
+        "description": "Icon for Red Hat Enterprise Linux"
+      },
+      {
+        "name": "gentoo",
+        "type": "string",
+        "default": "",
+        "description": "Icon for Gentoo Linux"
+      },
+      {
+        "name": "nixos",
+        "type": "string",
+        "default": "",
+        "description": "Icon for NixOS"
       }
     ]
   },
@@ -112,6 +285,159 @@
         "type": "boolean",
         "description": "is the directory writable"
       }
+    ],
+    "options": [
+      {
+        "name": "style",
+        "type": "enum",
+        "default": "folder",
+        "description": "How to display the current path",
+        "values": [
+          "folder",
+          "full",
+          "agnoster",
+          "agnoster_full",
+          "agnoster_short",
+          "agnoster_left",
+          "mixed",
+          "letter",
+          "unique",
+          "powerlevel",
+          "fish"
+        ]
+      },
+      {
+        "name": "folder_separator_icon",
+        "type": "string",
+        "default": "/",
+        "description": "The symbol to use as a separator between folders"
+      },
+      {
+        "name": "folder_separator_template",
+        "type": "string",
+        "default": "",
+        "description": "The template to use as a separator between folders"
+      },
+      {
+        "name": "home_icon",
+        "type": "string",
+        "default": "~",
+        "description": "The icon to display when at $HOME"
+      },
+      {
+        "name": "folder_icon",
+        "type": "string",
+        "default": "..",
+        "description": "The icon to use as a folder indication"
+      },
+      {
+        "name": "windows_registry_icon",
+        "type": "string",
+        "default": "",
+        "description": "The icon to display when in the Windows registry"
+      },
+      {
+        "name": "mixed_threshold",
+        "type": "number",
+        "default": 4,
+        "description": "Maximum length of a path segment for Mixed style"
+      },
+      {
+        "name": "max_depth",
+        "type": "number",
+        "default": 1,
+        "description": "Maximum path depth to display before shortening (agnoster_short)"
+      },
+      {
+        "name": "max_width",
+        "type": "number",
+        "default": 0,
+        "description": "Maximum path length to display (powerlevel/agnoster)"
+      },
+      {
+        "name": "hide_root_location",
+        "type": "boolean",
+        "default": false,
+        "description": "Hides the root location if it doesn't fit (agnoster_short)"
+      },
+      {
+        "name": "cycle",
+        "type": "array",
+        "default": [],
+        "description": "List of color overrides to cycle through for path folders"
+      },
+      {
+        "name": "cycle_folder_separator",
+        "type": "boolean",
+        "default": false,
+        "description": "Colorize the folder_separator_icon when using cycle"
+      },
+      {
+        "name": "folder_format",
+        "type": "string",
+        "default": "%s",
+        "description": "Format to use on individual path folders"
+      },
+      {
+        "name": "edge_format",
+        "type": "string",
+        "default": "%s",
+        "description": "Format for first and last folder"
+      },
+      {
+        "name": "left_format",
+        "type": "string",
+        "default": "%s",
+        "description": "Format for first folder (defaults to edge_format)"
+      },
+      {
+        "name": "right_format",
+        "type": "string",
+        "default": "%s",
+        "description": "Format for last folder (defaults to edge_format)"
+      },
+      {
+        "name": "gitdir_format",
+        "type": "string",
+        "default": "",
+        "description": "Format for git root directory"
+      },
+      {
+        "name": "display_cygpath",
+        "type": "boolean",
+        "default": false,
+        "description": "Display Cygwin style path"
+      },
+      {
+        "name": "display_root",
+        "type": "boolean",
+        "default": false,
+        "description": "Display the root / on Unix systems"
+      },
+      {
+        "name": "dir_length",
+        "type": "number",
+        "default": 1,
+        "description": "Length of directory name to display (fish style)"
+      },
+      {
+        "name": "full_length_dirs",
+        "type": "number",
+        "default": 1,
+        "description": "Number of full length directory names (fish style)"
+      },
+      {
+        "name": "mapped_locations",
+        "type": "object",
+        "default": {},
+        "description": "Custom glyphs/text for specific paths"
+      },
+      {
+        "name": "mapped_locations_enabled",
+        "type": "boolean",
+        "default": true,
+        "description": "Replace known locations in the path"
+      }
     ]
   },
   {
@@ -138,6 +464,44 @@
         "name": ".Type",
         "type": "string",
         "description": "The type of project"
+      }
+    ],
+    "options": [
+      {
+        "name": "always_enabled",
+        "type": "boolean",
+        "default": false,
+        "description": "Always show the segment"
+      },
+      {
+        "name": "node_files",
+        "type": "array",
+        "default": [],
+        "description": "Override Node.js project files to validate"
+      },
+      {
+        "name": "deno_files",
+        "type": "array",
+        "default": [],
+        "description": "Override Deno project files to validate"
+      },
+      {
+        "name": "cargo_files",
+        "type": "array",
+        "default": [],
+        "description": "Override Cargo project files to validate"
+      },
+      {
+        "name": "python_files",
+        "type": "array",
+        "default": [],
+        "description": "Override Python project files to validate"
+      },
+      {
+        "name": "dotnet_files",
+        "type": "array",
+        "default": [],
+        "description": "Override .NET project files to validate"
       }
     ]
   },
@@ -177,6 +541,38 @@
         "type": "boolean",
         "description": "active SSH session or not"
       }
+    ],
+    "options": [
+      {
+        "name": "ssh_icon",
+        "type": "string",
+        "default": "📡",
+        "description": "Icon for SSH connections"
+      },
+      {
+        "name": "user_info_separator",
+        "type": "string",
+        "default": "@",
+        "description": "Separator between user and host"
+      },
+      {
+        "name": "display_host",
+        "type": "boolean",
+        "default": true,
+        "description": "Display hostname"
+      },
+      {
+        "name": "display_user",
+        "type": "boolean",
+        "default": true,
+        "description": "Display username"
+      },
+      {
+        "name": "display_default",
+        "type": "boolean",
+        "default": true,
+        "description": "Display segment even with default user"
+      }
     ]
   },
   {
@@ -198,6 +594,14 @@
         "name": ".Version",
         "type": "string",
         "description": "the shell version"
+      }
+    ],
+    "options": [
+      {
+        "name": "mapped_shell_names",
+        "type": "object",
+        "default": {},
+        "description": "Custom glyph/text for specific shell names (case-insensitive)"
       }
     ]
   },
@@ -226,6 +630,26 @@
         "type": "boolean",
         "description": "true if command has an error"
       }
+    ],
+    "options": [
+      {
+        "name": "always_enabled",
+        "type": "boolean",
+        "default": false,
+        "description": "Always show the status"
+      },
+      {
+        "name": "status_template",
+        "type": "string",
+        "default": "{{ .Code }}",
+        "description": "Template used to render individual status code"
+      },
+      {
+        "name": "status_separator",
+        "type": "string",
+        "default": "|",
+        "description": "Used to separate multiple statuses when $PIPESTATUS is available"
+      }
     ]
   },
   {
@@ -247,6 +671,14 @@
         "name": ".SwapPercentUsed",
         "type": "float64",
         "description": "percentage of swap memory in usage"
+      }
+    ],
+    "options": [
+      {
+        "name": "precision",
+        "type": "number",
+        "default": 2,
+        "description": "Precision used for float values"
       }
     ]
   },
@@ -281,6 +713,14 @@
         "type": "string",
         "description": "The time format"
       }
+    ],
+    "options": [
+      {
+        "name": "time_format",
+        "type": "string",
+        "default": "15:04:05",
+        "description": "Format string for time display (Go time format)"
+      }
     ]
   },
   {
@@ -302,6 +742,14 @@
         "name": ".Latest",
         "type": "string",
         "description": "the latest available version number"
+      }
+    ],
+    "options": [
+      {
+        "name": "cache_duration",
+        "type": "string",
+        "default": "168h",
+        "description": "Cache duration for update check (e.g., \"24h\", \"7d\")"
       }
     ]
   }

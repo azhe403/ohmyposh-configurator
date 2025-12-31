@@ -29,6 +29,32 @@
         "type": "string",
         "description": "icon (based on status)"
       }
+    ],
+    "options": [
+      {
+        "name": "api_key",
+        "type": "string",
+        "default": "",
+        "description": "Last.fm API key"
+      },
+      {
+        "name": "username",
+        "type": "string",
+        "default": "",
+        "description": "Last.fm username"
+      },
+      {
+        "name": "http_timeout",
+        "type": "number",
+        "default": 20,
+        "description": "HTTP timeout in milliseconds"
+      },
+      {
+        "name": "cache_timeout",
+        "type": "number",
+        "default": 10,
+        "description": "Cache timeout in minutes"
+      }
     ]
   },
   {
@@ -61,6 +87,56 @@
         "type": "string",
         "description": "icon (based on status)"
       }
+    ],
+    "options": [
+      {
+        "name": "client_id",
+        "type": "string",
+        "default": "",
+        "description": "Spotify client ID"
+      },
+      {
+        "name": "client_secret",
+        "type": "string",
+        "default": "",
+        "description": "Spotify client secret"
+      },
+      {
+        "name": "refresh_token",
+        "type": "string",
+        "default": "",
+        "description": "Spotify refresh token"
+      },
+      {
+        "name": "http_timeout",
+        "type": "number",
+        "default": 20,
+        "description": "HTTP timeout in milliseconds"
+      },
+      {
+        "name": "cache_timeout",
+        "type": "number",
+        "default": 10,
+        "description": "Cache timeout in minutes"
+      },
+      {
+        "name": "playing_icon",
+        "type": "string",
+        "default": "",
+        "description": "Icon when playing"
+      },
+      {
+        "name": "paused_icon",
+        "type": "string",
+        "default": "",
+        "description": "Icon when paused"
+      },
+      {
+        "name": "stopped_icon",
+        "type": "string",
+        "default": "",
+        "description": "Icon when stopped"
+      }
     ]
   },
   {
@@ -92,6 +168,38 @@
         "name": ".Icon",
         "type": "string",
         "description": "icon (based on status)"
+      }
+    ],
+    "options": [
+      {
+        "name": "api_url",
+        "type": "string",
+        "default": "",
+        "description": "YouTube Music Desktop API URL"
+      },
+      {
+        "name": "http_timeout",
+        "type": "number",
+        "default": 20,
+        "description": "HTTP timeout in milliseconds"
+      },
+      {
+        "name": "playing_icon",
+        "type": "string",
+        "default": "",
+        "description": "Icon when playing"
+      },
+      {
+        "name": "paused_icon",
+        "type": "string",
+        "default": "",
+        "description": "Icon when paused"
+      },
+      {
+        "name": "stopped_icon",
+        "type": "string",
+        "default": "",
+        "description": "Icon when stopped"
       }
     ]
   }

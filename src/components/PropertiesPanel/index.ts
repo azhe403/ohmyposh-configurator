@@ -1,1 +1,9 @@
 export { PropertiesPanel } from './PropertiesPanel';
+export { GlobalSettings } from './GlobalSettings';
+export { BlockProperties } from './BlockProperties';
+export { SegmentProperties } from './SegmentProperties';
+export { SegmentOptionsEditor } from './SegmentOptionsEditor';
+export { AvailableOptions } from './AvailableOptions';
+export { AvailableProperties } from './AvailableProperties';
+export { ColorInput } from './ColorInput';
+export { SymbolPicker } from './SymbolPicker';

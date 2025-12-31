@@ -46,17 +46,16 @@ interface CategorySectionProps {
   category: { id: string; name: string; icon: string };
   segments: SegmentMetadata[];
   onAdd: (segment: SegmentMetadata) => void;
-  defaultExpanded?: boolean;
+  isExpanded: boolean;
+  onToggle: () => void;
 }
 
-function CategorySection({ category, segments, onAdd, defaultExpanded = false }: CategorySectionProps) {
-  const [isExpanded, setIsExpanded] = useState(defaultExpanded);
-
+function CategorySection({ category, segments, onAdd, isExpanded, onToggle }: CategorySectionProps) {
   return (
     <div className="mb-1">
       <button
         className="flex items-center gap-2 w-full px-2 py-1.5 text-left hover:bg-[#1a1a2e] rounded transition-colors"
-        onClick={() => setIsExpanded(!isExpanded)}
+        onClick={onToggle}
       >
         {isExpanded ? (
           <NerdIcon icon="ui-chevron-down" size={16} className="text-gray-400" />
@@ -83,6 +82,7 @@ export function SegmentPicker() {
   const [allSegments, setAllSegments] = useState<SegmentMetadata[]>([]);
   const [segmentsByCategory, setSegmentsByCategory] = useState<Record<string, SegmentMetadata[]>>({});
   const [isLoading, setIsLoading] = useState(true);
+  const [expandedCategories, setExpandedCategories] = useState<Set<string>>(new Set());
   const config = useConfigStore((state) => state.config);
   const selectedBlockId = useConfigStore((state) => state.selectedBlockId);
   const addSegment = useConfigStore((state) => state.addSegment);
@@ -167,10 +167,53 @@ export function SegmentPicker() {
     addSegment(targetBlock.id, newSegment);
   };
 
+  const toggleCategory = (categoryId: string) => {
+    setExpandedCategories((prev) => {
+      const next = new Set(prev);
+      if (next.has(categoryId)) {
+        next.delete(categoryId);
+      } else {
+        next.add(categoryId);
+      }
+      return next;
+    });
+  };
+
+  const expandAll = () => {
+    setExpandedCategories(new Set(segmentCategories.map((c) => c.id)));
+  };
+
+  const collapseAll = () => {
+    setExpandedCategories(new Set());
+  };
+
+  const allExpanded = segmentCategories.length > 0 && expandedCategories.size === segmentCategories.length;
+  const allCollapsed = expandedCategories.size === 0;
+
   return (
     <div className="flex flex-col h-full bg-[#16213e] border-r border-[#0f3460]">
       <div className="p-3 border-b border-[#0f3460]">
-        <h2 className="text-sm font-semibold text-gray-200 mb-2">Segments</h2>
+        <div className="flex items-center justify-between mb-2">
+          <h2 className="text-sm font-semibold text-gray-200">Segments</h2>
+          <div className="flex items-center gap-1">
+            <button
+              onClick={expandAll}
+              className={`p-1 rounded transition-colors ${allExpanded ? 'text-gray-600' : 'text-gray-400 hover:text-gray-200 hover:bg-[#1a1a2e]'}`}
+              title="Expand all"
+              disabled={allExpanded}
+            >
+              <NerdIcon icon="ui-unfold-more" size={16} />
+            </button>
+            <button
+              onClick={collapseAll}
+              className={`p-1 rounded transition-colors ${allCollapsed ? 'text-gray-600' : 'text-gray-400 hover:text-gray-200 hover:bg-[#1a1a2e]'}`}
+              title="Collapse all"
+              disabled={allCollapsed}
+            >
+              <NerdIcon icon="ui-unfold-less" size={16} />
+            </button>
+          </div>
+        </div>
         <div className="relative">
           <NerdIcon icon="action-search" size={16} className="absolute left-2 top-1/2 -translate-y-1/2 text-gray-500" />
           <input
@@ -206,7 +249,8 @@ export function SegmentPicker() {
               category={category}
               segments={segmentsByCategory[category.id] || []}
               onAdd={handleAddSegment}
-              defaultExpanded={category.id === 'system' || category.id === 'scm'}
+              isExpanded={expandedCategories.has(category.id)}
+              onToggle={() => toggleCategory(category.id)}
             />
           ))
         )}

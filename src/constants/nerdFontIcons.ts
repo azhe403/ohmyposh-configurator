@@ -52,6 +52,8 @@ export const NERD_FONT_ICONS_MAP: Record<string, NerdFontIcon> = {
   'ui-monitor': { id: 'ui-monitor', name: 'Monitor', code: 'F108', char: '\uf108', category: 'UI & Navigation', aliases: ['monitor', 'Monitor', 'screen'], description: 'Display or monitor' },
   'ui-eye': { id: 'ui-eye', name: 'Eye', code: 'F06E', char: '\uf06e', category: 'UI & Navigation', aliases: ['eye', 'view'], description: 'View or visibility' },
   'ui-eye-off': { id: 'ui-eye-off', name: 'Eye Off', code: 'F070', char: '\uf070', category: 'UI & Navigation', aliases: ['eyeOff', 'hide'], description: 'Hide or invisible' },
+  'ui-unfold-more': { id: 'ui-unfold-more', name: 'Unfold More', code: 'F103', char: '\uf103', category: 'UI & Navigation', aliases: ['unfoldMore', 'expandAll', 'angle-double-down'], description: 'Expand all' },
+  'ui-unfold-less': { id: 'ui-unfold-less', name: 'Unfold Less', code: 'F102', char: '\uf102', category: 'UI & Navigation', aliases: ['unfoldLess', 'collapseAll', 'angle-double-up'], description: 'Collapse all' },
   'ui-users': { id: 'ui-users', name: 'Users', code: 'F0C0', char: '\uf0c0', category: 'UI & Navigation', aliases: ['users', 'group', 'community'], description: 'Users or community' },
   'ui-home': { id: 'ui-home', name: 'Home', code: 'F015', char: '\uf015', category: 'UI & Navigation', aliases: ['Home', 'house'], description: 'Home or dashboard' },
   'status-info': { id: 'status-info', name: 'Info', code: 'F129', char: '\uf129', category: 'UI & Navigation', aliases: ['info', 'information'], description: 'Information' },

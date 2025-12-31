@@ -328,7 +328,7 @@ export const segmentTypeOverrides: Record<string, Record<string, any>> = {
   },
   connection: { 
     Type: 'wifi',
-    Name: 'WiFi'
+    Name: 'SSID-Name'
   },
   shell: { 
     Name: 'pwsh',

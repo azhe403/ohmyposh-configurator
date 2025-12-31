@@ -133,16 +133,36 @@ export function SegmentPicker() {
     const targetBlock = config.blocks.find((b) => b.id === selectedBlockId) || config.blocks[0];
     if (!targetBlock) return;
 
+    // Get the last segment in the target block to inherit style/colors
+    const lastSegment = targetBlock.segments[targetBlock.segments.length - 1];
+
     const newSegment: Segment = {
       id: generateId(),
       type: metadata.type,
-      style: 'powerline',
-      powerline_symbol: '\ue0b0',
-      foreground: metadata.defaultForeground || '#ffffff',
-      background: metadata.defaultBackground || '#61AFEF',
+      style: lastSegment?.style || 'powerline',
+      powerline_symbol: lastSegment?.powerline_symbol || '\ue0b0',
       template: metadata.defaultTemplate || ` {{ .${metadata.name.replace(/\s/g, '')} }} `,
       options: metadata.defaultOptions,
     };
+
+    // Inherit colors from previous segment, preserving undefined if not set
+    if (lastSegment) {
+      // If previous segment has the property (even if undefined), use its value
+      if ('foreground' in lastSegment) {
+        newSegment.foreground = lastSegment.foreground;
+      } else {
+        newSegment.foreground = metadata.defaultForeground || '#ffffff';
+      }
+      if ('background' in lastSegment) {
+        newSegment.background = lastSegment.background;
+      } else {
+        newSegment.background = metadata.defaultBackground || '#61AFEF';
+      }
+    } else {
+      // No previous segment, use defaults
+      newSegment.foreground = metadata.defaultForeground || '#ffffff';
+      newSegment.background = metadata.defaultBackground || '#61AFEF';
+    }
 
     addSegment(targetBlock.id, newSegment);
   };

@@ -293,3 +293,183 @@ export const mockData: Record<string, any> = {
   
   // Helm
 };
+
+// Segment-type-specific overrides for properties that have different meanings per segment
+// This ensures each segment shows contextually appropriate preview data
+export const segmentTypeOverrides: Record<string, Record<string, any>> = {
+  // === MUSIC SEGMENTS ===
+  spotify: { 
+    Icon: '\uf001',           // Music note
+    Status: 'playing',
+    Artist: 'The Beatles',
+    Track: 'Come Together'
+  },
+  lastfm: { 
+    Icon: '\uf001',           // Music note
+    Status: 'playing',
+    Artist: 'Radiohead',
+    Track: 'Paranoid Android'
+  },
+  ytm: { 
+    Icon: '\uf001',           // Music note
+    Status: 'playing',
+    Artist: 'Daft Punk',
+    Track: 'One More Time'
+  },
+  
+  // === SYSTEM SEGMENTS ===
+  battery: { 
+    Icon: '\uf240',           // Battery icon
+    Percentage: 85
+  },
+  os: { 
+    Icon: '\ue70f',           // Windows icon
+    WSL: false
+  },
+  connection: { 
+    Type: 'wifi',
+    Name: 'WiFi'
+  },
+  shell: { 
+    Name: 'pwsh',
+    Version: '7.4.0'
+  },
+  session: {
+    UserName: 'user',
+    HostName: 'laptop'
+  },
+  project: { 
+    Name: 'my-app',
+    Version: '1.0.0',
+    Type: 'node'
+  },
+  
+  // === CLOUD SEGMENTS ===
+  az: { 
+    Name: 'My Subscription',
+    ID: 'sub-12345',
+    User: { Name: 'user@domain.com', Type: 'user' }
+  },
+  aws: {
+    Profile: 'default',
+    Region: 'us-east-1'
+  },
+  gcp: {
+    Project: 'my-project',
+    Account: 'user@example.com'
+  },
+  kubectl: { 
+    Context: 'production',
+    Namespace: 'default'
+  },
+  docker: {
+    Context: 'default'
+  },
+  terraform: {
+    WorkspaceName: 'production'
+  },
+  pulumi: {
+    Stack: 'dev'
+  },
+  argocd: {
+    Name: 'production',
+    Server: 'argocd.example.com',
+    User: 'admin'
+  },
+  
+  // === SCM SEGMENTS ===
+  git: {
+    RepoName: 'my-app',
+    HEAD: 'main',
+    BranchStatus: '↑2',
+    UpstreamIcon: '\uf09b'    // GitHub icon
+  },
+  
+  // === HEALTH SEGMENTS ===
+  nightscout: { 
+    Sgv: 120,
+    TrendIcon: '\uf062'       // Up arrow
+  },
+  strava: {
+    Ago: '5m',
+    Icon: '\uf70c'            // Running icon
+  },
+  withings: {
+    Steps: 8542,
+    Weight: 70.5
+  },
+  
+  // === WEB SEGMENTS ===
+  brewfather: { 
+    Status: 'Fermenting',
+    StatusIcon: '\uf0fc',     // Beer icon
+    Recipe: { Name: 'IPA' }
+  },
+  carbonintensity: {
+    Actual: { Index: 'low' },
+    TrendIcon: '\uf062'
+  },
+  owm: {
+    Weather: '\uf185',        // Sun icon
+    Temperature: 72,
+    UnitIcon: '°F'
+  },
+  ipify: {
+    IP: '192.168.1.100'
+  },
+  
+  // === CLI/LANGUAGE SEGMENTS ===
+  node: {
+    Full: 'v20.10.0',
+    PackageManagerIcon: '\ue71e',  // NPM icon
+    PackageManagerName: 'npm'
+  },
+  helm: {
+    Version: 'v3.13.3'
+  },
+  nbgv: {
+    Version: '3.6.133',
+    AssemblyVersion: '3.6.133.0'
+  },
+  'nix-shell': {
+    Type: 'devenv',
+    Name: 'devenv'
+  },
+  unity: {
+    UnityVersion: '2023.1.0',
+    CSharpVersion: '10.0'
+  },
+  umbraco: {
+    Version: '13.0.0',
+    Modern: true
+  },
+  claude: {
+    SessionID: 'session-123',
+    Model: { ID: 'claude-3.5-sonnet', DisplayName: 'Claude 3.5 Sonnet' },
+    FormattedCost: '$0.15'
+  },
+  copilot: {
+    Premium: { Percent: { Gauge: '████░' } }
+  },
+  
+  // === OTHER SEGMENTS ===
+  sitecore: {
+    EndpointName: 'Production'
+  },
+  firebase: {
+    Project: 'my-firebase-app'
+  },
+  bazel: {
+    Full: '7.0.0',
+    Icon: '\ue63a'
+  }
+};
+
+// Helper to get mock data with segment-specific overrides
+export function getMockDataForSegment(segmentType: string): Record<string, any> {
+  const overrides = segmentTypeOverrides[segmentType];
+  if (overrides) {
+    return { ...mockData, ...overrides };
+  }
+  return mockData;
+}

@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import type { Segment } from '../../types/ohmyposh';
-import { mockData } from './mockData';
+import { mockData, getMockDataForSegment } from './mockData';
 
 // Parse inline color codes from Oh My Posh templates
 // Format: <#hexcolor>text</> or </>text (to reset)
@@ -67,10 +67,13 @@ export function getPreviewText(
       return metadata?.previewText || metadata?.name || segment.type;
     }
     
+    // Get segment-specific mock data (handles .Icon differently for music vs battery vs os)
+    const segmentMockData = getMockDataForSegment(segment.type);
+    
     // Handle nested properties (any depth) like .Working.Changed or .Premium.Percent.Gauge
     result = result.replace(/\{\{\s*\.([.\w]+)\s*\}\}/g, (_match, path) => {
       const keys = path.split('.');
-      let value: any = mockData;
+      let value: any = segmentMockData;
       
       for (const key of keys) {
         if (value && typeof value === 'object' && key in value) {
@@ -86,7 +89,7 @@ export function getPreviewText(
     // Handle "if not" conditions - {{ if not .Error }}
     result = result.replace(/\{\{\s*if\s+not\s+\.([.\w]+)\s*\}\}(.*?)(\{\{\s*end\s*\}\}|$)/gs, (_match, prop, content) => {
       const keys = prop.split('.');
-      let value: any = mockData;
+      let value: any = segmentMockData;
       
       for (const key of keys) {
         if (value && typeof value === 'object' && key in value) {
@@ -104,7 +107,7 @@ export function getPreviewText(
     // Handle conditional statements with else - {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}
     result = result.replace(/\{\{\s*if\s+\.([.\w]+)\s*\}\}(.*?)\{\{\s*else\s*\}\}(.*?)\{\{\s*end\s*\}\}/gs, (_match, prop, trueContent, falseContent) => {
       const keys = prop.split('.');
-      let value: any = mockData;
+      let value: any = segmentMockData;
       
       for (const key of keys) {
         if (value && typeof value === 'object' && key in value) {
@@ -122,7 +125,7 @@ export function getPreviewText(
     // Handle simple conditional statements - {{ if .Venv }}{{ .Venv }} {{ end }}
     result = result.replace(/\{\{\s*if\s+\.([.\w]+)\s*\}\}(.*?)\{\{\s*end\s*\}\}/gs, (_match, prop, content) => {
       const keys = prop.split('.');
-      let value: any = mockData;
+      let value: any = segmentMockData;
       
       for (const key of keys) {
         if (value && typeof value === 'object' && key in value) {
@@ -141,7 +144,7 @@ export function getPreviewText(
     result = result.replace(/\{\{\s*if\s+and\s+\(\.([.\w]+)\)\s+\(\.([.\w]+)\)\s*\}\}(.*?)\{\{\s*end\s*\}\}/gs, (_match, prop1, prop2, content) => {
       const getValue = (prop: string) => {
         const keys = prop.split('.');
-        let value: any = mockData;
+        let value: any = segmentMockData;
         for (const key of keys) {
           if (value && typeof value === 'object' && key in value) {
             value = value[key];
@@ -160,7 +163,7 @@ export function getPreviewText(
     // Handle "ne" (not equal) conditions - {{ if ne .Status "stopped" }}
     result = result.replace(/\{\{\s*if\s+ne\s+\.([.\w]+)\s+"([^"]*)"\s*\}\}(.*?)\{\{\s*end\s*\}\}/gs, (_match, prop, compareValue, content) => {
       const keys = prop.split('.');
-      let value: any = mockData;
+      let value: any = segmentMockData;
       
       for (const key of keys) {
         if (value && typeof value === 'object' && key in value) {
@@ -180,13 +183,13 @@ export function getPreviewText(
     result = result.replace(/\{\{\s*end\s*\}\}/g, '');
     
     // Handle date formatting
-    result = result.replace(/\{\{\s*\.CurrentDate\s*\|\s*date\s+\.Format\s*\}\}/g, mockData.CurrentDate);
-    result = result.replace(/\{\{\s*\.CurrentDate\s*\|\s*date\s+"([^"]+)"\s*\}\}/g, mockData.CurrentDate);
+    result = result.replace(/\{\{\s*\.CurrentDate\s*\|\s*date\s+\.Format\s*\}\}/g, segmentMockData.CurrentDate);
+    result = result.replace(/\{\{\s*\.CurrentDate\s*\|\s*date\s+"([^"]+)"\s*\}\}/g, segmentMockData.CurrentDate);
     
     // Handle round function - {{ round .PhysicalPercentUsed .Precision }}
     result = result.replace(/\{\{\s*round\s+\.([.\w]+)(?:\s+\.Precision)?\s*\}\}/g, (_match, prop) => {
       const keys = prop.split('.');
-      let value: any = mockData;
+      let value: any = segmentMockData;
       
       for (const key of keys) {
         if (value && typeof value === 'object' && key in value) {
@@ -202,7 +205,7 @@ export function getPreviewText(
     // Handle secondsRound function for WakaTime - {{ secondsRound .CumulativeTotal.Seconds }}
     result = result.replace(/\{\{\s*secondsRound\s+\.([.\w]+)\s*\}\}/g, (_match, prop) => {
       const keys = prop.split('.');
-      let value: any = mockData;
+      let value: any = segmentMockData;
       
       for (const key of keys) {
         if (value && typeof value === 'object' && key in value) {

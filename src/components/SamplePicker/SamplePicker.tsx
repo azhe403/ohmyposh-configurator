@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
-import { Sparkles, X, Users, Lightbulb } from 'lucide-react';
+import { NerdIcon } from '../NerdIcon';
 import { useConfigStore } from '../../store/configStore';
-import { DynamicIcon } from '../DynamicIcon';
 import type { ConfigMetadata } from '../../utils/configLoader';
 import { loadAllConfigs, loadConfig } from '../../utils/configLoader';
 
@@ -48,7 +47,7 @@ export function SamplePicker() {
         className="flex items-center gap-2 px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg transition-colors"
         title="Load Sample Configuration"
       >
-        <Sparkles className="w-4 h-4" />
+        <NerdIcon icon="misc-star" size={16} />
         <span className="text-sm font-medium">Sample Configs</span>
       </button>
 
@@ -59,7 +58,7 @@ export function SamplePicker() {
             {/* Header */}
             <div className="flex items-center justify-between p-6 border-b border-gray-700">
               <div className="flex items-center gap-3">
-                <Sparkles className="w-6 h-6 text-purple-400" />
+                <NerdIcon icon="misc-star" size={24} className="text-purple-400" />
                 <div>
                   <h2 className="text-xl font-bold text-white">Theme Library</h2>
                   <p className="text-sm text-gray-400">
@@ -71,7 +70,7 @@ export function SamplePicker() {
                 onClick={() => setIsOpen(false)}
                 className="p-2 hover:bg-gray-700 rounded-lg transition-colors"
               >
-                <X className="w-5 h-5 text-gray-400" />
+                <NerdIcon icon="ui-close" size={20} className="text-gray-400" />
               </button>
             </div>
 
@@ -85,7 +84,7 @@ export function SamplePicker() {
                     : 'border-transparent text-gray-400 hover:text-gray-300'
                 }`}
               >
-                <Lightbulb size={16} />
+                <NerdIcon icon="misc-lightbulb" size={16} />
                 <span className="font-medium">Official Samples</span>
                 <span className="text-xs bg-gray-700 px-2 py-0.5 rounded-full">
                   {sampleConfigs.length}
@@ -99,7 +98,7 @@ export function SamplePicker() {
                     : 'border-transparent text-gray-400 hover:text-gray-300'
                 }`}
               >
-                <Users size={16} />
+                <NerdIcon icon="ui-users" size={16} />
                 <span className="font-medium">Community</span>
                 <span className="text-xs bg-gray-700 px-2 py-0.5 rounded-full">
                   {communityConfigs.length}
@@ -127,7 +126,7 @@ export function SamplePicker() {
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg transition-colors text-sm"
                     >
-                      <Users size={16} />
+                      <NerdIcon icon="ui-users" size={16} />
                       Learn How to Contribute
                     </a>
                   )}
@@ -142,7 +141,7 @@ export function SamplePicker() {
                     >
                       {/* Icon Badge */}
                       <div className="absolute -top-3 -right-3 transform group-hover:scale-110 transition-transform bg-purple-600 rounded-full p-2">
-                        <DynamicIcon name={config.icon} size={20} className="text-white" />
+                        <NerdIcon icon={config.icon} size={20} className="text-white" />
                       </div>
 
                       {/* Content */}

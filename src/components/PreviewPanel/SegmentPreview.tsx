@@ -1,6 +1,6 @@
 import type { Segment, SegmentStyle } from '../../types/ohmyposh';
 import { useSegmentMetadata } from '../../hooks/useSegmentMetadata';
-import { DynamicIcon } from '../DynamicIcon';
+import { NerdIcon } from '../NerdIcon';
 import { parseInlineColors, getPreviewText } from './templateUtils';
 
 const DEFAULT_POWERLINE_SYMBOL = '\ue0b0';
@@ -51,7 +51,7 @@ export function SegmentPreview({
           }}
           className="px-2 py-1 inline-flex items-center gap-1.5"
         >
-          {!useMockData && metadata?.icon && <DynamicIcon name={metadata.icon} size={14} />}
+          {!useMockData && metadata?.icon && <NerdIcon icon={metadata.icon} size={14} />}
           <span className="nerd-font-symbol whitespace-pre">{renderedText}</span>
         </span>
         {/* Powerline symbol - only show if current segment has background */}
@@ -99,7 +99,7 @@ export function SegmentPreview({
           }}
           className={`px-2 py-1 inline-flex items-center gap-1.5 ${leadingDiamond ? '-ml-[2px]' : ''} ${trailingDiamond ? '-mr-[2px]' : ''}`}
         >
-          {!useMockData && metadata?.icon && <DynamicIcon name={metadata.icon} size={14} />}
+          {!useMockData && metadata?.icon && <NerdIcon icon={metadata.icon} size={14} />}
           <span className="nerd-font-symbol whitespace-pre">{renderedText}</span>
         </span>
         {/* Trailing diamond - only show if explicitly set */}
@@ -128,7 +128,7 @@ export function SegmentPreview({
       }}
       className={`px-2 py-1 rounded inline-flex items-center gap-1.5 ${marginClass}`}
     >
-      {!useMockData && metadata?.icon && <DynamicIcon name={metadata.icon} size={14} />}
+      {!useMockData && metadata?.icon && <NerdIcon icon={metadata.icon} size={14} />}
       <span className="nerd-font-symbol whitespace-pre">{renderedText}</span>
     </span>
   );

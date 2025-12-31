@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Globe, Code } from 'lucide-react';
+import { NerdIcon } from '../NerdIcon';
 import { useConfigStore } from '../../store/configStore';
 import type { OhMyPoshConfig } from '../../types/ohmyposh';
 
@@ -19,7 +19,7 @@ export function GlobalSettings() {
         className="w-full flex items-center justify-between hover:text-white transition-colors"
       >
         <div className="flex items-center gap-2">
-          <Globe size={20} className="text-gray-400" />
+          <NerdIcon icon="ui-globe" size={20} className="text-gray-400" />
           <div className="text-left">
             <h3 className="text-sm font-semibold text-gray-200">Global Settings</h3>
             <p className="text-xs text-gray-500">Configuration-wide options</p>
@@ -33,7 +33,7 @@ export function GlobalSettings() {
           {/* Console Title Template */}
           <div>
             <div className="flex items-center gap-2 mb-2">
-              <Code size={14} className="text-gray-400" />
+              <NerdIcon icon="ui-code" size={14} className="text-gray-400" />
               <span className="text-xs font-medium text-gray-300">Console Title Template</span>
             </div>
             <textarea

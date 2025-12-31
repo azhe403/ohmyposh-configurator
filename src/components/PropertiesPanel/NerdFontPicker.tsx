@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { Search, Copy, Check } from 'lucide-react';
-import { NERD_FONT_ICONS, ICON_CATEGORIES, type IconCategory } from '../../constants/nerdFontIcons';
+import { NerdIcon } from '../NerdIcon';
+import { NERD_FONT_ICONS, getCategories } from '../../constants/nerdFontIcons';
+import type { NerdFontIcon } from '../../constants/nerdFontIcons';
 import { useClipboard } from '../../hooks/useClipboard';
 
 interface NerdFontPickerProps {
@@ -10,18 +11,21 @@ interface NerdFontPickerProps {
 export function NerdFontPicker({ onSelect }: NerdFontPickerProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState<IconCategory>('All');
+  const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const { copiedText, copyToClipboard } = useClipboard();
+  const categories = ['All', ...getCategories()];
 
   const filteredIcons = NERD_FONT_ICONS.filter((icon) => {
     const matchesSearch = 
       icon.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      icon.code.toLowerCase().includes(searchQuery.toLowerCase());
+      icon.id.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      icon.code.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      (icon.aliases?.some(alias => alias.toLowerCase().includes(searchQuery.toLowerCase())) || false);
     const matchesCategory = selectedCategory === 'All' || icon.category === selectedCategory;
     return matchesSearch && matchesCategory;
   });
 
-  const handleCopy = (icon: typeof NERD_FONT_ICONS[0]) => {
+  const handleCopy = (icon: NerdFontIcon) => {
     // Copy the unicode escape sequence (e.g., \ue0b0) instead of the character
     const unicodeEscape = `\\u${icon.code.toLowerCase()}`;
     copyToClipboard(unicodeEscape);
@@ -69,7 +73,7 @@ export function NerdFontPicker({ onSelect }: NerdFontPickerProps) {
                 
                 {/* Search */}
                 <div className="relative">
-                  <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" />
+                  <NerdIcon icon="action-search" size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" />
                   <input
                     type="text"
                     value={searchQuery}
@@ -81,7 +85,7 @@ export function NerdFontPicker({ onSelect }: NerdFontPickerProps) {
 
                 {/* Category Filter */}
                 <div className="flex flex-wrap gap-2">
-                  {ICON_CATEGORIES.map((category) => (
+                  {categories.map((category) => (
                     <button
                       key={category}
                       onClick={() => setSelectedCategory(category)}
@@ -102,7 +106,7 @@ export function NerdFontPicker({ onSelect }: NerdFontPickerProps) {
                 <div className="grid grid-cols-2 gap-3">
                   {filteredIcons.map((icon) => (
                     <button
-                      key={icon.code}
+                      key={icon.id}
                       onClick={() => handleCopy(icon)}
                       className="flex items-center gap-3 p-3 bg-[#1a1a2e] hover:bg-[#0f3460] border border-[#0f3460] rounded transition-colors group text-left"
                       title={`Click to copy: \\u${icon.code.toLowerCase()}`}
@@ -119,9 +123,9 @@ export function NerdFontPicker({ onSelect }: NerdFontPickerProps) {
                         </div>
                       </div>
                       {copiedText === `\\u${icon.code.toLowerCase()}` ? (
-                        <Check size={16} className="text-green-400 flex-shrink-0" />
+                        <NerdIcon icon="ui-check" size={16} className="text-green-400 flex-shrink-0" />
                       ) : (
-                        <Copy size={16} className="text-gray-500 group-hover:text-gray-300 flex-shrink-0" />
+                        <NerdIcon icon="action-copy" size={16} className="text-gray-500 group-hover:text-gray-300 flex-shrink-0" />
                       )}
                     </button>
                   ))}

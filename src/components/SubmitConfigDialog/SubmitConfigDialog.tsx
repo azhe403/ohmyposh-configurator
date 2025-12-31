@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { Share2, X, Github, Check, ExternalLink, ChevronDown } from 'lucide-react';
+import { NerdIcon } from '../NerdIcon';
+import { getCategories, getIconsByCategory as getIconsByCategoryFromLib } from '../../constants/nerdFontIcons';
 import { useConfigStore } from '../../store/configStore';
-import { DynamicIcon } from '../DynamicIcon';
 
 export function SubmitConfigDialog() {
   const [isOpen, setIsOpen] = useState(false);
@@ -9,23 +9,18 @@ export function SubmitConfigDialog() {
   const [description, setDescription] = useState('');
   const [author, setAuthor] = useState('');
   const [tags, setTags] = useState('');
-  const [icon, setIcon] = useState('Star');
+  const [icon, setIcon] = useState('misc-star');
   const [isIconPickerOpen, setIsIconPickerOpen] = useState(false);
   const [copiedConfig, setCopiedConfig] = useState(false);
   const [copiedManifest, setCopiedManifest] = useState(false);
   const config = useConfigStore((state) => state.config);
 
-  // Popular icons for Oh My Posh configurations
-  const popularIcons = [
-    'Star', 'Code2', 'Terminal', 'Zap', 'Sparkles', 'CloudCog', 'Rocket',
-    'GitBranch', 'Cpu', 'Heart', 'Flame', 'Crown', 'Shield', 'Trophy',
-    'Palette', 'Layers', 'Box', 'Circle', 'Square', 'Diamond', 'Hexagon',
-    'Coffee', 'Moon', 'Sun', 'Cloud', 'Database', 'Server', 'Globe',
-    'Lock', 'Unlock', 'Key', 'Gem', 'Music', 'Camera', 'Gamepad2',
-    'Wifi', 'Bluetooth', 'Battery', 'Lightbulb', 'Aperture', 'Target',
-    'Award', 'Medal', 'Flag', 'Bookmark', 'AlertCircle', 'CheckCircle',
-    'XCircle', 'Smile', 'Ghost', 'Anchor'
-  ];
+  // Get all icons organized by category
+  const categories = getCategories();
+  const iconsByCategory: Record<string, string[]> = {};
+  categories.forEach(cat => {
+    iconsByCategory[cat] = getIconsByCategoryFromLib(cat).map(icon => icon.id);
+  });
 
   const handleCopyConfig = () => {
     const configData = {
@@ -67,7 +62,7 @@ export function SubmitConfigDialog() {
         className="flex items-center gap-1.5 px-3 py-1.5 text-sm text-gray-300 hover:text-white bg-[#0f3460] rounded transition-colors"
         title="Submit your configuration to the community"
       >
-        <Share2 size={16} />
+        <NerdIcon icon="action-share" size={16} />
         <span>Share</span>
       </button>
 
@@ -78,7 +73,7 @@ export function SubmitConfigDialog() {
             <div className="flex items-center justify-between p-6 border-b border-gray-700">
               <div className="flex items-center gap-3">
                 <div className="p-2 bg-purple-600 rounded-lg">
-                  <Share2 className="w-5 h-5 text-white" />
+                  <NerdIcon icon="action-share" size={20} className="text-white" />
                 </div>
                 <div>
                   <h2 className="text-xl font-bold text-white">Share Your Configuration</h2>
@@ -91,7 +86,7 @@ export function SubmitConfigDialog() {
                 onClick={() => setIsOpen(false)}
                 className="p-2 hover:bg-gray-700 rounded-lg transition-colors"
               >
-                <X className="w-5 h-5 text-gray-400" />
+                <NerdIcon icon="ui-close" size={20} className="text-gray-400" />
               </button>
             </div>
 
@@ -155,32 +150,36 @@ export function SubmitConfigDialog() {
                     className="w-full px-3 py-2 bg-[#0f0f23] border border-gray-700 rounded-lg text-white hover:border-purple-500 focus:outline-none focus:border-purple-500 transition-colors flex items-center justify-between"
                   >
                     <div className="flex items-center gap-2">
-                      <DynamicIcon name={icon} size={18} />
+                      <NerdIcon icon={icon} size={18} />
                       <span>{icon}</span>
                     </div>
-                    <ChevronDown size={16} className="text-gray-400" />
+                    <NerdIcon icon="ui-chevron-down" size={16} className="text-gray-400" />
                   </button>
                   {isIconPickerOpen && (
-                    <div className="absolute z-10 w-full mt-1 bg-[#0f0f23] border border-gray-700 rounded-lg shadow-xl max-h-64 overflow-y-auto">
-                      <div className="grid grid-cols-4 gap-1 p-2">
-                        {popularIcons.map((iconName) => (
-                          <button
-                            key={iconName}
-                            type="button"
-                            onClick={() => {
-                              setIcon(iconName);
-                              setIsIconPickerOpen(false);
-                            }}
-                            className={`flex flex-col items-center gap-1 p-2 rounded hover:bg-gray-700 transition-colors ${
-                              icon === iconName ? 'bg-purple-600/20 border border-purple-500' : ''
-                            }`}
-                            title={iconName}
-                          >
-                            <DynamicIcon name={iconName} size={24} className="text-gray-300" />
-                            <span className="text-xs text-gray-400 truncate w-full text-center">
-                              {iconName}
-                            </span>
-                          </button>
+                    <div className="absolute z-10 w-full mt-1 bg-[#0f0f23] border border-gray-700 rounded-lg shadow-xl max-h-96 overflow-y-auto">
+                      <div className="p-3 space-y-4">
+                        {Object.entries(iconsByCategory).map(([category, icons]) => (
+                          <div key={category}>
+                            <h4 className="text-xs font-semibold text-gray-400 mb-2 px-1">{category}</h4>
+                            <div className="grid grid-cols-6 gap-1">
+                              {icons.map((iconName) => (
+                                <button
+                                  key={iconName}
+                                  type="button"
+                                  onClick={() => {
+                                    setIcon(iconName);
+                                    setIsIconPickerOpen(false);
+                                  }}
+                                  className={`flex items-center justify-center p-2 rounded hover:bg-gray-700 transition-colors ${
+                                    icon === iconName ? 'bg-purple-600/20 border border-purple-500' : ''
+                                  }`}
+                                  title={iconName}
+                                >
+                                  <NerdIcon icon={iconName} size={20} className="text-gray-300" />
+                                </button>
+                              ))}
+                            </div>
+                          </div>
                         ))}
                       </div>
                     </div>
@@ -233,7 +232,7 @@ export function SubmitConfigDialog() {
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-sm text-gray-400 hover:text-gray-300 transition-colors"
               >
-                <ExternalLink size={14} />
+                <NerdIcon icon="ui-external-link" size={14} />
                 View Contribution Guide
               </a>
               <div className="flex items-center justify-end gap-3">
@@ -250,12 +249,12 @@ export function SubmitConfigDialog() {
                 >
                   {copiedConfig ? (
                     <>
-                      <Check size={16} />
+                      <NerdIcon icon="ui-check" size={16} />
                       Copied!
                     </>
                   ) : (
                     <>
-                      <Github size={16} />
+                      <NerdIcon icon="vcs-github" size={16} />
                       Copy Configuration
                     </>
                   )}
@@ -267,12 +266,12 @@ export function SubmitConfigDialog() {
                 >
                   {copiedManifest ? (
                     <>
-                      <Check size={16} />
+                      <NerdIcon icon="ui-check" size={16} />
                       Copied!
                     </>
                   ) : (
                     <>
-                      <Github size={16} />
+                      <NerdIcon icon="vcs-github" size={16} />
                       Copy Manifest Entry
                     </>
                   )}

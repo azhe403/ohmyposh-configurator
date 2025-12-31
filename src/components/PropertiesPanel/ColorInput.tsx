@@ -14,7 +14,8 @@ export function ColorInput({ label, value, onChange, allowEmpty = false }: Color
           type="color"
           value={value || '#ffffff'}
           onChange={(e) => onChange(e.target.value)}
-          className="w-8 h-8 rounded cursor-pointer bg-transparent"
+          className="w-8 h-8 rounded cursor-pointer border border-[#0f3460]"
+          style={{ backgroundColor: 'transparent' }}
         />
         <input
           type="text"

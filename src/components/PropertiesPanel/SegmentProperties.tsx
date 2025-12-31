@@ -1,4 +1,4 @@
-import { Settings, Palette, Code, Sliders } from 'lucide-react';
+import { NerdIcon } from '../NerdIcon';
 import { useConfigStore, getSelectedSegment, findBlockForSegment } from '../../store/configStore';
 import { useSegmentMetadata } from '../../hooks/useSegmentMetadata';
 import { unicodeToEscapes, parseUnicodeEscapes } from '../../utils/unicode';
@@ -31,7 +31,7 @@ export function SegmentProperties() {
   if (!segment || !block) {
     return (
       <div className="p-4 text-center text-gray-500 text-sm">
-        <Settings size={32} className="mx-auto mb-2 opacity-50" />
+        <NerdIcon icon="tool-settings" size={32} className="mx-auto mb-2 opacity-50" />
         <p>Select a segment to edit its properties</p>
       </div>
     );
@@ -57,7 +57,7 @@ export function SegmentProperties() {
       {/* Style Section */}
       <div>
         <div className="flex items-center gap-2 mb-2">
-          <Sliders size={14} className="text-gray-400" />
+          <NerdIcon icon="sliders" size={14} className="text-gray-400" />
           <span className="text-xs font-medium text-gray-300">Style</span>
         </div>
         <select
@@ -107,7 +107,7 @@ export function SegmentProperties() {
       {/* Colors Section */}
       <div>
         <div className="flex items-center gap-2 mb-2">
-          <Palette size={14} className="text-gray-400" />
+          <NerdIcon icon="ui-palette" size={14} className="text-gray-400" />
           <span className="text-xs font-medium text-gray-300">Colors</span>
         </div>
         <div className="space-y-2">
@@ -128,7 +128,7 @@ export function SegmentProperties() {
       {/* Template Section */}
       <div>
         <div className="flex items-center gap-2 mb-2">
-          <Code size={14} className="text-gray-400" />
+          <NerdIcon icon="ui-code" size={14} className="text-gray-400" />
           <span className="text-xs font-medium text-gray-300">Template</span>
         </div>
         <textarea
@@ -168,7 +168,7 @@ export function SegmentProperties() {
       {metadata?.options && metadata.options.length > 0 && (
         <div>
           <div className="flex items-center gap-2 mb-2">
-            <Sliders size={14} className="text-gray-400" />
+            <NerdIcon icon="tool-sliders" size={14} className="text-gray-400" />
             <span className="text-xs font-medium text-gray-300">Options</span>
           </div>
           <SegmentOptionsEditor

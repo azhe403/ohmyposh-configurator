@@ -1,15 +1,15 @@
 import { useState, useRef } from 'react';
-import { Download, Copy, Check, FileJson, FileCode, Eye, EyeOff, Upload } from 'lucide-react';
+import { NerdIcon } from '../NerdIcon';
 import { useConfigStore } from '../../store/configStore';
 import { exportConfig, downloadConfig, copyToClipboard } from '../../utils/configExporter';
 import { importConfig } from '../../utils/configImporter';
 import { SubmitConfigDialog } from '../SubmitConfigDialog';
 import type { ExportFormat } from '../../types/ohmyposh';
 
-const formatOptions: { value: ExportFormat; label: string; icon: typeof FileJson }[] = [
-  { value: 'json', label: 'JSON', icon: FileJson },
-  { value: 'yaml', label: 'YAML', icon: FileCode },
-  { value: 'toml', label: 'TOML', icon: FileCode },
+const formatOptions: { value: ExportFormat; label: string; iconName: string }[] = [
+  { value: 'json', label: 'JSON', iconName: 'fileJson' },
+  { value: 'yaml', label: 'YAML', iconName: 'fileCode' },
+  { value: 'toml', label: 'TOML', iconName: 'fileCode' },
 ];
 
 export function ExportBar() {
@@ -105,7 +105,7 @@ export function ExportBar() {
             className="flex items-center gap-1.5 px-3 py-1.5 text-sm text-gray-300 hover:text-white bg-[#0f3460] rounded transition-colors"
             title="Import configuration from file"
           >
-            <Upload size={16} />
+            <NerdIcon icon="action-upload" size={16} />
             <span>Import</span>
           </button>
 
@@ -115,7 +115,7 @@ export function ExportBar() {
             onClick={() => setShowCode(!showCode)}
             className="flex items-center gap-1.5 px-3 py-1.5 text-sm text-gray-300 hover:text-white bg-[#0f3460] rounded transition-colors"
           >
-            {showCode ? <EyeOff size={16} /> : <Eye size={16} />}
+            {showCode ? <NerdIcon icon="ui-eye-off" size={16} /> : <NerdIcon icon="ui-eye" size={16} />}
             <span>{showCode ? 'Hide' : 'View'} Config</span>
           </button>
 
@@ -123,7 +123,7 @@ export function ExportBar() {
             onClick={handleCopy}
             className="flex items-center gap-1.5 px-3 py-1.5 text-sm text-gray-300 hover:text-white bg-[#0f3460] rounded transition-colors"
           >
-            {copied ? <Check size={16} className="text-green-400" /> : <Copy size={16} />}
+            {copied ? <NerdIcon icon="ui-check" size={16} className="text-green-400" /> : <NerdIcon icon="action-copy" size={16} />}
             <span>{copied ? 'Copied!' : 'Copy'}</span>
           </button>
 
@@ -131,7 +131,7 @@ export function ExportBar() {
             onClick={handleDownload}
             className="flex items-center gap-1.5 px-3 py-1.5 text-sm text-white bg-[#e94560] hover:bg-[#d63850] rounded transition-colors"
           >
-            <Download size={16} />
+            <NerdIcon icon="action-download" size={16} />
             <span>Download</span>
           </button>
         </div>

@@ -1,4 +1,4 @@
-import { Sun, Moon, FileCode, Sparkles } from 'lucide-react';
+import { NerdIcon } from '../NerdIcon';
 import { useConfigStore } from '../../store/configStore';
 import { BlockPreview } from './BlockPreview';
 
@@ -33,25 +33,25 @@ export function PreviewPanel() {
             <span className="text-xs text-gray-500">Mode:</span>
             <button
               onClick={() => setPreviewMode('preview')}
-              className={`p-1.5 rounded transition-colors ${
+              className={`px-2 py-1 rounded text-xs transition-colors ${
                 previewMode === 'preview'
                   ? 'bg-[#0f3460] text-white'
                   : 'text-gray-400 hover:text-white'
               }`}
               title="Preview Data - Show configured segment data"
             >
-              <FileCode size={14} />
+              Preview
             </button>
             <button
               onClick={() => setPreviewMode('mock')}
-              className={`p-1.5 rounded transition-colors ${
+              className={`px-2 py-1 rounded text-xs transition-colors ${
                 previewMode === 'mock'
                   ? 'bg-[#0f3460] text-white'
                   : 'text-gray-400 hover:text-white'
               }`}
               title="Mock Template - Show templates with realistic data"
             >
-              <Sparkles size={14} />
+              Mock
             </button>
           </div>
           
@@ -68,7 +68,7 @@ export function PreviewPanel() {
               title="Dark background"
               disabled={!!config.terminal_background}
             >
-              <Moon size={14} />
+              <NerdIcon icon="misc-moon" size={14} />
             </button>
             <button
               onClick={() => setPreviewBackground('light')}
@@ -80,7 +80,7 @@ export function PreviewPanel() {
               title="Light background"
               disabled={!!config.terminal_background}
             >
-              <Sun size={14} />
+              <NerdIcon icon="weather-sunny" size={14} />
             </button>
           </div>
         </div>

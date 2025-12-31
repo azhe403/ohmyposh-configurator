@@ -1,9 +1,8 @@
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
-import { X, GripVertical } from 'lucide-react';
+import { NerdIcon } from '../NerdIcon';
 import type { Segment } from '../../types/ohmyposh';
 import { useSegmentMetadata } from '../../hooks/useSegmentMetadata';
-import { DynamicIcon } from '../DynamicIcon';
 
 interface SegmentCardProps {
   segment: Segment;
@@ -41,11 +40,11 @@ export function SegmentCard({
         onSelect();
       }}
     >
-      <GripVertical size={14} className="opacity-50 cursor-grab" />
+      <NerdIcon icon="ui-grip-vertical" size={14} className="opacity-50 cursor-grab" />
       {metadata?.icon ? (
-        <DynamicIcon name={metadata.icon} size={14} className="opacity-90" />
+        <NerdIcon icon={metadata.icon} size={14} className="opacity-90" />
       ) : (
-        <DynamicIcon name="Package" size={14} className="opacity-90" />
+        <NerdIcon icon="file-package" size={14} className="opacity-90" />
       )}
       <span className="text-sm font-medium">{metadata?.name || segment.type}</span>
       <button
@@ -56,7 +55,7 @@ export function SegmentCard({
         className="ml-1 p-0.5 rounded hover:bg-black/20 transition-colors"
         title="Remove segment"
       >
-        <X size={12} />
+        <NerdIcon icon="ui-close" size={12} />
       </button>
     </div>
   );

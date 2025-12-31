@@ -27,7 +27,7 @@ Example config file structure:
 ```json
 {
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
-  "version": 2,
+  "version": 3,
   "final_space": true,
   "blocks": [
     {

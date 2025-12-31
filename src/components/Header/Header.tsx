@@ -1,4 +1,4 @@
-import { Github, Book, RotateCcw, ChevronDown } from 'lucide-react';
+import { NerdIcon } from '../NerdIcon';
 import { useConfigStore } from '../../store/configStore';
 import { SamplePicker } from '../SamplePicker';
 import { useRef, useState, useEffect } from 'react';
@@ -42,7 +42,7 @@ export function Header() {
           className="flex items-center gap-1.5 px-3 py-1.5 text-sm text-gray-300 hover:text-white hover:bg-[#0f3460] rounded transition-colors"
           title="Reset to default configuration"
         >
-          <RotateCcw size={16} />
+          <NerdIcon icon="action-refresh" size={16} />
           <span className="hidden sm:inline">Reset</span>
         </button>
 
@@ -51,9 +51,9 @@ export function Header() {
             onClick={() => setShowGitHubDropdown(!showGitHubDropdown)}
             className="flex items-center gap-1.5 px-3 py-1.5 text-sm text-gray-300 hover:text-white hover:bg-[#0f3460] rounded transition-colors"
           >
-            <Github size={16} />
+            <NerdIcon icon="vcs-github" size={16} />
             <span className="hidden sm:inline">GitHub</span>
-            <ChevronDown size={14} className={`transition-transform ${showGitHubDropdown ? 'rotate-180' : ''}`} />
+            <NerdIcon icon="ui-chevron-down" size={14} className={`transition-transform ${showGitHubDropdown ? 'rotate-180' : ''}`} />
           </button>
           
           {showGitHubDropdown && (
@@ -65,7 +65,7 @@ export function Header() {
                 className="flex items-center gap-2 px-4 py-2 text-sm text-gray-300 hover:bg-[#0f3460] hover:text-white transition-colors"
                 onClick={() => setShowGitHubDropdown(false)}
               >
-                <Github size={16} />
+                <NerdIcon icon="vcs-github" size={16} />
                 <span>Oh My Posh</span>
               </a>
               <a
@@ -75,7 +75,7 @@ export function Header() {
                 className="flex items-center gap-2 px-4 py-2 text-sm text-gray-300 hover:bg-[#0f3460] hover:text-white transition-colors"
                 onClick={() => setShowGitHubDropdown(false)}
               >
-                <Github size={16} />
+                <NerdIcon icon="vcs-github" size={16} />
                 <span>Configurator</span>
               </a>
             </div>
@@ -88,7 +88,7 @@ export function Header() {
           rel="noopener noreferrer"
           className="flex items-center gap-1.5 px-3 py-1.5 text-sm text-gray-300 hover:text-white hover:bg-[#0f3460] rounded transition-colors"
         >
-          <Book size={16} />
+          <NerdIcon icon="misc-book" size={16} />
           <span className="hidden sm:inline">Docs</span>
         </a>
       </div>

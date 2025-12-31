@@ -15,7 +15,7 @@ import {
   sortableKeyboardCoordinates,
   horizontalListSortingStrategy,
 } from '@dnd-kit/sortable';
-import { Plus, Trash2, Settings } from 'lucide-react';
+import { NerdIcon } from '../NerdIcon';
 import { useConfigStore, generateId } from '../../store/configStore';
 import { getSegmentMetadata } from '../../utils/segmentLoader';
 import type { Block as BlockType, Segment } from '../../types/ohmyposh';
@@ -109,7 +109,7 @@ function Block({ block, isSelected, onSelect, onRemove }: BlockProps) {
             className="p-1 text-gray-400 hover:text-white rounded transition-colors"
             title="Block settings"
           >
-            <Settings size={14} />
+            <NerdIcon icon="tool-settings" size={14} />
           </button>
           <button
             onClick={(e) => {
@@ -119,7 +119,7 @@ function Block({ block, isSelected, onSelect, onRemove }: BlockProps) {
             className="p-1 text-gray-400 hover:text-red-400 rounded transition-colors"
             title="Remove block"
           >
-            <Trash2 size={14} />
+            <NerdIcon icon="action-trash" size={14} />
           </button>
         </div>
       </div>
@@ -272,7 +272,7 @@ export function Canvas() {
             onClick={() => addBlock()}
             className="w-full py-3 border-2 border-dashed border-[#0f3460] rounded-lg text-gray-500 hover:text-gray-300 hover:border-gray-500 transition-colors flex items-center justify-center gap-2"
           >
-            <Plus size={18} />
+            <NerdIcon icon="ui-plus" size={18} />
             <span className="text-sm">Add Block</span>
           </button>
         </div>

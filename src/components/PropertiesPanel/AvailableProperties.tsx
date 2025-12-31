@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Info, ChevronDown, ChevronRight } from 'lucide-react';
+import { NerdIcon } from '../NerdIcon';
 import { useClipboard } from '../../hooks/useClipboard';
 
 interface AvailablePropertiesProps {
@@ -17,10 +17,10 @@ export function AvailableProperties({ properties }: AvailablePropertiesProps) {
         className="w-full px-2 py-1.5 flex items-center justify-between text-xs text-gray-300 hover:text-white hover:bg-[#1a1a2e] transition-colors rounded"
       >
         <div className="flex items-center gap-1.5">
-          <Info size={12} className="text-gray-400" />
+          <NerdIcon icon="status-info" size={12} className="text-gray-400" />
           <span className="font-medium">Available Properties ({properties.length})</span>
         </div>
-        {isExpanded ? <ChevronDown size={14} /> : <ChevronRight size={14} />}
+        {isExpanded ? <NerdIcon icon="ui-chevron-down" size={14} /> : <NerdIcon icon="ui-chevron-right" size={14} />}
       </button>
       
       {isExpanded && (

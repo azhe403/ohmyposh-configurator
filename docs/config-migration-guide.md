@@ -31,7 +31,7 @@ Configuration files contained both metadata and the Oh My Posh config wrapped to
 ```json
 {
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
-  "version": 2,
+  "version": 3,
   "blocks": [...]
 }
 ```
@@ -91,7 +91,7 @@ Replace the entire file content with just the config:
 // NEW: my-theme.json
 {
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
-  "version": 2,
+  "version": 3,
   "blocks": [...]
 }
 ```

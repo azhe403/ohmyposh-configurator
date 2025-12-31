@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Monitor, X } from 'lucide-react';
+import { NerdIcon } from '../NerdIcon';
 
 export function ScreenSizeWarning() {
   const [isSmallScreen, setIsSmallScreen] = useState(false);
@@ -44,12 +44,12 @@ export function ScreenSizeWarning() {
           className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors"
           aria-label="Dismiss"
         >
-          <X size={20} />
+          <NerdIcon icon="ui-close" size={20} />
         </button>
 
         <div className="flex items-start gap-4">
           <div className="bg-blue-100 rounded-full p-3 flex-shrink-0">
-            <Monitor className="text-blue-600" size={24} />
+            <NerdIcon icon="ui-monitor" size={24} className="text-blue-600" />
           </div>
 
           <div className="flex-1">

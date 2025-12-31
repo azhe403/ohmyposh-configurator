@@ -1,10 +1,9 @@
 import { useState, useMemo, useEffect } from 'react';
-import { Search, ChevronDown, ChevronRight, GripVertical } from 'lucide-react';
+import { NerdIcon } from '../NerdIcon';
 import { segmentCategories } from '../../data/segments';
 import { loadSegmentCategory, getSegmentCategories } from '../../utils/segmentLoader';
 import type { SegmentMetadata, Segment } from '../../types/ohmyposh';
 import { useConfigStore, generateId } from '../../store/configStore';
-import { DynamicIcon } from '../DynamicIcon';
 
 interface SegmentItemProps {
   segment: SegmentMetadata;
@@ -22,8 +21,8 @@ function SegmentItem({ segment, onAdd }: SegmentItemProps) {
         e.dataTransfer.effectAllowed = 'copy';
       }}
     >
-      <GripVertical size={14} className="text-gray-500 opacity-0 group-hover:opacity-100 transition-opacity" />
-      <DynamicIcon name={segment.icon} size={16} className="text-gray-400" />
+      <NerdIcon icon="ui-grip-vertical" size={14} className="text-gray-500 opacity-0 group-hover:opacity-100 transition-opacity" />
+      <NerdIcon icon={segment.icon} size={16} className="text-gray-400" />
       <div className="flex-1 min-w-0">
         <div className="text-sm text-gray-200 truncate">{segment.name}</div>
         {segment.previewText && (
@@ -60,11 +59,11 @@ function CategorySection({ category, segments, onAdd, defaultExpanded = false }:
         onClick={() => setIsExpanded(!isExpanded)}
       >
         {isExpanded ? (
-          <ChevronDown size={16} className="text-gray-400" />
+          <NerdIcon icon="ui-chevron-down" size={16} className="text-gray-400" />
         ) : (
-          <ChevronRight size={16} className="text-gray-400" />
+          <NerdIcon icon="ui-chevron-right" size={16} className="text-gray-400" />
         )}
-        <DynamicIcon name={category.icon} size={16} className="text-gray-400" />
+        <NerdIcon icon={category.icon} size={16} className="text-gray-400" />
         <span className="text-sm font-medium text-gray-200">{category.name}</span>
         <span className="text-xs text-gray-500 ml-auto">{segments.length}</span>
       </button>
@@ -153,7 +152,7 @@ export function SegmentPicker() {
       <div className="p-3 border-b border-[#0f3460]">
         <h2 className="text-sm font-semibold text-gray-200 mb-2">Segments</h2>
         <div className="relative">
-          <Search size={16} className="absolute left-2 top-1/2 -translate-y-1/2 text-gray-500" />
+          <NerdIcon icon="action-search" size={16} className="absolute left-2 top-1/2 -translate-y-1/2 text-gray-500" />
           <input
             type="text"
             placeholder="Search segments..."
